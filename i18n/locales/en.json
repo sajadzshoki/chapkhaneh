@@ -1,0 +1,251 @@
+{
+  "meta": {
+    "titleTemplate": "%s | Mobin Bartar",
+    "defaultDescription": "Mobin Bartar industrial printing: offset, digital, book production, packaging and post-press services."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "equipment": "Equipment",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "quote": "Request a Quote",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNavigation": "Main navigation",
+    "footerNavigation": "Footer navigation",
+    "breadcrumb": "Breadcrumb",
+    "skipToContent": "Skip to main content"
+  },
+  "common": {
+    "readMore": "Read more",
+    "viewDetails": "View details",
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "getQuote": "Request a quote",
+    "contactUs": "Contact us",
+    "callUs": "Call us",
+    "send": "Send",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "loading": "Loading…",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "optional": "optional",
+    "required": "required",
+    "language": "Language",
+    "changeLanguage": "Change language",
+    "toman": "Toman",
+    "from": "from",
+    "perUnit": "per unit"
+  },
+  "states": {
+    "emptyTitle": "Nothing found",
+    "emptyDescription": "No results match the selected filters. Try adjusting them.",
+    "loadingTitle": "Loading content",
+    "errorTitle": "Could not load content",
+    "errorDescription": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The address you entered does not exist or has moved.",
+    "backHome": "Back to home"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Industrial printing since 2000",
+      "title": "High-volume industrial printing with consistent quality",
+      "description": "From sheet-fed offset and book production to packaging and post-press finishing — every stage happens in one facility, so lead time and quality stay under control.",
+      "primaryCta": "Request a quote",
+      "secondaryCta": "Explore services",
+      "imageAlt": "Offset printing line on the Mobin Bartar production floor"
+    },
+    "stats": { "title": "Mobin Bartar at a glance" },
+    "services": {
+      "eyebrow": "Services",
+      "title": "What we produce",
+      "description": "Ten groups of printing and packaging services, all under one roof and one quality-control team."
+    },
+    "why": {
+      "eyebrow": "Why Mobin Bartar",
+      "title": "Why corporate clients choose us",
+      "description": "The difference between an industrial printer and a print shop is repeatability.",
+      "items": {
+        "quality": { "title": "Documented quality control", "description": "Colour managed to ISO 12647-2, with every job's parameters recorded so reprints match the original." },
+        "capacity": { "title": "High production capacity", "description": "Over 200,000 square metres printed monthly — large runs are produced in-house, never subcontracted." },
+        "integrated": { "title": "Integrated production", "description": "Pre-press, press and post-press in one facility, so work never shuttles between workshops." },
+        "onTime": { "title": "Delivery you can plan around", "description": "Fixed production calendars for periodicals and a firm delivery date stated on every quotation." }
+      }
+    },
+    "equipment": {
+      "eyebrow": "Equipment",
+      "title": "Our production machinery",
+      "description": "Print quality is a direct result of the presses and how well they are maintained."
+    },
+    "portfolio": {
+      "eyebrow": "Portfolio",
+      "title": "Recent projects",
+      "description": "A selection of the work we have produced and delivered over the past two years."
+    },
+    "process": {
+      "eyebrow": "How we work",
+      "title": "From enquiry to delivery",
+      "description": "The path an order takes through Mobin Bartar is transparent and trackable.",
+      "steps": {
+        "inquiry": { "title": "Enquiry and consultation", "description": "You submit the job specification and a sales engineer reviews the technical and commercial options." },
+        "quote": { "title": "Quotation", "description": "A firm price, stock specification and delivery date are issued in writing." },
+        "prepress": { "title": "Pre-press", "description": "Files are checked, technically corrected and, where needed, a contract proof is produced." },
+        "production": { "title": "Print and finishing", "description": "Printing, post-press finishing and packing run to the agreed schedule." },
+        "delivery": { "title": "Delivery", "description": "The order is counted, packed and delivered to your chosen location." }
+      }
+    },
+    "cta": {
+      "title": "Let us review your job",
+      "description": "Send us the specification and you will have a quotation within one working day.",
+      "primary": "Request a quote",
+      "secondary": "Talk to a specialist"
+    }
+  },
+  "services": {
+    "title": "Printing & packaging services",
+    "description": "Ten specialist service groups, from sheet-fed offset to packaging production and post-press finishing.",
+    "categories": { "all": "All", "printing": "Printing", "packaging": "Packaging", "finishing": "Post-press" },
+    "features": "What's included",
+    "minimumOrder": "Minimum order",
+    "turnaround": "Turnaround",
+    "relatedPricing": "Indicative pricing",
+    "notFound": "The requested service could not be found."
+  },
+  "pricing": {
+    "title": "Service pricing",
+    "description": "The figures below assume standard specifications and are indicative. The binding price is issued on your quotation.",
+    "table": { "item": "Item", "quantity": "Quantity", "specification": "Specification", "price": "Price (Toman)", "turnaround": "Turnaround", "note": "Note" },
+    "disclaimer": "Prices exclude VAT and freight. Because paper prices fluctuate, quotations are valid for seven days.",
+    "cta": "Get a quote for your own specification"
+  },
+  "equipment": {
+    "title": "Equipment & machinery",
+    "description": "The Mobin Bartar production line covers offset, digital, pre-press and post-press machinery.",
+    "types": { "all": "All", "offset": "Offset", "digital": "Digital", "prepress": "Pre-press", "finishing": "Post-press" },
+    "specifications": "Technical specifications",
+    "manufacturer": "Manufacturer",
+    "installedYear": "Installed"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Projects produced for publishers, industrial brands and public organisations.",
+    "client": "Client",
+    "year": "Year",
+    "projectDetails": "Project details",
+    "allCategories": "All categories",
+    "relatedProjects": "Related projects"
+  },
+  "about": {
+    "title": "About Mobin Bartar",
+    "description": "More than two decades of industrial print production for publishers, industry and institutions.",
+    "story": { "title": "Our story", "description": "Mobin Bartar started in 2000 with a single two-colour offset press. Today, with eight active production lines and 140 staff, it is a well-established name in Iranian industrial printing. That growth came from steady investment in machinery and technical training — not from rapid, unplanned expansion." },
+    "values": {
+      "title": "How we work",
+      "items": {
+        "precision": { "title": "Precision", "description": "Every job is produced against documented parameters so the next run matches the last one." },
+        "reliability": { "title": "Reliability", "description": "The delivery date we state is the date we hold ourselves to." },
+        "transparency": { "title": "Transparency", "description": "Specifications, stock and costs are agreed in writing before production starts." },
+        "investment": { "title": "Technical investment", "description": "Press renewal and operator training are a permanent part of our annual plan." }
+      }
+    },
+    "certifications": { "title": "Standards & certifications", "description": "Our quality control follows recognised printing-industry standards." },
+    "facility": { "title": "The facility", "description": "Our 6,500 square-metre plant operates in Tehran's Print & Publishing Industrial Park." }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "description": "Answers to the questions customers most often ask before placing an order.",
+    "categories": { "all": "All", "orders": "Orders", "technical": "Technical", "delivery": "Delivery", "pricing": "Pricing" },
+    "stillHaveQuestions": { "title": "Didn't find your answer?", "description": "Our sales engineers are available during working hours." }
+  },
+  "contact": {
+    "title": "Contact us",
+    "description": "Get in touch for a quotation, technical advice or to arrange a visit to the plant.",
+    "phone": "Phone",
+    "fax": "Fax",
+    "email": "Email",
+    "salesEmail": "Sales email",
+    "address": "Address",
+    "postalCode": "Postal code",
+    "workingHours": "Working hours",
+    "social": "Social media",
+    "viewOnMap": "View on map",
+    "departments": "Departments"
+  },
+  "quote": {
+    "title": "Request a quote",
+    "description": "Tell us about your job and our team will send a quotation within one working day.",
+    "form": {
+      "fullName": "Full name",
+      "fullNamePlaceholder": "e.g. Ali Rezaei",
+      "company": "Company",
+      "companyPlaceholder": "Your organisation",
+      "phone": "Phone number",
+      "phonePlaceholder": "09120000000",
+      "email": "Email",
+      "emailPlaceholder": "name{'@'}company.com",
+      "service": "Service",
+      "servicePlaceholder": "Select a service",
+      "quantity": "Quantity",
+      "quantityPlaceholder": "e.g. 5000",
+      "neededBy": "Required delivery date",
+      "description": "Job description",
+      "descriptionPlaceholder": "Describe format, stock, page count, colours and any finishing you need.",
+      "submit": "Send request",
+      "submitting": "Sending…"
+    },
+    "validation": {
+      "fullNameRequired": "Full name is required.",
+      "phoneRequired": "Phone number is required.",
+      "phoneInvalid": "Please enter a valid phone number.",
+      "emailInvalid": "Please enter a valid email address.",
+      "serviceRequired": "Please select a service.",
+      "quantityInvalid": "Quantity must be a number greater than zero.",
+      "descriptionRequired": "A job description is required.",
+      "descriptionTooShort": "Please provide at least 20 characters."
+    },
+    "success": { "title": "Your request has been received", "description": "A sales engineer will contact you within one working day." },
+    "error": { "title": "Could not send your request", "description": "Please try again, or contact us directly by phone." }
+  },
+  "footer": {
+    "aboutTitle": "About Mobin Bartar",
+    "quickLinks": "Quick links",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "workingHoursTitle": "Working hours",
+    "followUs": "Follow us",
+    "rights": "All rights reserved.",
+    "madeBy": "Design & development"
+  },
+  "admin": {
+    "title": "Admin panel",
+    "dashboard": "Dashboard",
+    "quotes": "Quote requests",
+    "services": "Services",
+    "pricing": "Pricing",
+    "equipment": "Equipment",
+    "portfolio": "Portfolio",
+    "faq": "FAQ",
+    "settings": "Site settings",
+    "theme": "Appearance",
+    "users": "Users",
+    "login": "Sign in",
+    "logout": "Sign out",
+    "status": { "new": "New", "in_review": "In review", "quoted": "Quoted", "won": "Won", "lost": "Lost" }
+  }
+}

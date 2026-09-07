@@ -1,0 +1,118 @@
+/* Font declarations come first: CSS requires all @import statements to precede
+   other rules once this file is flattened by the bundler. */
+@import "./fonts.css";
+@import "tailwindcss";
+@import "@nuxt/ui";
+@import "./tokens.css";
+
+/* Map our brand scales onto Nuxt UI's Tailwind v4 color space so that
+   `color="primary"` on any Nuxt UI component uses the brand palette. */
+@theme static {
+  --color-primary-50: #eef5fb;
+  --color-primary-100: #d6e6f5;
+  --color-primary-200: #adcdea;
+  --color-primary-300: #7cadda;
+  --color-primary-400: #4a89c5;
+  --color-primary-500: #2a6ba9;
+  --color-primary-600: #0f4c81;
+  --color-primary-700: #0d3f6b;
+  --color-primary-800: #0b3356;
+  --color-primary-900: #092842;
+  --color-primary-950: #05192a;
+
+  --color-secondary-50: #f6f7f8;
+  --color-secondary-100: #eaecef;
+  --color-secondary-200: #d3d8dd;
+  --color-secondary-300: #b0b9c2;
+  --color-secondary-400: #8794a1;
+  --color-secondary-500: #697787;
+  --color-secondary-600: #4f5c6b;
+  --color-secondary-700: #3d4753;
+  --color-secondary-800: #2f3740;
+  --color-secondary-900: #22282f;
+  --color-secondary-950: #14181d;
+
+  --color-accent-50: #fdf6ec;
+  --color-accent-100: #f9e7cb;
+  --color-accent-200: #f2cd94;
+  --color-accent-300: #e9ae57;
+  --color-accent-400: #dd9130;
+  --color-accent-500: #c4761f;
+  --color-accent-600: #a35b18;
+  --color-accent-700: #82471a;
+  --color-accent-800: #6a391a;
+  --color-accent-900: #5a3019;
+  --color-accent-950: #33180a;
+}
+
+:root {
+  --ui-primary: var(--color-primary);
+  --ui-radius: var(--radius-md);
+  --ui-bg: var(--color-background);
+  --ui-text: var(--color-foreground);
+  --ui-text-muted: var(--color-muted);
+  --ui-border: var(--color-border);
+}
+
+html {
+  font-family: var(--font-fa);
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+html[lang="en"] {
+  font-family: var(--font-en);
+}
+
+body {
+  margin: 0;
+  line-height: 1.75;
+}
+
+/* Persian numerals & typography niceties */
+html[dir="rtl"] {
+  letter-spacing: 0;
+}
+html[dir="rtl"] .tabular {
+  font-feature-settings: "ss02";
+}
+
+h1, h2, h3, h4 {
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+/* Visible focus for keyboard users across the whole app. */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+img, svg, video {
+  max-width: 100%;
+  height: auto;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+
+/* Logical-property helpers so layouts flip automatically between RTL/LTR. */
+.flip-x {
+  transform: scaleX(1);
+}
+html[dir="rtl"] .flip-x {
+  transform: scaleX(-1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

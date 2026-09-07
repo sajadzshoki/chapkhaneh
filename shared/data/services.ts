@@ -1,0 +1,358 @@
+import type { Service } from '../types'
+
+export const services: Service[] = [
+  {
+    id: 'svc-offset',
+    slug: 'offset-printing',
+    category: 'printing',
+    icon: 'i-lucide-printer',
+    title: { fa: 'چاپ افست', en: 'Offset Printing' },
+    summary: {
+      fa: 'چاپ ورقی چهار و پنج‌رنگ برای تیراژهای متوسط و بالا با ثبات رنگ کنترل‌شده.',
+      en: 'Four and five-colour sheet-fed printing for medium and high volumes with controlled colour consistency.',
+    },
+    description: {
+      fa: 'خط چاپ افست ورقی مبین برتر با ماشین‌های هایدلبرگ و کوموری در قطع‌های ۵۰×۷۰ و ۷۰×۱۰۰ کار می‌کند. کنترل رنگ بر پایهٔ استاندارد ISO 12647-2 و با دستگاه اسپکتروفتومتر انجام می‌شود تا در تیراژهای بالا اختلاف رنگ بین فرم‌ها به حداقل برسد. برای سفارش‌های انتشاراتی و سازمانی، امکان چاپ روی کاغذهای تحریر، گلاسه، کرافت و مقواهای پشت‌طوسی و ایندربرد فراهم است.',
+      en: 'Our sheet-fed offset line runs Heidelberg and Komori presses in 50×70 and 70×100 formats. Colour is managed to ISO 12647-2 using spectrophotometric control, keeping form-to-form deviation minimal across long runs. We print on uncoated, coated, kraft and duplex/folding boxboard substrates for publishing and corporate work.',
+    },
+    features: {
+      fa: [
+        'قطع‌های ۵۰×۷۰ و ۷۰×۱۰۰ سانتی‌متر',
+        'چاپ چهار رنگ و رنگ اختصاصی پنتون',
+        'کنترل رنگ مطابق ISO 12647-2',
+        'پلیت‌سازی مستقیم CTP با رزولوشن ۲۴۰۰ dpi',
+        'مناسب تیراژ ۱٬۰۰۰ تا ۵۰۰٬۰۰۰ برگ',
+      ],
+      en: [
+        '50×70 and 70×100 cm formats',
+        'CMYK plus dedicated Pantone inks',
+        'Colour control to ISO 12647-2',
+        'Direct CTP plate-making at 2400 dpi',
+        'Suited to runs of 1,000 – 500,000 sheets',
+      ],
+    },
+    minimumOrder: { fa: '۱٬۰۰۰ برگ', en: '1,000 sheets' },
+    turnaround: { fa: '۳ تا ۷ روز کاری', en: '3 – 7 working days' },
+    featured: true,
+    order: 1,
+  },
+  {
+    id: 'svc-digital',
+    slug: 'digital-printing',
+    category: 'printing',
+    icon: 'i-lucide-monitor-cog',
+    title: { fa: 'چاپ دیجیتال', en: 'Digital Printing' },
+    summary: {
+      fa: 'تیراژ کم، تحویل سریع و امکان چاپ داده‌متغیر بدون هزینهٔ زینک.',
+      en: 'Short runs, fast turnaround and variable-data printing with no plate cost.',
+    },
+    description: {
+      fa: 'برای سفارش‌هایی که تیراژ آن‌ها اقتصادی‌بودن افست را توجیه نمی‌کند، خط چاپ دیجیتال با دستگاه‌های Konica Minolta AccurioPress پاسخگوست. چاپ داده‌متغیر برای شماره‌گذاری، بارکد و شخصی‌سازی نام، و همچنین چاپ نمونهٔ رنگی پیش از تولید انبوه در همین خط انجام می‌شود.',
+      en: 'For runs where offset is not economical, our Konica Minolta AccurioPress line delivers. It also handles variable-data work — numbering, barcodes and name personalisation — as well as colour proofs before a full offset run.',
+    },
+    features: {
+      fa: [
+        'تحویل از ۲۴ ساعت',
+        'چاپ داده‌متغیر و شماره‌گذاری',
+        'بدون هزینهٔ زینک و راه‌اندازی',
+        'چاپ نمونهٔ رنگی پیش از افست',
+        'گراماژ ۸۰ تا ۳۵۰ گرم',
+      ],
+      en: [
+        'Delivery from 24 hours',
+        'Variable data and numbering',
+        'No plate or make-ready cost',
+        'Colour proofing ahead of offset',
+        'Stock weights 80 – 350 gsm',
+      ],
+    },
+    minimumOrder: { fa: '۱ نسخه', en: '1 copy' },
+    turnaround: { fa: '۱ تا ۳ روز کاری', en: '1 – 3 working days' },
+    featured: true,
+    order: 2,
+  },
+  {
+    id: 'svc-book',
+    slug: 'book-printing',
+    category: 'printing',
+    icon: 'i-lucide-book-open',
+    title: { fa: 'چاپ کتاب', en: 'Book Printing' },
+    summary: {
+      fa: 'تولید کامل کتاب از فرم‌بندی تا صحافی چسب گرم و سخت، ویژهٔ ناشران.',
+      en: 'End-to-end book production from imposition to perfect and case binding, built for publishers.',
+    },
+    description: {
+      fa: 'مبین برتر با بیش از ۴۰۰ ناشر داخلی همکاری می‌کند. فرآیند شامل فرم‌بندی، چاپ متن روی کاغذ تحریر یا بالکی، چاپ و سلفون جلد، و صحافی چسب گرم (PUR یا EVA)، ته‌دوخت و جلد سخت است. برای مجموعه‌های آموزشی امکان تولید در تیراژهای پیوسته و انبارش نسخه‌های چاپ‌شده وجود دارد.',
+      en: 'We work with more than 400 domestic publishers. The workflow covers imposition, text printing on uncoated or bulky stock, cover printing and lamination, and binding — PUR or EVA perfect binding, saddle-stitch and hard case. Educational series can be produced in rolling batches with warehousing of finished copies.',
+    },
+    features: {
+      fa: [
+        'صحافی چسب گرم PUR و EVA',
+        'جلد سخت با گالینگور و روکش چاپی',
+        'کاغذ تحریر، بالکی و گلاسه',
+        'فرم‌بندی و کنترل نمونهٔ قبل از چاپ',
+        'تیراژ از ۳۰۰ نسخه',
+      ],
+      en: [
+        'PUR and EVA perfect binding',
+        'Hard case binding with printed or cloth covers',
+        'Uncoated, bulky and coated text stocks',
+        'Imposition and pre-press proofing',
+        'Runs from 300 copies',
+      ],
+    },
+    minimumOrder: { fa: '۳۰۰ نسخه', en: '300 copies' },
+    turnaround: { fa: '۷ تا ۱۴ روز کاری', en: '7 – 14 working days' },
+    featured: true,
+    order: 3,
+  },
+  {
+    id: 'svc-magazine',
+    slug: 'magazine-printing',
+    category: 'printing',
+    icon: 'i-lucide-newspaper',
+    title: { fa: 'چاپ مجله و نشریه', en: 'Magazine Printing' },
+    summary: {
+      fa: 'چاپ ادواری نشریات با برنامهٔ زمانی ثابت و صحافی ته‌دوخت یا چسب گرم.',
+      en: 'Periodical production on a fixed schedule with saddle-stitch or perfect binding.',
+    },
+    description: {
+      fa: 'برای نشریات ماهانه و فصلنامه‌ها، تقویم تولید ثابت تعریف می‌شود تا تاریخ انتشار هرگز جابه‌جا نشود. جلد روی گلاسه ۲۵۰ گرم با یووی یا سلفون مات، و متن روی گلاسه ۱۰۰ تا ۱۳۵ گرم چاپ می‌شود. امکان درج آگهی با فرم جداگانه و صفحات جداشونده نیز فراهم است.',
+      en: 'Monthly and quarterly titles run on a fixed production calendar so publication dates never slip. Covers print on 250gsm gloss with UV or matte lamination; text pages on 100–135gsm coated stock. Separate advertising forms and tip-in pages are supported.',
+    },
+    features: {
+      fa: [
+        'برنامهٔ تولید ادواری تضمین‌شده',
+        'صحافی ته‌دوخت یا چسب گرم',
+        'یووی موضعی و سلفون مات روی جلد',
+        'فرم آگهی مجزا',
+        'بسته‌بندی و ارسال به توزیع‌کننده',
+      ],
+      en: [
+        'Guaranteed periodical schedule',
+        'Saddle-stitch or perfect binding',
+        'Spot UV and matte lamination on covers',
+        'Separate advertising forms',
+        'Packing and delivery to distributors',
+      ],
+    },
+    turnaround: { fa: '۵ تا ۱۰ روز کاری', en: '5 – 10 working days' },
+    featured: false,
+    order: 4,
+  },
+  {
+    id: 'svc-catalog',
+    slug: 'catalog-printing',
+    category: 'printing',
+    icon: 'i-lucide-gallery-vertical-end',
+    title: { fa: 'چاپ کاتالوگ', en: 'Catalogue Printing' },
+    summary: {
+      fa: 'کاتالوگ محصولات با کیفیت تصویری بالا و صحافی متناسب با تعداد صفحات.',
+      en: 'Product catalogues with high image fidelity and binding matched to page count.',
+    },
+    description: {
+      fa: 'کاتالوگ ابزار فروش است، بنابراین دقت رنگ در تصاویر محصول اهمیت مستقیم دارد. با پروفایل رنگ اختصاصی و چاپ نمونهٔ تأییدیه، رنگ محصولات نزدیک به نمونهٔ واقعی بازتولید می‌شود. برای کاتالوگ‌های کم‌صفحه ته‌دوخت و برای بیش از ۴۸ صفحه چسب گرم پیشنهاد می‌شود.',
+      en: 'A catalogue is a sales tool, so product-image colour accuracy matters directly. With a dedicated colour profile and a signed-off contract proof, product colours reproduce close to the physical sample. Saddle-stitch suits low page counts; above 48 pages we recommend perfect binding.',
+    },
+    features: {
+      fa: [
+        'پروفایل رنگ اختصاصی برای هر برند',
+        'چاپ نمونهٔ تأییدیه پیش از تیراژ',
+        'گلاسه ۱۳۵ تا ۲۵۰ گرم',
+        'سلفون مات به همراه یووی موضعی',
+        'تیراژ از ۵۰۰ نسخه',
+      ],
+      en: [
+        'Per-brand colour profile',
+        'Contract proof before the production run',
+        '135 – 250 gsm coated stock',
+        'Matte lamination with spot UV',
+        'Runs from 500 copies',
+      ],
+    },
+    minimumOrder: { fa: '۵۰۰ نسخه', en: '500 copies' },
+    turnaround: { fa: '۵ تا ۹ روز کاری', en: '5 – 9 working days' },
+    featured: true,
+    order: 5,
+  },
+  {
+    id: 'svc-brochure',
+    slug: 'brochure-printing',
+    category: 'printing',
+    icon: 'i-lucide-file-text',
+    title: { fa: 'چاپ بروشور و تراکت', en: 'Brochure & Flyer Printing' },
+    summary: {
+      fa: 'بروشورهای تاشو و تراکت تبلیغاتی در تیراژ بالا با قیمت تمام‌شدهٔ پایین.',
+      en: 'Folded brochures and promotional flyers at high volume and low unit cost.',
+    },
+    description: {
+      fa: 'بروشور دو لت، سه لت و آکاردئونی روی گلاسه ۱۳۵ گرم رایج‌ترین سفارش این بخش است. تا برش و تاخوردگی روی خط پس از چاپ به‌صورت خودکار انجام می‌شود که در تیراژهای بالای ۱۰٬۰۰۰ نسخه تفاوت محسوسی در هزینه ایجاد می‌کند.',
+      en: 'Bi-fold, tri-fold and concertina brochures on 135gsm gloss are the most common job here. Trimming and folding run automatically on the finishing line, which makes a measurable cost difference above 10,000 copies.',
+    },
+    features: {
+      fa: [
+        'تا دو لت، سه لت و آکاردئونی',
+        'گلاسه ۱۰۰ تا ۱۷۰ گرم',
+        'تیراژ بالا با قیمت تمام‌شدهٔ پایین',
+        'برش و تا به‌صورت ماشینی',
+        'امکان بسته‌بندی شماره‌ای',
+      ],
+      en: [
+        'Bi-fold, tri-fold and concertina folds',
+        '100 – 170 gsm coated stock',
+        'Low unit cost at volume',
+        'Machine trimming and folding',
+        'Counted bundle packing',
+      ],
+    },
+    minimumOrder: { fa: '۱٬۰۰۰ نسخه', en: '1,000 copies' },
+    turnaround: { fa: '۳ تا ۵ روز کاری', en: '3 – 5 working days' },
+    featured: false,
+    order: 6,
+  },
+  {
+    id: 'svc-packaging',
+    slug: 'packaging-boxes',
+    category: 'packaging',
+    icon: 'i-lucide-package',
+    title: { fa: 'بسته‌بندی و جعبه', en: 'Packaging & Boxes' },
+    summary: {
+      fa: 'طراحی قالب، چاپ و تولید جعبهٔ مقوایی برای صنایع غذایی، دارویی و آرایشی.',
+      en: 'Die design, printing and production of folding cartons for food, pharma and cosmetics.',
+    },
+    description: {
+      fa: 'از طراحی گسترده (die-line) تا تولید جعبهٔ نهایی در همین مجموعه انجام می‌شود. مقواهای پشت‌طوسی، ایندربرد و متالایز موجودند و برای صنایع غذایی امکان استفاده از مرکب و لاک با گواهی تماس غیرمستقیم با مواد غذایی وجود دارد. خط چسب‌زنی خودکار جعبه‌های تاشو را آمادهٔ خط پرکن مشتری تحویل می‌دهد.',
+      en: 'From die-line design to the finished carton, everything happens in-house. Duplex, folding boxboard and metallised boards are stocked, and for food applications we offer inks and varnishes certified for indirect food contact. The automatic folder-gluer delivers cartons ready for the customer’s filling line.',
+    },
+    features: {
+      fa: [
+        'طراحی و ساخت قالب اختصاصی',
+        'مقوای پشت‌طوسی، ایندربرد و متالایز',
+        'چسب‌زنی خودکار جعبهٔ تاشو',
+        'لاک و مرکب مناسب صنایع غذایی',
+        'تیراژ از ۲٬۰۰۰ عدد',
+      ],
+      en: [
+        'Custom die design and manufacture',
+        'Duplex, FBB and metallised board',
+        'Automatic folder-gluer finishing',
+        'Food-grade inks and varnishes',
+        'Runs from 2,000 units',
+      ],
+    },
+    minimumOrder: { fa: '۲٬۰۰۰ عدد', en: '2,000 units' },
+    turnaround: { fa: '۱۰ تا ۱۸ روز کاری', en: '10 – 18 working days' },
+    featured: true,
+    order: 7,
+  },
+  {
+    id: 'svc-label',
+    slug: 'label-printing',
+    category: 'packaging',
+    icon: 'i-lucide-tag',
+    title: { fa: 'چاپ لیبل و برچسب', en: 'Label Printing' },
+    summary: {
+      fa: 'لیبل رول و ورقی روی کاغذ، پی‌وی‌سی و متالایز با برش قالبی دقیق.',
+      en: 'Roll and sheet labels on paper, PVC and metallised film with precise die-cutting.',
+    },
+    description: {
+      fa: 'لیبل محصول باید در برابر رطوبت، سرما و سایش دوام بیاورد. بسته به کاربرد، از کاغذ لیبل معمولی تا پی‌وی‌سی شفاف و متالایز پیشنهاد می‌شود. برش قالبی با دقت بالا و تحویل به‌صورت رول با مغزی استاندارد برای خطوط لیبل‌زن خودکار انجام می‌شود.',
+      en: 'A product label has to survive moisture, cold and abrasion. Depending on the application we specify anything from standard label paper to clear PVC and metallised film. Die-cutting is high-precision and rolls ship with standard cores for automatic labelling lines.',
+    },
+    features: {
+      fa: [
+        'لیبل رول برای دستگاه لیبل‌زن',
+        'پی‌وی‌سی شفاف و متالایز',
+        'برش قالبی با اشکال اختصاصی',
+        'مقاوم در برابر رطوبت و سرما',
+        'شماره‌گذاری و بارکد متغیر',
+      ],
+      en: [
+        'Roll labels for automatic applicators',
+        'Clear PVC and metallised substrates',
+        'Custom-shape die-cutting',
+        'Moisture and cold resistant',
+        'Variable numbering and barcodes',
+      ],
+    },
+    minimumOrder: { fa: '۵٬۰۰۰ عدد', en: '5,000 units' },
+    turnaround: { fa: '۵ تا ۱۰ روز کاری', en: '5 – 10 working days' },
+    featured: false,
+    order: 8,
+  },
+  {
+    id: 'svc-business-card',
+    slug: 'business-card-printing',
+    category: 'printing',
+    icon: 'i-lucide-credit-card',
+    title: { fa: 'چاپ کارت ویزیت', en: 'Business Card Printing' },
+    summary: {
+      fa: 'کارت ویزیت سلفون مات، براق، طلاکوب و سوسماری با تحویل سریع.',
+      en: 'Matte, gloss, foil-stamped and embossed business cards with quick turnaround.',
+    },
+    description: {
+      fa: 'کارت ویزیت کوچک‌ترین سفارش ماست اما با همان استاندارد رنگی تیراژهای بزرگ چاپ می‌شود. گزینه‌های تکمیلی شامل سلفون مات مخملی، یووی موضعی، طلاکوب و لبهٔ رنگی است. برای سازمان‌ها امکان چاپ داده‌متغیر نام و سمت کارکنان در یک فایل واحد فراهم است.',
+      en: 'Business cards are our smallest job but print to the same colour standard as long runs. Finishing options include soft-touch matte lamination, spot UV, foil stamping and edge colouring. For organisations, staff names and titles can be variable-printed from a single file.',
+    },
+    features: {
+      fa: [
+        'سلفون مات مخملی و براق',
+        'طلاکوب و یووی موضعی',
+        'گراماژ ۳۰۰ تا ۴۰۰ گرم',
+        'چاپ داده‌متغیر برای سازمان‌ها',
+        'تحویل از ۴۸ ساعت',
+      ],
+      en: [
+        'Soft-touch matte and gloss lamination',
+        'Foil stamping and spot UV',
+        '300 – 400 gsm stock',
+        'Variable data for organisations',
+        'Delivery from 48 hours',
+      ],
+    },
+    minimumOrder: { fa: '۱٬۰۰۰ عدد', en: '1,000 units' },
+    turnaround: { fa: '۲ تا ۴ روز کاری', en: '2 – 4 working days' },
+    featured: false,
+    order: 9,
+  },
+  {
+    id: 'svc-post-press',
+    slug: 'post-press-services',
+    category: 'finishing',
+    icon: 'i-lucide-scissors',
+    title: { fa: 'خدمات پس از چاپ', en: 'Post-Press Services' },
+    summary: {
+      fa: 'سلفون، یووی، طلاکوب، برش قالبی، صحافی و بسته‌بندی در یک مجموعه.',
+      en: 'Lamination, UV, foiling, die-cutting, binding and packing under one roof.',
+    },
+    description: {
+      fa: 'همهٔ مراحل پس از چاپ داخل مجموعه انجام می‌شود؛ این یعنی کار بین چند کارگاه جابه‌جا نمی‌شود و زمان تحویل و کیفیت قابل کنترل می‌ماند. این خدمات به‌صورت مستقل نیز برای چاپخانه‌های دیگر ارائه می‌شود.',
+      en: 'Every post-press stage happens in-house, so jobs never shuttle between workshops and both lead time and quality stay controllable. These services are also available standalone to other printing houses.',
+    },
+    features: {
+      fa: [
+        'سلفون مات، براق و مخملی',
+        'یووی کامل و موضعی',
+        'طلاکوب و نقره‌کوب',
+        'برش قالبی و شماره‌گذاری',
+        'صحافی و بسته‌بندی نهایی',
+      ],
+      en: [
+        'Matte, gloss and soft-touch lamination',
+        'Flood and spot UV',
+        'Gold and silver foil stamping',
+        'Die-cutting and numbering',
+        'Binding and final packing',
+      ],
+    },
+    turnaround: { fa: '۲ تا ۶ روز کاری', en: '2 – 6 working days' },
+    featured: false,
+    order: 10,
+  },
+]
+
+export const getServiceBySlug = (slug: string): Service | undefined =>
+  services.find(s => s.slug === slug)
+
+export const featuredServices = (): Service[] =>
+  services.filter(s => s.featured).sort((a, b) => a.order - b.order)

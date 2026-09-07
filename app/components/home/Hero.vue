@@ -1,7 +1,5 @@
 <script setup lang="ts">
 const localePath = useLocalePath()
-const { stats } = useSite()
-const { L } = useLocalizedContent()
 </script>
 
 <template>
@@ -30,10 +28,14 @@ const { L } = useLocalizedContent()
               {{ $t('home.hero.secondaryCta') }}
             </UButton>
           </div>
+
+          <p class="mt-8 border-t border-[var(--color-border)] pt-6 text-sm text-[var(--color-muted)]">
+            {{ $t('home.hero.credibility') }}
+          </p>
         </div>
 
         <div class="lg:col-span-6">
-          <div class="relative border border-[var(--color-border)]">
+          <div class="border border-[var(--color-border)]">
             <img
               src="/photos/press-hall.jpg"
               :alt="$t('home.hero.imageAlt')"
@@ -45,17 +47,6 @@ const { L } = useLocalizedContent()
           </div>
         </div>
       </div>
-
-      <!-- Key figures strip -->
-      <dl class="grid grid-cols-2 gap-8 border-t border-[var(--color-border)] py-10 lg:grid-cols-4 lg:gap-10">
-        <UiStatBlock
-          v-for="stat in stats"
-          :key="stat.id"
-          :value="stat.value"
-          :suffix="stat.suffix"
-          :label="L(stat.label) ?? ''"
-        />
-      </dl>
     </UiPageContainer>
   </section>
 </template>

@@ -1,15 +1,21 @@
 <script setup lang="ts">
 import type { PortfolioItem } from '~~/shared/types'
+import { getCategoryBySlug } from '~~/shared/data/portfolio'
 
 defineProps<{ item: PortfolioItem }>()
 
 const { L } = useLocalizedContent()
 const localePath = useLocalePath()
+
+const categoryTitle = (slug: string) => {
+  const category = getCategoryBySlug(slug)
+  return category ? L(category.title) : undefined
+}
 </script>
 
 <template>
   <article class="group relative flex h-full flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-200 hover:border-[var(--color-primary)]">
-    <div class="aspect-[4/3] overflow-hidden bg-[var(--color-surface-muted)]">
+    <div class="relative aspect-[4/3] overflow-hidden bg-[var(--color-surface-muted)]">
       <img
         :src="item.image.src"
         :alt="L(item.image.alt) ?? ''"
@@ -18,6 +24,12 @@ const localePath = useLocalePath()
         width="800"
         height="600"
       >
+      <span
+        v-if="categoryTitle(item.categorySlug)"
+        class="absolute bottom-0 start-0 bg-[var(--color-secondary)] px-3 py-1.5 text-xs font-semibold text-white"
+      >
+        {{ categoryTitle(item.categorySlug) }}
+      </span>
     </div>
 
     <div class="flex flex-1 flex-col p-6">

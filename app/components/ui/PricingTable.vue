@@ -2,28 +2,41 @@
 import type { PricingGroup } from '~~/shared/types'
 import { formatNumber } from '~/utils/format'
 
-defineProps<{ group: PricingGroup }>()
+withDefaults(defineProps<{
+  group: PricingGroup
+  /** Anchor id so the pricing page can link directly to a group. */
+  anchor?: string
+}>(), {})
 
 const { L, locale } = useLocalizedContent()
 </script>
 
 <template>
-  <section class="border border-[var(--color-border)] bg-[var(--color-surface)]">
+  <section
+    :id="anchor"
+    class="border border-[var(--color-border)] bg-[var(--color-surface)]"
+    :class="anchor ? 'scroll-mt-32' : ''"
+  >
     <header class="border-b border-[var(--color-border)] bg-[var(--color-surface-muted)] px-6 py-5">
       <h3 class="text-lg font-bold text-[var(--color-foreground)]">
         {{ L(group.title) }}
       </h3>
-      <p v-if="group.description" class="mt-1 text-sm text-[var(--color-muted)]">
+      <p v-if="group.description" class="mt-1 text-sm leading-7 text-[var(--color-muted)]">
         {{ L(group.description) }}
       </p>
     </header>
 
-    <!-- Horizontal scroll keeps the table usable on narrow screens -->
-    <div class="overflow-x-auto">
-      <table class="w-full min-w-[720px] border-collapse text-sm">
+    <!-- Horizontal scroll keeps wide tables usable without breaking the layout -->
+    <div
+      class="overflow-x-auto"
+      tabindex="0"
+      role="region"
+      :aria-label="L(group.title)"
+    >
+      <table class="w-full min-w-[760px] border-collapse text-sm">
         <caption class="sr-only">{{ L(group.title) }}</caption>
         <thead>
-          <tr class="border-b border-[var(--color-border)] text-start">
+          <tr class="border-b border-[var(--color-border)]">
             <th scope="col" class="px-6 py-3 text-start font-semibold text-[var(--color-foreground-soft)]">
               {{ $t('pricing.table.item') }}
             </th>
@@ -53,13 +66,13 @@ const { L, locale } = useLocalizedContent()
                 {{ L(row.note) }}
               </span>
             </th>
-            <td class="px-6 py-4 text-[var(--color-foreground-soft)] tabular">
+            <td class="whitespace-nowrap px-6 py-4 text-[var(--color-foreground-soft)] tabular">
               {{ L(row.quantity) }}
             </td>
             <td class="px-6 py-4 text-[var(--color-muted)]">
               {{ L(row.specification) }}
             </td>
-            <td class="px-6 py-4 text-[var(--color-muted)] tabular">
+            <td class="whitespace-nowrap px-6 py-4 text-[var(--color-muted)] tabular">
               {{ row.turnaround ? L(row.turnaround) : '—' }}
             </td>
             <td class="whitespace-nowrap px-6 py-4 text-end font-bold text-[var(--color-foreground)] tabular">
@@ -70,5 +83,9 @@ const { L, locale } = useLocalizedContent()
         </tbody>
       </table>
     </div>
+
+    <p class="border-t border-[var(--color-border)] px-6 py-3 text-xs text-[var(--color-muted)] lg:hidden">
+      {{ $t('pricing.scrollHint') }}
+    </p>
   </section>
 </template>

@@ -65,13 +65,16 @@
   "home": {
     "hero": {
       "eyebrow": "Industrial printing since 2000",
-      "title": "High-volume industrial printing with consistent quality",
-      "description": "From sheet-fed offset and book production to packaging and post-press finishing — every stage happens in one facility, so lead time and quality stay under control.",
+      "title": "Precision printing at every scale",
+      "description": "From sheet-fed offset and book production to packaging and post-press finishing — every stage happens under one roof, so quality and lead time stay under control.",
       "primaryCta": "Request a quote",
       "secondaryCta": "Explore services",
-      "imageAlt": "Offset printing line on the Mobin Bartar production floor"
+      "imageAlt": "Offset printing line on the Mobin Bartar production floor",
+      "credibility": "25+ years in print · 8 active production lines · 400+ publisher clients"
     },
-    "stats": { "title": "Mobin Bartar at a glance" },
+    "stats": {
+      "title": "Mobin Bartar at a glance"
+    },
     "services": {
       "eyebrow": "Services",
       "title": "What we produce",
@@ -82,10 +85,22 @@
       "title": "Why corporate clients choose us",
       "description": "The difference between an industrial printer and a print shop is repeatability.",
       "items": {
-        "quality": { "title": "Documented quality control", "description": "Colour managed to ISO 12647-2, with every job's parameters recorded so reprints match the original." },
-        "capacity": { "title": "High production capacity", "description": "Over 200,000 square metres printed monthly — large runs are produced in-house, never subcontracted." },
-        "integrated": { "title": "Integrated production", "description": "Pre-press, press and post-press in one facility, so work never shuttles between workshops." },
-        "onTime": { "title": "Delivery you can plan around", "description": "Fixed production calendars for periodicals and a firm delivery date stated on every quotation." }
+        "quality": {
+          "title": "Documented quality control",
+          "description": "Colour managed to ISO 12647-2, with every job's parameters recorded so reprints match the original."
+        },
+        "capacity": {
+          "title": "High production capacity",
+          "description": "Over 200,000 square metres printed monthly — large runs are produced in-house, never subcontracted."
+        },
+        "integrated": {
+          "title": "Integrated production",
+          "description": "Pre-press, press and post-press in one facility, so work never shuttles between workshops."
+        },
+        "onTime": {
+          "title": "Delivery you can plan around",
+          "description": "Fixed production calendars for periodicals and a firm delivery date stated on every quotation."
+        }
       }
     },
     "equipment": {
@@ -103,44 +118,111 @@
       "title": "From enquiry to delivery",
       "description": "The path an order takes through Mobin Bartar is transparent and trackable.",
       "steps": {
-        "inquiry": { "title": "Enquiry and consultation", "description": "You submit the job specification and a sales engineer reviews the technical and commercial options." },
-        "quote": { "title": "Quotation", "description": "A firm price, stock specification and delivery date are issued in writing." },
-        "prepress": { "title": "Pre-press", "description": "Files are checked, technically corrected and, where needed, a contract proof is produced." },
-        "production": { "title": "Print and finishing", "description": "Printing, post-press finishing and packing run to the agreed schedule." },
-        "delivery": { "title": "Delivery", "description": "The order is counted, packed and delivered to your chosen location." }
+        "inquiry": {
+          "title": "Enquiry and consultation",
+          "description": "You submit the job specification and a sales engineer reviews the technical and commercial options."
+        },
+        "quote": {
+          "title": "Quotation",
+          "description": "A firm price, stock specification and delivery date are issued in writing."
+        },
+        "prepress": {
+          "title": "Pre-press",
+          "description": "Files are checked, technically corrected and, where needed, a contract proof is produced."
+        },
+        "production": {
+          "title": "Print and finishing",
+          "description": "Printing, post-press finishing and packing run to the agreed schedule."
+        },
+        "delivery": {
+          "title": "Delivery",
+          "description": "The order is counted, packed and delivered to your chosen location."
+        }
       }
     },
     "cta": {
-      "title": "Let us review your job",
-      "description": "Send us the specification and you will have a quotation within one working day.",
+      "title": "Have a printing project?",
+      "description": "Send us your requirements and you will have a quotation within one working day.",
       "primary": "Request a quote",
       "secondary": "Talk to a specialist"
+    },
+    "about": {
+      "eyebrow": "About the company",
+      "title": "An industrial printer, not a print shop",
+      "description": "Mobin Bartar has been printing since 2000. What separates us from a print shop is capacity and repeatability: a job you print this year will come back next year in the same colour, to the same standard.",
+      "points": {
+        "experience": "Over two decades of continuous production for publishers, industry and institutions",
+        "quality": "Colour managed to ISO 12647-2, with every job’s parameters recorded",
+        "equipment": "Eight production lines spanning offset, digital, pre-press and post-press",
+        "capacity": "Over 200,000 square metres printed monthly, with no subcontracting",
+        "team": "140 staff, including long-serving press operators"
+      },
+      "cta": "More about us",
+      "imageAlt": "Exterior view of the Mobin Bartar plant"
     }
   },
   "services": {
     "title": "Printing & packaging services",
     "description": "Ten specialist service groups, from sheet-fed offset to packaging production and post-press finishing.",
-    "categories": { "all": "All", "printing": "Printing", "packaging": "Packaging", "finishing": "Post-press" },
+    "categories": {
+      "all": "All",
+      "printing": "Printing",
+      "packaging": "Packaging",
+      "finishing": "Post-press"
+    },
     "features": "What's included",
     "minimumOrder": "Minimum order",
     "turnaround": "Turnaround",
     "relatedPricing": "Indicative pricing",
-    "notFound": "The requested service could not be found."
+    "notFound": "The requested service could not be found.",
+    "intro": "Ten specialist service groups, from high-volume sheet-fed offset to packaging production and post-press finishing — all handled in-house.",
+    "specifications": "Available specifications",
+    "relatedProjects": "Related projects",
+    "relatedServices": "Related services",
+    "overview": "Overview",
+    "atAGlance": "At a glance",
+    "notFoundTitle": "Service not found",
+    "notFoundDescription": "No service exists at this address. Browse the full list of services instead.",
+    "backToServices": "Back to services",
+    "viewPricing": "View pricing",
+    "noPricing": "No standard tariff is published for this service — pricing is quoted once we review your specification."
   },
   "pricing": {
     "title": "Service pricing",
     "description": "The figures below assume standard specifications and are indicative. The binding price is issued on your quotation.",
-    "table": { "item": "Item", "quantity": "Quantity", "specification": "Specification", "price": "Price (Toman)", "turnaround": "Turnaround", "note": "Note" },
+    "table": {
+      "item": "Item",
+      "quantity": "Quantity",
+      "specification": "Specification",
+      "price": "Price (Toman)",
+      "turnaround": "Turnaround",
+      "note": "Note"
+    },
     "disclaimer": "Prices exclude VAT and freight. Because paper prices fluctuate, quotations are valid for seven days.",
-    "cta": "Get a quote for your own specification"
+    "cta": "Get a quote for your own specification",
+    "intro": "The tariffs below assume standard specifications and our most common job types. They are intended for initial budgeting.",
+    "variationNote": "Final pricing may vary depending on specifications, materials, finishing and quantity.",
+    "jumpTo": "Jump to",
+    "unit": "Unit",
+    "scrollHint": "Scroll the table sideways to see all columns"
   },
   "equipment": {
     "title": "Equipment & machinery",
     "description": "The Mobin Bartar production line covers offset, digital, pre-press and post-press machinery.",
-    "types": { "all": "All", "offset": "Offset", "digital": "Digital", "prepress": "Pre-press", "finishing": "Post-press" },
+    "types": {
+      "all": "All",
+      "offset": "Offset",
+      "digital": "Digital",
+      "prepress": "Pre-press",
+      "finishing": "Post-press"
+    },
     "specifications": "Technical specifications",
     "manufacturer": "Manufacturer",
-    "installedYear": "Installed"
+    "installedYear": "Installed",
+    "intro": "The Mobin Bartar production line is built on industrial machinery. Print quality is a direct result of these presses and how well they are maintained.",
+    "capabilities": "Key capabilities",
+    "model": "Model",
+    "printingType": "Printing type"
   },
   "portfolio": {
     "title": "Portfolio",
@@ -149,29 +231,110 @@
     "year": "Year",
     "projectDetails": "Project details",
     "allCategories": "All categories",
-    "relatedProjects": "Related projects"
+    "relatedProjects": "Related projects",
+    "intro": "A selection of the work we have produced and delivered for publishers, industrial brands and public organisations.",
+    "category": "Category",
+    "gallery": "Project gallery",
+    "viewImage": "View image",
+    "imageCounter": "Image {current} of {total}",
+    "servicesUsed": "Services used",
+    "notFoundTitle": "Project not found",
+    "notFoundDescription": "No project exists at this address. Browse the rest of our work instead.",
+    "backToPortfolio": "Back to portfolio",
+    "emptyCategory": "No projects have been published in this category yet.",
+    "projectCount": "{count} projects"
   },
   "about": {
     "title": "About Mobin Bartar",
     "description": "More than two decades of industrial print production for publishers, industry and institutions.",
-    "story": { "title": "Our story", "description": "Mobin Bartar started in 2000 with a single two-colour offset press. Today, with eight active production lines and 140 staff, it is a well-established name in Iranian industrial printing. That growth came from steady investment in machinery and technical training — not from rapid, unplanned expansion." },
+    "story": {
+      "title": "Our story",
+      "description": "Mobin Bartar started in 2000 with a single two-colour offset press. Today, with eight active production lines and 140 staff, it is a well-established name in Iranian industrial printing. That growth came from steady investment in machinery and technical training — not from rapid, unplanned expansion."
+    },
     "values": {
       "title": "How we work",
       "items": {
-        "precision": { "title": "Precision", "description": "Every job is produced against documented parameters so the next run matches the last one." },
-        "reliability": { "title": "Reliability", "description": "The delivery date we state is the date we hold ourselves to." },
-        "transparency": { "title": "Transparency", "description": "Specifications, stock and costs are agreed in writing before production starts." },
-        "investment": { "title": "Technical investment", "description": "Press renewal and operator training are a permanent part of our annual plan." }
+        "precision": {
+          "title": "Precision",
+          "description": "Every job is produced against documented parameters so the next run matches the last one."
+        },
+        "reliability": {
+          "title": "Reliability",
+          "description": "The delivery date we state is the date we hold ourselves to."
+        },
+        "transparency": {
+          "title": "Transparency",
+          "description": "Specifications, stock and costs are agreed in writing before production starts."
+        },
+        "investment": {
+          "title": "Technical investment",
+          "description": "Press renewal and operator training are a permanent part of our annual plan."
+        }
       }
     },
-    "certifications": { "title": "Standards & certifications", "description": "Our quality control follows recognised printing-industry standards." },
-    "facility": { "title": "The facility", "description": "Our 6,500 square-metre plant operates in Tehran's Print & Publishing Industrial Park." }
+    "certifications": {
+      "title": "Standards & certifications",
+      "description": "Our quality control follows recognised printing-industry standards."
+    },
+    "facility": {
+      "title": "The facility",
+      "description": "Our 6,500 square-metre plant operates in Tehran's Print & Publishing Industrial Park."
+    },
+    "intro": "Mobin Bartar is an industrial printing company in Tehran, producing for publishers, industry and public organisations since 2000.",
+    "capabilities": {
+      "title": "Production capability",
+      "description": "Capacity determines which jobs can be accepted without subcontracting and without a drop in quality."
+    },
+    "quality": {
+      "title": "Quality control",
+      "description": "Every job is produced against documented parameters. Colour profile, stock, press settings and spectrophotometer readings are archived, so a reprint matches the original."
+    },
+    "equipmentSection": {
+      "title": "Machinery",
+      "description": "Eight active production lines, from plate-making to binding and final packing.",
+      "cta": "View all equipment"
+    },
+    "timeline": {
+      "title": "How we grew",
+      "items": {
+        "founded": {
+          "year": "2000",
+          "title": "The beginning",
+          "description": "The company started with a single two-colour offset press and five staff in south Tehran."
+        },
+        "expansion": {
+          "year": "2008",
+          "title": "Move to the industrial park",
+          "description": "Moving to the Print & Publishing Industrial Park tripled capacity and brought binding in-house."
+        },
+        "packaging": {
+          "title": "Packaging division",
+          "year": "2016",
+          "description": "Adding die-cutting and folder-gluing opened carton production for the food and pharmaceutical sectors."
+        },
+        "today": {
+          "year": "Today",
+          "title": "Eight production lines",
+          "description": "With 140 staff and monthly capacity above 200,000 square metres, we handle high-volume corporate and publishing work."
+        }
+      }
+    }
   },
   "faq": {
     "title": "Frequently asked questions",
     "description": "Answers to the questions customers most often ask before placing an order.",
-    "categories": { "all": "All", "orders": "Orders", "technical": "Technical", "delivery": "Delivery", "pricing": "Pricing" },
-    "stillHaveQuestions": { "title": "Didn't find your answer?", "description": "Our sales engineers are available during working hours." }
+    "categories": {
+      "all": "All",
+      "orders": "Orders",
+      "technical": "Technical",
+      "delivery": "Delivery",
+      "pricing": "Pricing"
+    },
+    "stillHaveQuestions": {
+      "title": "Didn't find your answer?",
+      "description": "Our sales engineers are available during working hours."
+    },
+    "intro": "Answers to the questions customers most often ask before ordering. If yours is not here, contact our sales team."
   },
   "contact": {
     "title": "Contact us",
@@ -185,7 +348,14 @@
     "workingHours": "Working hours",
     "social": "Social media",
     "viewOnMap": "View on map",
-    "departments": "Departments"
+    "departments": "Departments",
+    "intro": "Get in touch for a quotation, technical advice, or to arrange a visit to the plant.",
+    "location": "Plant location",
+    "locationNote": "Our plant is located in the Print & Publishing Industrial Park on KM 9 of the Makhsous Karaj Road, Tehran. Visits can be arranged with prior notice.",
+    "quoteCta": {
+      "title": "Looking for a price?",
+      "description": "The quote request form is the fastest way to receive a quotation."
+    }
   },
   "quote": {
     "title": "Request a quote",
@@ -219,8 +389,14 @@
       "descriptionRequired": "A job description is required.",
       "descriptionTooShort": "Please provide at least 20 characters."
     },
-    "success": { "title": "Your request has been received", "description": "A sales engineer will contact you within one working day." },
-    "error": { "title": "Could not send your request", "description": "Please try again, or contact us directly by phone." }
+    "success": {
+      "title": "Your request has been received",
+      "description": "A sales engineer will contact you within one working day."
+    },
+    "error": {
+      "title": "Could not send your request",
+      "description": "Please try again, or contact us directly by phone."
+    }
   },
   "footer": {
     "aboutTitle": "About Mobin Bartar",
@@ -246,6 +422,12 @@
     "users": "Users",
     "login": "Sign in",
     "logout": "Sign out",
-    "status": { "new": "New", "in_review": "In review", "quoted": "Quoted", "won": "Won", "lost": "Lost" }
+    "status": {
+      "new": "New",
+      "in_review": "In review",
+      "quoted": "Quoted",
+      "won": "Won",
+      "lost": "Lost"
+    }
   }
 }

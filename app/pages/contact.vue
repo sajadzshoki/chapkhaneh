@@ -13,12 +13,17 @@ const socialIcons: Record<string, string> = {
 }
 
 useHead({ title: () => t('contact.title') })
-useSeoMeta({ description: () => t('contact.description') })
+useSeoMeta({
+  title: () => t('contact.title'),
+  description: () => t('contact.intro'),
+  ogTitle: () => t('contact.title'),
+  ogDescription: () => t('contact.intro'),
+})
 </script>
 
 <template>
   <div>
-    <UiPageHero :title="$t('contact.title')" :description="$t('contact.description')" />
+    <UiPageHero :title="$t('contact.title')" :description="$t('contact.intro')" />
 
     <UiPageContainer class="py-12 lg:py-16">
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
@@ -139,6 +144,52 @@ useSeoMeta({ description: () => t('contact.description') })
           </div>
         </aside>
       </div>
+
+      <!-- Location block. A real map embed is deliberately avoided; this is a
+           styled, accessible summary with a link out to the map provider. -->
+      <section class="mt-12 border border-[var(--color-border)]">
+        <div class="grid grid-cols-1 lg:grid-cols-12">
+          <div class="bg-[var(--color-secondary)] p-8 text-white lg:col-span-5">
+            <h2 class="text-lg font-bold">{{ $t('contact.location') }}</h2>
+            <address class="mt-4 not-italic leading-8 text-white/75">
+              {{ localized(site.contact.address) }}
+            </address>
+            <p v-if="site.contact.postalCode" class="mt-3 text-sm text-white/55 tabular">
+              {{ $t('contact.postalCode') }}: {{ site.contact.postalCode }}
+            </p>
+            <UButton
+              v-if="site.contact.mapUrl"
+              :to="site.contact.mapUrl"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="neutral"
+              size="md"
+              class="mt-6 bg-white text-[var(--color-secondary)] hover:bg-white/90"
+              icon="i-lucide-external-link"
+            >
+              {{ $t('contact.viewOnMap') }}
+            </UButton>
+          </div>
+
+          <div class="flex items-center bg-[var(--color-surface-muted)] p-8 lg:col-span-7">
+            <div>
+              <UIcon name="i-lucide-map-pin" class="size-7 text-[var(--color-primary)]" aria-hidden="true" />
+              <p class="mt-4 leading-8 text-[var(--color-foreground-soft)]">
+                {{ $t('contact.locationNote') }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </UiPageContainer>
+
+    <UiCtaSection
+      :title="$t('contact.quoteCta.title')"
+      :description="$t('contact.quoteCta.description')"
+      :primary-label="$t('common.getQuote')"
+      :primary-to="localePath('/quote')"
+      :secondary-label="$t('nav.services')"
+      :secondary-to="localePath('/services')"
+    />
   </div>
 </template>

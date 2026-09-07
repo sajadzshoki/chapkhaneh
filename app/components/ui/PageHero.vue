@@ -3,13 +3,18 @@
 defineProps<{
   title: string
   description?: string
+  /**
+   * Label for the final breadcrumb crumb on dynamic routes, where the URL
+   * segment is a slug rather than a translatable nav key.
+   */
+  currentLabel?: string
 }>()
 </script>
 
 <template>
   <section class="border-b border-[var(--color-border)] bg-[var(--color-surface-muted)]">
     <UiPageContainer class="py-10 lg:py-14">
-      <UiBreadcrumbs class="mb-6" />
+      <UiBreadcrumbs class="mb-6" :current-label="currentLabel" />
       <h1 class="text-3xl font-extrabold tracking-tight text-[var(--color-foreground)] lg:text-4xl">
         {{ title }}
       </h1>

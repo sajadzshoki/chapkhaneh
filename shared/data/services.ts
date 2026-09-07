@@ -33,7 +33,43 @@ export const services: Service[] = [
     },
     minimumOrder: { fa: '۱٬۰۰۰ برگ', en: '1,000 sheets' },
     turnaround: { fa: '۳ تا ۷ روز کاری', en: '3 – 7 working days' },
-    featured: true,
+        image: {
+      src: '/photos/service-offset.jpg',
+      alt: { fa: 'چاپ افست ورقی در سالن تولید مبین برتر', en: 'Sheet-fed offset printing at the Mobin Bartar plant' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'قطع‌های قابل چاپ', en: 'Available formats' },
+        values: {
+          fa: ['۵۰ × ۷۰ سانتی‌متر', '۷۰ × ۱۰۰ سانتی‌متر', 'قطع‌های اختصاصی با برش نهایی'],
+          en: ['50 × 70 cm', '70 × 100 cm', 'Custom trimmed formats'],
+        },
+      },
+      {
+        label: { fa: 'کاغذ و مقوا', en: 'Papers and boards' },
+        values: {
+          fa: ['تحریر ۷۰ تا ۱۰۰ گرم', 'گلاسه ۱۰۰ تا ۳۰۰ گرم', 'مقوای پشت‌طوسی و ایندربرد', 'کرافت و فانتزی'],
+          en: ['70 – 100 gsm uncoated', '100 – 300 gsm coated', 'Duplex and folding boxboard', 'Kraft and specialty stocks'],
+        },
+      },
+      {
+        label: { fa: 'رنگ', en: 'Colour' },
+        values: {
+          fa: ['چهار رنگ CMYK', 'رنگ اختصاصی پنتون', 'لاک آبی و یووی درون‌خطی'],
+          en: ['CMYK process', 'Pantone spot colours', 'Inline aqueous and UV coating'],
+        },
+      },
+      {
+        label: { fa: 'تیراژ مناسب', en: 'Suitable quantities' },
+        values: {
+          fa: ['از ۱٬۰۰۰ تا ۵۰۰٬۰۰۰ برگ', 'صرفهٔ اقتصادی از ۵٬۰۰۰ برگ به بالا'],
+          en: ['1,000 – 500,000 sheets', 'Best unit economics above 5,000 sheets'],
+        },
+      },
+    ],
+featured: true,
     order: 1,
   },
   {
@@ -68,7 +104,43 @@ export const services: Service[] = [
     },
     minimumOrder: { fa: '۱ نسخه', en: '1 copy' },
     turnaround: { fa: '۱ تا ۳ روز کاری', en: '1 – 3 working days' },
-    featured: true,
+        image: {
+      src: '/photos/service-digital.jpg',
+      alt: { fa: 'پرس دیجیتال رنگی در خط تولید', en: 'Colour digital production press' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'قطع‌های قابل چاپ', en: 'Available formats' },
+        values: {
+          fa: ['A4 و A3', '۳۳ × ۴۸ سانتی‌متر', 'بنر تا طول ۱۲۰ سانتی‌متر'],
+          en: ['A4 and A3', '33 × 48 cm', 'Banner sheets up to 120 cm'],
+        },
+      },
+      {
+        label: { fa: 'کاغذ', en: 'Papers' },
+        values: {
+          fa: ['تحریر و گلاسه ۸۰ تا ۳۵۰ گرم', 'مقوای فانتزی', 'برچسب و لیبل'],
+          en: ['80 – 350 gsm uncoated and coated', 'Specialty boards', 'Self-adhesive label stock'],
+        },
+      },
+      {
+        label: { fa: 'قابلیت‌های ویژه', en: 'Special capabilities' },
+        values: {
+          fa: ['چاپ داده‌متغیر', 'شماره‌گذاری و بارکد', 'نمونهٔ رنگی پیش از افست'],
+          en: ['Variable data printing', 'Numbering and barcodes', 'Colour proofing ahead of offset'],
+        },
+      },
+      {
+        label: { fa: 'تیراژ مناسب', en: 'Suitable quantities' },
+        values: {
+          fa: ['از ۱ تا ۳٬۰۰۰ نسخه', 'بالاتر از آن، افست اقتصادی‌تر است'],
+          en: ['1 – 3,000 copies', 'Above this, offset becomes more economical'],
+        },
+      },
+    ],
+featured: true,
     order: 2,
   },
   {
@@ -103,7 +175,50 @@ export const services: Service[] = [
     },
     minimumOrder: { fa: '۳۰۰ نسخه', en: '300 copies' },
     turnaround: { fa: '۷ تا ۱۴ روز کاری', en: '7 – 14 working days' },
-    featured: true,
+        image: {
+      src: '/photos/service-book.jpg',
+      alt: { fa: 'خط صحافی کتاب در مبین برتر', en: 'Book binding line at Mobin Bartar' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'قطع کتاب', en: 'Book formats' },
+        values: {
+          fa: ['رقعی ۱۴.۵ × ۲۱.۵', 'وزیری ۱۶.۵ × ۲۳.۵', 'خشتی و جیبی', 'قطع اختصاصی'],
+          en: ['Roghai 14.5 × 21.5 cm', 'Vaziri 16.5 × 23.5 cm', 'Square and pocket formats', 'Custom sizes'],
+        },
+      },
+      {
+        label: { fa: 'کاغذ متن', en: 'Text papers' },
+        values: {
+          fa: ['تحریر ۷۰ و ۸۰ گرم', 'بالکی ۶۰ تا ۸۰ گرم', 'گلاسه مات ۱۰۰ تا ۱۳۵ گرم'],
+          en: ['70 and 80 gsm uncoated', '60 – 80 gsm bulky', '100 – 135 gsm matte coated'],
+        },
+      },
+      {
+        label: { fa: 'روش صحافی', en: 'Binding options' },
+        values: {
+          fa: ['چسب گرم PUR', 'چسب گرم EVA', 'ته‌دوخت با سیم', 'جلد سخت گالینگور', 'جلد سخت با روکش چاپی'],
+          en: ['PUR perfect binding', 'EVA perfect binding', 'Saddle-stitching', 'Cloth hard case', 'Printed-jacket hard case'],
+        },
+      },
+      {
+        label: { fa: 'خدمات تکمیلی جلد', en: 'Cover finishing' },
+        values: {
+          fa: ['سلفون مات و براق', 'سلفون مخملی', 'یووی موضعی', 'طلاکوب', 'قاب و جعبهٔ کتاب'],
+          en: ['Matte and gloss lamination', 'Soft-touch lamination', 'Spot UV', 'Foil stamping', 'Slipcases'],
+        },
+      },
+      {
+        label: { fa: 'تیراژ مناسب', en: 'Suitable quantities' },
+        values: {
+          fa: ['از ۳۰۰ نسخه', 'تیراژهای آموزشی تا ۱۰۰٬۰۰۰ نسخه'],
+          en: ['From 300 copies', 'Educational runs up to 100,000 copies'],
+        },
+      },
+    ],
+featured: true,
     order: 3,
   },
   {
@@ -137,7 +252,43 @@ export const services: Service[] = [
       ],
     },
     turnaround: { fa: '۵ تا ۱۰ روز کاری', en: '5 – 10 working days' },
-    featured: false,
+        image: {
+      src: '/photos/service-offset.jpg',
+      alt: { fa: 'چاپ نشریه روی ماشین افست', en: 'Periodical printing on the offset press' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'قطع نشریه', en: 'Formats' },
+        values: {
+          fa: ['A4 رایج‌ترین قطع', 'رحلی ۲۱ × ۲۹.۷', 'قطع اختصاصی'],
+          en: ['A4 — the most common', 'Rahli 21 × 29.7 cm', 'Custom formats'],
+        },
+      },
+      {
+        label: { fa: 'کاغذ', en: 'Papers' },
+        values: {
+          fa: ['جلد گلاسه ۲۰۰ تا ۲۵۰ گرم', 'متن گلاسه ۱۰۰ تا ۱۳۵ گرم', 'متن تحریر ۸۰ گرم'],
+          en: ['200 – 250 gsm coated cover', '100 – 135 gsm coated text', '80 gsm uncoated text'],
+        },
+      },
+      {
+        label: { fa: 'صحافی', en: 'Binding' },
+        values: {
+          fa: ['ته‌دوخت با سیم تا ۶۴ صفحه', 'چسب گرم از ۴۸ صفحه به بالا'],
+          en: ['Saddle-stitch up to 64 pages', 'Perfect binding from 48 pages'],
+        },
+      },
+      {
+        label: { fa: 'برنامهٔ تولید', en: 'Production schedule' },
+        values: {
+          fa: ['تقویم ثابت ماهانه و فصلی', 'فرم آگهی مجزا', 'بسته‌بندی و ارسال به توزیع‌کننده'],
+          en: ['Fixed monthly and quarterly calendar', 'Separate advertising forms', 'Packing and delivery to distributors'],
+        },
+      },
+    ],
+featured: false,
     order: 4,
   },
   {
@@ -172,7 +323,43 @@ export const services: Service[] = [
     },
     minimumOrder: { fa: '۵۰۰ نسخه', en: '500 copies' },
     turnaround: { fa: '۵ تا ۹ روز کاری', en: '5 – 9 working days' },
-    featured: true,
+        image: {
+      src: '/photos/service-offset.jpg',
+      alt: { fa: 'چاپ کاتالوگ با کنترل رنگ دقیق', en: 'Catalogue printing under close colour control' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'قطع کاتالوگ', en: 'Formats' },
+        values: {
+          fa: ['A4 و A5', 'مربع ۲۱ × ۲۱', 'قطع اختصاصی'],
+          en: ['A4 and A5', 'Square 21 × 21 cm', 'Custom formats'],
+        },
+      },
+      {
+        label: { fa: 'کاغذ', en: 'Papers' },
+        values: {
+          fa: ['جلد گلاسه ۲۵۰ تا ۳۰۰ گرم', 'متن گلاسه ۱۱۵ تا ۱۷۰ گرم', 'گلاسه مات برای تصاویر محصول'],
+          en: ['250 – 300 gsm coated cover', '115 – 170 gsm coated text', 'Matte coated for product imagery'],
+        },
+      },
+      {
+        label: { fa: 'صحافی', en: 'Binding' },
+        values: {
+          fa: ['ته‌دوخت تا ۴۸ صفحه', 'چسب گرم بالای ۴۸ صفحه', 'فنر دوبل برای کاتالوگ فنی'],
+          en: ['Saddle-stitch up to 48 pages', 'Perfect binding above 48 pages', 'Wire-o for technical catalogues'],
+        },
+      },
+      {
+        label: { fa: 'کنترل رنگ', en: 'Colour control' },
+        values: {
+          fa: ['پروفایل رنگ اختصاصی هر برند', 'چاپ نمونهٔ تأییدیه', 'تطبیق با نمونهٔ فیزیکی محصول'],
+          en: ['Per-brand colour profile', 'Contract proof before the run', 'Matching against the physical product'],
+        },
+      },
+    ],
+featured: true,
     order: 5,
   },
   {
@@ -207,7 +394,43 @@ export const services: Service[] = [
     },
     minimumOrder: { fa: '۱٬۰۰۰ نسخه', en: '1,000 copies' },
     turnaround: { fa: '۳ تا ۵ روز کاری', en: '3 – 5 working days' },
-    featured: false,
+        image: {
+      src: '/photos/service-finishing.jpg',
+      alt: { fa: 'برش و تای بروشور در خط پس از چاپ', en: 'Brochure trimming and folding on the finishing line' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'نوع تا', en: 'Fold types' },
+        values: {
+          fa: ['دو لت', 'سه لت', 'آکاردئونی', 'تای پنجره‌ای', 'بدون تا (تراکت)'],
+          en: ['Bi-fold', 'Tri-fold', 'Concertina', 'Gate fold', 'Flat (flyer)'],
+        },
+      },
+      {
+        label: { fa: 'قطع', en: 'Formats' },
+        values: {
+          fa: ['A4 و A5 تاشده', 'A3 تا به A4', 'قطع اختصاصی'],
+          en: ['Folded A4 and A5', 'A3 folded to A4', 'Custom formats'],
+        },
+      },
+      {
+        label: { fa: 'کاغذ', en: 'Papers' },
+        values: {
+          fa: ['گلاسه ۱۰۰ تا ۱۷۰ گرم', 'تحریر ۸۰ تا ۱۲۰ گرم', 'کرافت برای کار محیط‌زیستی'],
+          en: ['100 – 170 gsm coated', '80 – 120 gsm uncoated', 'Kraft for eco-oriented work'],
+        },
+      },
+      {
+        label: { fa: 'تیراژ مناسب', en: 'Suitable quantities' },
+        values: {
+          fa: ['از ۱٬۰۰۰ نسخه', 'صرفهٔ اقتصادی از ۱۰٬۰۰۰ نسخه به بالا'],
+          en: ['From 1,000 copies', 'Best unit economics above 10,000 copies'],
+        },
+      },
+    ],
+featured: false,
     order: 6,
   },
   {
@@ -242,7 +465,50 @@ export const services: Service[] = [
     },
     minimumOrder: { fa: '۲٬۰۰۰ عدد', en: '2,000 units' },
     turnaround: { fa: '۱۰ تا ۱۸ روز کاری', en: '10 – 18 working days' },
-    featured: true,
+        image: {
+      src: '/photos/service-packaging.jpg',
+      alt: { fa: 'جعبه‌های مقوایی برش‌خورده آمادهٔ تحویل', en: 'Die-cut folding cartons ready for delivery' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'نوع جعبه', en: 'Carton types' },
+        values: {
+          fa: ['جعبهٔ تاشو با درب قفلی', 'جعبهٔ کشویی', 'جعبهٔ پنجره‌دار', 'جعبهٔ چسبی خودکار'],
+          en: ['Tuck-end folding cartons', 'Sleeve boxes', 'Window cartons', 'Auto-glued cartons'],
+        },
+      },
+      {
+        label: { fa: 'مقوا', en: 'Board' },
+        values: {
+          fa: ['پشت‌طوسی ۲۵۰ تا ۴۰۰ گرم', 'ایندربرد ۲۵۰ تا ۳۵۰ گرم', 'مقوای متالایز', 'کرافت'],
+          en: ['250 – 400 gsm duplex', '250 – 350 gsm FBB', 'Metallised board', 'Kraft board'],
+        },
+      },
+      {
+        label: { fa: 'تکمیل و روکش', en: 'Finishing' },
+        values: {
+          fa: ['سلفون مات، براق و مخملی', 'یووی موضعی', 'طلاکوب و نقره‌کوب', 'برجسته‌کاری'],
+          en: ['Matte, gloss and soft-touch lamination', 'Spot UV', 'Gold and silver foiling', 'Embossing'],
+        },
+      },
+      {
+        label: { fa: 'الزامات صنعتی', en: 'Industry requirements' },
+        values: {
+          fa: ['مرکب و لاک مناسب صنایع غذایی', 'درج بریل برای بسته‌بندی دارویی', 'کد رهگیری متغیر'],
+          en: ['Food-grade inks and varnishes', 'Braille for pharmaceutical packs', 'Variable track-and-trace codes'],
+        },
+      },
+      {
+        label: { fa: 'تیراژ مناسب', en: 'Suitable quantities' },
+        values: {
+          fa: ['از ۲٬۰۰۰ عدد', 'تولید انبوه تا ۵۰۰٬۰۰۰ عدد'],
+          en: ['From 2,000 units', 'Volume production to 500,000 units'],
+        },
+      },
+    ],
+featured: true,
     order: 7,
   },
   {
@@ -277,7 +543,43 @@ export const services: Service[] = [
     },
     minimumOrder: { fa: '۵٬۰۰۰ عدد', en: '5,000 units' },
     turnaround: { fa: '۵ تا ۱۰ روز کاری', en: '5 – 10 working days' },
-    featured: false,
+        image: {
+      src: '/photos/service-packaging.jpg',
+      alt: { fa: 'تولید لیبل و برچسب محصول', en: 'Product label production' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'متریال', en: 'Substrates' },
+        values: {
+          fa: ['کاغذ لیبل معمولی', 'کاغذ لیبل مقاوم به رطوبت', 'پی‌وی‌سی شفاف', 'متالایز نقره‌ای'],
+          en: ['Standard label paper', 'Wet-strength label paper', 'Clear PVC', 'Silver metallised film'],
+        },
+      },
+      {
+        label: { fa: 'شکل تحویل', en: 'Delivery format' },
+        values: {
+          fa: ['رول با مغزی ۷۶ میلی‌متر', 'رول با مغزی ۴۰ میلی‌متر', 'ورقی برش‌خورده'],
+          en: ['Rolls on 76 mm cores', 'Rolls on 40 mm cores', 'Cut sheets'],
+        },
+      },
+      {
+        label: { fa: 'برش', en: 'Die-cutting' },
+        values: {
+          fa: ['اشکال استاندارد مستطیل و دایره', 'قالب اختصاصی بر اساس طرح', 'برش نیم‌بر روی لاینر'],
+          en: ['Standard rectangles and circles', 'Custom dies from your artwork', 'Kiss-cutting on the liner'],
+        },
+      },
+      {
+        label: { fa: 'قابلیت‌های ویژه', en: 'Special capabilities' },
+        values: {
+          fa: ['شماره‌گذاری و بارکد متغیر', 'چسب سرد و یخچالی', 'مقاوم در برابر سایش'],
+          en: ['Variable numbering and barcodes', 'Cold and freezer-grade adhesives', 'Abrasion resistant'],
+        },
+      },
+    ],
+featured: false,
     order: 8,
   },
   {
@@ -312,7 +614,43 @@ export const services: Service[] = [
     },
     minimumOrder: { fa: '۱٬۰۰۰ عدد', en: '1,000 units' },
     turnaround: { fa: '۲ تا ۴ روز کاری', en: '2 – 4 working days' },
-    featured: false,
+        image: {
+      src: '/photos/service-digital.jpg',
+      alt: { fa: 'چاپ و تکمیل کارت ویزیت', en: 'Business card printing and finishing' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'اندازه', en: 'Sizes' },
+        values: {
+          fa: ['۸.۵ × ۴.۸ سانتی‌متر (استاندارد)', '۹ × ۵ سانتی‌متر', 'مربع ۵.۵ × ۵.۵', 'اندازهٔ اختصاصی'],
+          en: ['8.5 × 4.8 cm (standard)', '9 × 5 cm', 'Square 5.5 × 5.5 cm', 'Custom sizes'],
+        },
+      },
+      {
+        label: { fa: 'مقوا', en: 'Board' },
+        values: {
+          fa: ['۳۰۰ گرم', '۳۵۰ گرم', '۴۰۰ گرم', 'مقوای فانتزی و بافت‌دار'],
+          en: ['300 gsm', '350 gsm', '400 gsm', 'Textured and specialty boards'],
+        },
+      },
+      {
+        label: { fa: 'تکمیل', en: 'Finishing' },
+        values: {
+          fa: ['سلفون مات و براق', 'سلفون مخملی', 'یووی موضعی', 'طلاکوب', 'لبهٔ رنگی', 'گوشه گرد'],
+          en: ['Matte and gloss lamination', 'Soft-touch lamination', 'Spot UV', 'Foil stamping', 'Edge colouring', 'Rounded corners'],
+        },
+      },
+      {
+        label: { fa: 'تیراژ مناسب', en: 'Suitable quantities' },
+        values: {
+          fa: ['از ۱٬۰۰۰ عدد', 'چاپ داده‌متغیر برای ست سازمانی'],
+          en: ['From 1,000 units', 'Variable data for organisation-wide sets'],
+        },
+      },
+    ],
+featured: false,
     order: 9,
   },
   {
@@ -346,7 +684,43 @@ export const services: Service[] = [
       ],
     },
     turnaround: { fa: '۲ تا ۶ روز کاری', en: '2 – 6 working days' },
-    featured: false,
+        image: {
+      src: '/photos/service-finishing.jpg',
+      alt: { fa: 'بخش خدمات پس از چاپ', en: 'The post-press finishing department' },
+      width: 1408,
+      height: 768,
+    },
+    specifications: [
+      {
+        label: { fa: 'روکش', en: 'Lamination' },
+        values: {
+          fa: ['سلفون مات', 'سلفون براق', 'سلفون مخملی (سافت‌تاچ)'],
+          en: ['Matte lamination', 'Gloss lamination', 'Soft-touch lamination'],
+        },
+      },
+      {
+        label: { fa: 'لاک و برجسته‌سازی', en: 'Coating and embellishment' },
+        values: {
+          fa: ['یووی کامل', 'یووی موضعی', 'طلاکوب و نقره‌کوب', 'برجسته‌کاری و مهرکوب'],
+          en: ['Flood UV', 'Spot UV', 'Gold and silver foil stamping', 'Embossing and debossing'],
+        },
+      },
+      {
+        label: { fa: 'برش و شکل‌دهی', en: 'Cutting and forming' },
+        values: {
+          fa: ['برش قالبی', 'خط‌تا و پرفراژ', 'تای ماشینی', 'شماره‌گذاری'],
+          en: ['Die-cutting', 'Creasing and perforating', 'Machine folding', 'Numbering'],
+        },
+      },
+      {
+        label: { fa: 'صحافی', en: 'Binding' },
+        values: {
+          fa: ['چسب گرم PUR و EVA', 'ته‌دوخت', 'فنر دوبل', 'جلد سخت'],
+          en: ['PUR and EVA perfect binding', 'Saddle-stitching', 'Wire-o binding', 'Hard case binding'],
+        },
+      },
+    ],
+featured: false,
     order: 10,
   },
 ]
@@ -356,3 +730,25 @@ export const getServiceBySlug = (slug: string): Service | undefined =>
 
 export const featuredServices = (): Service[] =>
   services.filter(s => s.featured).sort((a, b) => a.order - b.order)
+
+/**
+ * Related services for a detail page.
+ * Uses the explicit `relatedSlugs` when the data sets it, otherwise falls back
+ * to other services sharing the same category.
+ */
+export const getRelatedServices = (slug: string, limit = 3): Service[] => {
+  const service = getServiceBySlug(slug)
+  if (!service) return []
+
+  if (service.relatedSlugs?.length) {
+    return service.relatedSlugs
+      .map(getServiceBySlug)
+      .filter((s): s is Service => Boolean(s))
+      .slice(0, limit)
+  }
+
+  return services
+    .filter(s => s.category === service.category && s.slug !== slug)
+    .sort((a, b) => a.order - b.order)
+    .slice(0, limit)
+}

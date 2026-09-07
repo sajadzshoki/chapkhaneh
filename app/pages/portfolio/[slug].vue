@@ -1,44 +1,121 @@
 <script setup lang="ts">
-import { getPortfolioBySlug, portfolioItems } from '~~/shared/data/portfolio'
+import { getPortfolioBySlug, getRelatedPortfolio, getCategoryBySlug } from '~~/shared/data/portfolio'
+import { getServiceBySlug } from '~~/shared/data/services'
+import type { ImageAsset, Service } from '~~/shared/types'
 
 const route = useRoute()
+const { t } = useI18n()
 const { L } = useLocalizedContent()
 const localePath = useLocalePath()
 
-const item = computed(() => getPortfolioBySlug(String(route.params.slug)))
+const slug = computed(() => String(route.params.slug))
+const item = computed(() => getPortfolioBySlug(slug.value))
 
-if (!item.value) {
-  throw createError({ statusCode: 404, statusMessage: 'Project not found', fatal: true })
+// Unknown slug renders an in-page state, but still reports 404 to crawlers.
+if (import.meta.server && !item.value) {
+  setResponseStatus(useRequestEvent()!, 404)
 }
 
-const related = computed(() =>
-  portfolioItems
-    .filter(p => p.categorySlug === item.value!.categorySlug && p.id !== item.value!.id)
-    .slice(0, 3),
+const category = computed(() =>
+  item.value ? getCategoryBySlug(item.value.categorySlug) : undefined,
 )
 
-useHead({ title: () => L(item.value!.title) ?? '' })
-useSeoMeta({ description: () => L(item.value!.description) ?? '' })
+/** Cover image first, then any additional gallery frames. */
+const images = computed<ImageAsset[]>(() =>
+  item.value ? [item.value.image, ...(item.value.gallery ?? [])] : [],
+)
+
+const usedServices = computed<Service[]>(() => {
+  if (!item.value?.serviceSlugs) return []
+  return item.value.serviceSlugs
+    .map(getServiceBySlug)
+    .filter((s): s is Service => Boolean(s))
+})
+
+const related = computed(() => (item.value ? getRelatedPortfolio(item.value.slug, 3) : []))
+
+useHead({
+  title: () => (item.value ? L(item.value.title) ?? '' : t('portfolio.notFoundTitle')),
+})
+useSeoMeta({
+  description: () => (item.value ? L(item.value.description) ?? '' : ''),
+  ogTitle: () => (item.value ? L(item.value.title) ?? '' : ''),
+  ogDescription: () => (item.value ? L(item.value.description) ?? '' : ''),
+  ogImage: () => item.value?.image.src,
+})
 </script>
 
 <template>
-  <div v-if="item">
-    <UiPageHero :title="L(item.title) ?? ''" :description="L(item.description)" />
+  <UiNotFoundState
+    v-if="!item"
+    :title="$t('portfolio.notFoundTitle')"
+    :description="$t('portfolio.notFoundDescription')"
+    :back-label="$t('portfolio.backToPortfolio')"
+    :back-to="localePath('/portfolio')"
+  />
+
+  <div v-else>
+    <UiPageHero
+      :title="L(item.title) ?? ''"
+      :description="L(item.description)"
+      :current-label="L(item.title)"
+    >
+      <p v-if="category" class="mt-5">
+        <NuxtLink
+          :to="localePath('/portfolio')"
+          class="inline-flex items-center gap-2 border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1.5 text-xs font-semibold text-[var(--color-foreground-soft)] transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
+        >
+          <UIcon name="i-lucide-tag" class="size-3.5" aria-hidden="true" />
+          {{ L(category.title) }}
+        </NuxtLink>
+      </p>
+    </UiPageHero>
 
     <UiPageContainer class="py-12 lg:py-16">
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
-        <figure class="lg:col-span-8">
-          <img
-            :src="item.image.src"
-            :alt="L(item.image.alt) ?? ''"
-            width="800"
-            height="600"
-            class="w-full border border-[var(--color-border)] object-cover"
-          >
-        </figure>
+        <div class="lg:col-span-8">
+          <UiGallery :images="images" />
 
+          <h2 class="mt-10 text-xl font-bold text-[var(--color-foreground)]">
+            {{ $t('services.overview') }}
+          </h2>
+          <p class="mt-4 text-base leading-8 text-[var(--color-foreground-soft)]">
+            {{ L(item.description) }}
+          </p>
+
+          <!-- Services used -->
+          <template v-if="usedServices.length">
+            <h2 class="mt-10 text-xl font-bold text-[var(--color-foreground)]">
+              {{ $t('portfolio.servicesUsed') }}
+            </h2>
+            <ul class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <li v-for="service in usedServices" :key="service.id">
+                <NuxtLink
+                  :to="localePath(`/services/${service.slug}`)"
+                  class="group flex h-full items-start gap-3 border border-[var(--color-border)] bg-[var(--color-surface)] p-4 transition-colors hover:border-[var(--color-primary)]"
+                >
+                  <UIcon
+                    :name="service.icon"
+                    class="mt-0.5 size-5 shrink-0 text-[var(--color-primary)]"
+                    aria-hidden="true"
+                  />
+                  <span>
+                    <span class="block text-sm font-bold text-[var(--color-foreground)]">
+                      {{ L(service.title) }}
+                    </span>
+                    <span class="mt-1 block text-xs leading-6 text-[var(--color-muted)]">
+                      {{ L(service.summary) }}
+                    </span>
+                  </span>
+                </NuxtLink>
+              </li>
+            </ul>
+          </template>
+        </div>
+
+        <!-- Project facts -->
         <aside class="lg:col-span-4">
-          <div class="border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-6">
+          <div class="sticky top-28 border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-6">
             <h2 class="text-lg font-bold text-[var(--color-foreground)]">
               {{ $t('portfolio.projectDetails') }}
             </h2>
@@ -46,6 +123,10 @@ useSeoMeta({ description: () => L(item.value!.description) ?? '' })
               <div>
                 <dt class="text-[var(--color-muted)]">{{ $t('portfolio.client') }}</dt>
                 <dd class="mt-1 font-bold text-[var(--color-foreground)]">{{ L(item.client) }}</dd>
+              </div>
+              <div v-if="category">
+                <dt class="text-[var(--color-muted)]">{{ $t('portfolio.category') }}</dt>
+                <dd class="mt-1 font-bold text-[var(--color-foreground)]">{{ L(category.title) }}</dd>
               </div>
               <div>
                 <dt class="text-[var(--color-muted)]">{{ $t('portfolio.year') }}</dt>
@@ -60,11 +141,21 @@ useSeoMeta({ description: () => L(item.value!.description) ?? '' })
             <UButton :to="localePath('/quote')" color="primary" size="lg" block class="mt-6">
               {{ $t('common.getQuote') }}
             </UButton>
+            <UButton
+              :to="localePath('/portfolio')"
+              color="neutral"
+              variant="outline"
+              size="lg"
+              block
+              class="mt-3"
+            >
+              {{ $t('portfolio.backToPortfolio') }}
+            </UButton>
           </div>
         </aside>
       </div>
 
-      <section v-if="related.length" class="mt-16">
+      <section v-if="related.length" class="mt-16 border-t border-[var(--color-border)] pt-12">
         <h2 class="text-xl font-bold text-[var(--color-foreground)]">
           {{ $t('portfolio.relatedProjects') }}
         </h2>
@@ -73,5 +164,14 @@ useSeoMeta({ description: () => L(item.value!.description) ?? '' })
         </div>
       </section>
     </UiPageContainer>
+
+    <UiCtaSection
+      :title="$t('home.cta.title')"
+      :description="$t('home.cta.description')"
+      :primary-label="$t('home.cta.primary')"
+      :primary-to="localePath('/quote')"
+      :secondary-label="$t('common.contactUs')"
+      :secondary-to="localePath('/contact')"
+    />
   </div>
 </template>

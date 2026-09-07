@@ -1,22 +1,39 @@
 <script setup lang="ts">
-import { featuredServices } from '~~/shared/data/services'
-import { equipment } from '~~/shared/data/equipment'
+import { services, featuredServices } from '~~/shared/data/services'
+import { featuredEquipment } from '~~/shared/data/equipment'
 import { featuredPortfolio } from '~~/shared/data/portfolio'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
 
-const servicesList = featuredServices()
-const equipmentList = equipment.slice(0, 3)
-const portfolioList = featuredPortfolio().slice(0, 3)
+/**
+ * The homepage shows the featured services first, topped up from the ordered
+ * list so the grid always fills 6 cards even if the data changes.
+ */
+const servicesList = computed(() => {
+  const featured = featuredServices()
+  const rest = services
+    .filter(s => !featured.some(f => f.id === s.id))
+    .sort((a, b) => a.order - b.order)
+  return [...featured, ...rest].slice(0, 6)
+})
+
+const equipmentList = featuredEquipment(3)
+const portfolioList = computed(() => featuredPortfolio().slice(0, 3))
 
 useHead({ title: () => t('nav.home') })
-useSeoMeta({ description: () => t('home.hero.description') })
+useSeoMeta({
+  title: () => t('nav.home'),
+  description: () => t('home.hero.description'),
+  ogTitle: () => t('home.hero.title'),
+  ogDescription: () => t('home.hero.description'),
+})
 </script>
 
 <template>
   <div>
     <HomeHero />
+    <HomeStatsSection />
 
     <!-- Services -->
     <section class="border-b border-[var(--color-border)] bg-[var(--color-surface)]">
@@ -34,14 +51,16 @@ useSeoMeta({ description: () => t('home.hero.description') })
 
         <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <UiServiceCard
-            v-for="service in servicesList"
+            v-for="(service, index) in servicesList"
             :key="service.id"
             :service="service"
+            :variant="index < 3 ? 'feature' : 'default'"
           />
         </div>
       </UiPageContainer>
     </section>
 
+    <HomeAboutSection />
     <HomeWhySection />
 
     <!-- Equipment -->
@@ -63,6 +82,8 @@ useSeoMeta({ description: () => t('home.hero.description') })
             v-for="item in equipmentList"
             :key="item.id"
             :item="item"
+            variant="compact"
+            :to="localePath('/equipment')"
           />
         </div>
       </UiPageContainer>

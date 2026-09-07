@@ -23,6 +23,11 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'کاغذ', en: 'Stock' }, value: { fa: 'تحریر ۷۰ گرم', en: '70 gsm uncoated' } },
     ],
     image: { src: '/portfolio/books-textbook-series.svg', alt: { fa: 'مجموعه کتاب‌های درسی چاپ‌شده', en: 'Printed textbook series' } },
+    gallery: [
+      { src: '/portfolio/books-textbook-series-2.svg', alt: { fa: 'فرم‌های چاپ‌شدهٔ کتاب پیش از صحافی', en: 'Printed book forms before binding' }, width: 800, height: 600 },
+      { src: '/portfolio/books-textbook-series-3.svg', alt: { fa: 'کتاب‌های صحافی‌شده آمادهٔ بسته‌بندی', en: 'Bound books ready for packing' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['book-printing', 'post-press-services'],
     year: 2024, featured: true,
   },
   {
@@ -39,6 +44,11 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'روکش', en: 'Finish' }, value: { fa: 'سلفون مات و یووی موضعی', en: 'Matte lamination + spot UV' } },
     ],
     image: { src: '/portfolio/catalog-pars-steel.svg', alt: { fa: 'کاتالوگ محصولات صنعتی', en: 'Industrial product catalogue' } },
+    gallery: [
+      { src: '/portfolio/catalog-pars-steel-2.svg', alt: { fa: 'صفحات داخلی کاتالوگ', en: 'Catalogue inner pages' }, width: 800, height: 600 },
+      { src: '/portfolio/catalog-pars-steel-3.svg', alt: { fa: 'جلد کاتالوگ با یووی موضعی', en: 'Catalogue cover with spot UV' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['catalog-printing', 'post-press-services'],
     year: 2025, featured: true,
   },
   {
@@ -55,6 +65,11 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'تکمیل', en: 'Finishing' }, value: { fa: 'مخملی، طلاکوب، چسب‌زنی', en: 'Soft-touch, foil, gluing' } },
     ],
     image: { src: '/portfolio/packaging-cosmetics.svg', alt: { fa: 'جعبه‌های بسته‌بندی محصولات آرایشی', en: 'Cosmetics packaging cartons' } },
+    gallery: [
+      { src: '/portfolio/packaging-cosmetics-2.svg', alt: { fa: 'گسترده و قالب جعبه', en: 'Carton die-line and blank' }, width: 800, height: 600 },
+      { src: '/portfolio/packaging-cosmetics-3.svg', alt: { fa: 'جعبه‌های چسب‌خوردهٔ نهایی', en: 'Finished glued cartons' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['packaging-boxes', 'post-press-services'],
     year: 2025, featured: true,
   },
   {
@@ -71,6 +86,10 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'صحافی', en: 'Binding' }, value: { fa: 'ته‌دوخت', en: 'Saddle-stitched' } },
     ],
     image: { src: '/portfolio/magazine-sanaat.svg', alt: { fa: 'جلد ماهنامهٔ صنعتی', en: 'Industrial monthly magazine cover' } },
+    gallery: [
+      { src: '/portfolio/magazine-sanaat-2.svg', alt: { fa: 'صفحات داخلی نشریه', en: 'Magazine inner pages' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['magazine-printing'],
     year: 2024, featured: false,
   },
   {
@@ -87,6 +106,11 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'تکمیل', en: 'Finishing' }, value: { fa: 'طلاکوب عنوان', en: 'Foil-stamped title' } },
     ],
     image: { src: '/portfolio/report-annual.svg', alt: { fa: 'گزارش سالانه با جلد سخت', en: 'Hard-cased annual report' } },
+    gallery: [
+      { src: '/portfolio/report-annual-2.svg', alt: { fa: 'جلد سخت با طلاکوب عنوان', en: 'Hard case with foil-stamped title' }, width: 800, height: 600 },
+      { src: '/portfolio/report-annual-3.svg', alt: { fa: 'صفحات داخلی گزارش', en: 'Report inner pages' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['book-printing', 'post-press-services'],
     year: 2025, featured: true,
   },
   {
@@ -103,6 +127,10 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'تحویل', en: 'Delivery' }, value: { fa: 'رول با مغزی ۷۶ میلی‌متر', en: '76 mm core rolls' } },
     ],
     image: { src: '/portfolio/labels-food.svg', alt: { fa: 'لیبل محصولات غذایی', en: 'Food product labels' } },
+    gallery: [
+      { src: '/portfolio/labels-food-2.svg', alt: { fa: 'لیبل‌های رول تحویل‌شده', en: 'Delivered roll labels' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['label-printing'],
     year: 2024, featured: false,
   },
   {
@@ -119,6 +147,10 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'ویژگی', en: 'Highlight' }, value: { fa: 'چاپ داده‌متغیر', en: 'Variable data printing' } },
     ],
     image: { src: '/portfolio/stationery-insurance.svg', alt: { fa: 'ست اداری سازمانی', en: 'Corporate stationery set' } },
+    gallery: [
+      { src: '/portfolio/stationery-insurance-2.svg', alt: { fa: 'سربرگ و پاکت سازمانی', en: 'Corporate letterhead and envelope' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['business-card-printing', 'offset-printing'],
     year: 2025, featured: false,
   },
   {
@@ -135,6 +167,11 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'صحافی', en: 'Binding' }, value: { fa: 'جلد سخت با قاب', en: 'Case bound with slipcase' } },
     ],
     image: { src: '/portfolio/book-art-museum.svg', alt: { fa: 'کتاب نفیس هنری', en: 'Fine-art printed book' } },
+    gallery: [
+      { src: '/portfolio/book-art-museum-2.svg', alt: { fa: 'صفحات رنگی کتاب هنری', en: 'Colour plates in the art book' }, width: 800, height: 600 },
+      { src: '/portfolio/book-art-museum-3.svg', alt: { fa: 'جلد سخت به همراه قاب', en: 'Hard case with slipcase' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['book-printing', 'post-press-services'],
     year: 2025, featured: true,
   },
   {
@@ -151,6 +188,10 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'مقوا', en: 'Board' }, value: { fa: 'ایندربرد ۳۰۰ گرم', en: '300 gsm FBB' } },
     ],
     image: { src: '/portfolio/packaging-pharma.svg', alt: { fa: 'جعبه‌های بسته‌بندی دارویی', en: 'Pharmaceutical packaging cartons' } },
+    gallery: [
+      { src: '/portfolio/packaging-pharma-2.svg', alt: { fa: 'جعبهٔ دارویی با درج بریل', en: 'Pharmaceutical carton with braille' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['packaging-boxes'],
     year: 2024, featured: false,
   },
   {
@@ -167,6 +208,10 @@ export const portfolioItems: PortfolioItem[] = [
       { label: { fa: 'کاغذ', en: 'Stock' }, value: { fa: 'گلاسه ۱۷۰ گرم', en: '170 gsm gloss' } },
     ],
     image: { src: '/portfolio/brochure-hotels.svg', alt: { fa: 'بروشور تاشو هتل', en: 'Folded hotel brochure' } },
+    gallery: [
+      { src: '/portfolio/brochure-hotels-2.svg', alt: { fa: 'بروشور باز شده', en: 'The brochure fully unfolded' }, width: 800, height: 600 },
+    ],
+    serviceSlugs: ['brochure-printing', 'post-press-services'],
     year: 2025, featured: false,
   },
 ]
@@ -174,3 +219,20 @@ export const portfolioItems: PortfolioItem[] = [
 export const featuredPortfolio = (): PortfolioItem[] => portfolioItems.filter(p => p.featured)
 export const getPortfolioBySlug = (slug: string): PortfolioItem | undefined =>
   portfolioItems.find(p => p.slug === slug)
+
+export const getCategoryBySlug = (slug: string): PortfolioCategory | undefined =>
+  portfolioCategories.find(c => c.slug === slug)
+
+/** Other projects in the same category, excluding the current one. */
+export const getRelatedPortfolio = (slug: string, limit = 3): PortfolioItem[] => {
+  const item = getPortfolioBySlug(slug)
+  if (!item) return []
+
+  return portfolioItems
+    .filter(p => p.categorySlug === item.categorySlug && p.id !== item.id)
+    .slice(0, limit)
+}
+
+/** Number of projects per category — used for filter counts. */
+export const countByCategory = (categorySlug: string): number =>
+  portfolioItems.filter(p => p.categorySlug === categorySlug).length

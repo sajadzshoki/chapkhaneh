@@ -21,12 +21,17 @@ const filtered = computed(() =>
 )
 
 useHead({ title: () => t('equipment.title') })
-useSeoMeta({ description: () => t('equipment.description') })
+useSeoMeta({
+  title: () => t('equipment.title'),
+  description: () => t('equipment.intro'),
+  ogTitle: () => t('equipment.title'),
+  ogDescription: () => t('equipment.intro'),
+})
 </script>
 
 <template>
   <div>
-    <UiPageHero :title="$t('equipment.title')" :description="$t('equipment.description')" />
+    <UiPageHero :title="$t('equipment.title')" :description="$t('equipment.intro')" />
 
     <UiPageContainer class="py-12 lg:py-16">
       <UiFilterTabs v-model="activeType" :options="options" />
@@ -34,7 +39,12 @@ useSeoMeta({ description: () => t('equipment.description') })
       <div v-if="filtered.length" class="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
         <UiEquipmentCard v-for="item in filtered" :key="item.id" :item="item" />
       </div>
-      <UiEmptyState v-else class="mt-10" />
+
+      <UiEmptyState v-else class="mt-10">
+        <UButton color="neutral" variant="outline" @click="() => { activeType = 'all' }">
+          {{ $t('equipment.types.all') }}
+        </UButton>
+      </UiEmptyState>
     </UiPageContainer>
 
     <UiCtaSection

@@ -65,6 +65,22 @@ export const equipment: Equipment[] = [
     order: 4,
   },
   {
+    id: 'eq-9', slug: 'hp-indigo-7900', type: 'digital',
+    name: 'Indigo 7900', manufacturer: 'HP', installedYear: 2021,
+    title: { fa: 'اچ‌پی ایندیگو ۷۹۰۰', en: 'HP Indigo 7900' },
+    description: {
+      fa: 'پرس دیجیتال با مرکب مایع الکترواینک که کیفیت آن به چاپ افست نزدیک است. برای تیراژ کم با انتظار کیفیت بالا و چاپ نمونهٔ بسته‌بندی استفاده می‌شود.',
+      en: 'A liquid ElectroInk digital press whose output sits close to offset quality. Used for short runs with high quality expectations and for packaging mock-ups.',
+    },
+    specs: [
+      { label: { fa: 'سرعت', en: 'Speed' }, value: { fa: '۱۲۰ برگ A4 در دقیقه', en: '120 A4 pages/min' } },
+      { label: { fa: 'حداکثر قطع', en: 'Max sheet size' }, value: { fa: '۳۳ × ۴۸ سانتی‌متر', en: '33 × 48 cm' } },
+      { label: { fa: 'رنگ', en: 'Colour' }, value: { fa: 'تا ۷ رنگ الکترواینک', en: 'Up to 7 ElectroInk colours' } },
+      { label: { fa: 'گراماژ', en: 'Stock range' }, value: { fa: '۷۰ تا ۴۰۰ گرم', en: '70 – 400 gsm' } },
+    ],
+    order: 5,
+  },
+  {
     id: 'eq-5', slug: 'kodak-magnus-ctp', type: 'prepress',
     name: 'Magnus Q800 CTP', manufacturer: 'Kodak', installedYear: 2018,
     title: { fa: 'دستگاه پلیت‌سازی کداک Magnus Q800', en: 'Kodak Magnus Q800 CTP' },
@@ -77,7 +93,7 @@ export const equipment: Equipment[] = [
       { label: { fa: 'ظرفیت', en: 'Throughput' }, value: { fa: '۳۰ پلیت در ساعت', en: '30 plates/hour' } },
       { label: { fa: 'حداکثر اندازهٔ پلیت', en: 'Max plate size' }, value: { fa: '۱۱۶۰ × ۹۴۰ میلی‌متر', en: '1160 × 940 mm' } },
     ],
-    order: 5,
+    order: 6,
   },
   {
     id: 'eq-6', slug: 'polar-137-cutter', type: 'finishing',
@@ -92,7 +108,7 @@ export const equipment: Equipment[] = [
       { label: { fa: 'ارتفاع دسته', en: 'Pile height' }, value: { fa: '۱۶۵ میلی‌متر', en: '165 mm' } },
       { label: { fa: 'حافظهٔ برنامه', en: 'Program memory' }, value: { fa: '۹۹۹ برنامهٔ برش', en: '999 cutting programs' } },
     ],
-    order: 6,
+    order: 7,
   },
   {
     id: 'eq-7', slug: 'horizon-bq-480-binder', type: 'finishing',
@@ -107,7 +123,7 @@ export const equipment: Equipment[] = [
       { label: { fa: 'ضخامت عطف', en: 'Spine thickness' }, value: { fa: '۱ تا ۶۵ میلی‌متر', en: '1 – 65 mm' } },
       { label: { fa: 'نوع چسب', en: 'Adhesive' }, value: { fa: 'PUR و EVA', en: 'PUR and EVA' } },
     ],
-    order: 7,
+    order: 8,
   },
   {
     id: 'eq-8', slug: 'bobst-die-cutter', type: 'finishing',
@@ -122,9 +138,12 @@ export const equipment: Equipment[] = [
       { label: { fa: 'سرعت', en: 'Speed' }, value: { fa: '۷٬۵۰۰ برگ در ساعت', en: '7,500 sheets/hour' } },
       { label: { fa: 'فشار برش', en: 'Cutting force' }, value: { fa: '۳۰۰ تن', en: '300 tonnes' } },
     ],
-    order: 8,
+    order: 9,
   },
 ]
 
 export const getEquipmentBySlug = (slug: string): Equipment | undefined =>
   equipment.find(e => e.slug === slug)
+
+export const featuredEquipment = (limit = 4): Equipment[] =>
+  equipment.slice().sort((a, b) => a.order - b.order).slice(0, limit)

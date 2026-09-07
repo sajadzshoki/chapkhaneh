@@ -23,12 +23,17 @@ const filtered = computed(() =>
 )
 
 useHead({ title: () => t('faq.title') })
-useSeoMeta({ description: () => t('faq.description') })
+useSeoMeta({
+  title: () => t('faq.title'),
+  description: () => t('faq.intro'),
+  ogTitle: () => t('faq.title'),
+  ogDescription: () => t('faq.intro'),
+})
 </script>
 
 <template>
   <div>
-    <UiPageHero :title="$t('faq.title')" :description="$t('faq.description')" />
+    <UiPageHero :title="$t('faq.title')" :description="$t('faq.intro')" />
 
     <UiPageContainer class="py-12 lg:py-16">
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-14">
@@ -43,7 +48,11 @@ useSeoMeta({ description: () => t('faq.description') })
               :answer="L(faq.answer) ?? ''"
             />
           </div>
-          <UiEmptyState v-else class="mt-8" />
+          <UiEmptyState v-else class="mt-8">
+            <UButton color="neutral" variant="outline" @click="() => { activeCategory = 'all' }">
+              {{ $t('faq.categories.all') }}
+            </UButton>
+          </UiEmptyState>
         </div>
 
         <aside class="lg:col-span-4">
@@ -69,5 +78,15 @@ useSeoMeta({ description: () => t('faq.description') })
         </aside>
       </div>
     </UiPageContainer>
+
+    <UiCtaSection
+      variant="muted"
+      :title="$t('home.cta.title')"
+      :description="$t('home.cta.description')"
+      :primary-label="$t('home.cta.primary')"
+      :primary-to="localePath('/quote')"
+      :secondary-label="$t('common.contactUs')"
+      :secondary-to="localePath('/contact')"
+    />
   </div>
 </template>

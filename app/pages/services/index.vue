@@ -14,27 +14,42 @@ const options = computed(() =>
   })),
 )
 
+const ordered = computed(() => services.slice().sort((a, b) => a.order - b.order))
+
 const filtered = computed(() =>
-  services
-    .filter(s => activeCategory.value === 'all' || s.category === activeCategory.value)
-    .sort((a, b) => a.order - b.order),
+  ordered.value.filter(s => activeCategory.value === 'all' || s.category === activeCategory.value),
 )
 
 useHead({ title: () => t('services.title') })
-useSeoMeta({ description: () => t('services.description') })
+useSeoMeta({
+  title: () => t('services.title'),
+  description: () => t('services.intro'),
+  ogTitle: () => t('services.title'),
+  ogDescription: () => t('services.intro'),
+})
 </script>
 
 <template>
   <div>
-    <UiPageHero :title="$t('services.title')" :description="$t('services.description')" />
+    <UiPageHero :title="$t('services.title')" :description="$t('services.intro')" />
 
     <UiPageContainer class="py-12 lg:py-16">
       <UiFilterTabs v-model="activeCategory" :options="options" />
 
       <div v-if="filtered.length" class="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        <UiServiceCard v-for="service in filtered" :key="service.id" :service="service" />
+        <UiServiceCard
+          v-for="(service, index) in filtered"
+          :key="service.id"
+          :service="service"
+          :variant="index < 3 ? 'feature' : 'default'"
+        />
       </div>
-      <UiEmptyState v-else class="mt-10" />
+
+      <UiEmptyState v-else class="mt-10">
+        <UButton color="neutral" variant="outline" @click="() => { activeCategory = 'all' }">
+          {{ $t('services.categories.all') }}
+        </UButton>
+      </UiEmptyState>
     </UiPageContainer>
 
     <UiCtaSection

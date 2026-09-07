@@ -6,6 +6,16 @@ import type { ImageAsset, Localized, Sluggable } from './common'
 
 export type ServiceCategory = 'printing' | 'packaging' | 'finishing'
 
+/**
+ * A group of available options for a service, e.g.
+ * label "Binding options" with values ["Perfect bound", "Saddle-stitched"].
+ * Rendered on the service detail page as a specification list.
+ */
+export interface ServiceSpecGroup {
+  label: Localized
+  values: Localized<string[]>
+}
+
 export interface Service extends Sluggable {
   category: ServiceCategory
   /** Nuxt UI icon name, e.g. `i-lucide-printer`. */
@@ -17,7 +27,15 @@ export interface Service extends Sluggable {
   description: Localized
   /** Bullet points describing what is included. */
   features: Localized<string[]>
+  /** Hero image shown on the service detail page. */
   image?: ImageAsset
+  /** Available options (formats, papers, binding, finishing, quantities). */
+  specifications?: ServiceSpecGroup[]
+  /**
+   * Explicit related services. When omitted, the UI falls back to other
+   * services in the same category, so this rarely needs to be set.
+   */
+  relatedSlugs?: string[]
   /** Minimum economical order quantity, if the service has one. */
   minimumOrder?: Localized
   turnaround?: Localized
@@ -98,7 +116,12 @@ export interface PortfolioItem extends Sluggable {
   description: Localized
   /** Production details shown as a small spec list. */
   details: { label: Localized, value: Localized }[]
+  /** Cover image used on cards and as the first gallery frame. */
   image: ImageAsset
+  /** Additional views of the project. The cover is prepended automatically. */
+  gallery?: ImageAsset[]
+  /** Services used to produce this project — links the portfolio to services. */
+  serviceSlugs?: string[]
   year: number
   featured: boolean
 }

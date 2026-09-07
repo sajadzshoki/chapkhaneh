@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { mainNav } = useNavigation()
+const { primaryPhone } = useSite()
 const localePath = useLocalePath()
 const route = useRoute()
 
@@ -8,9 +9,18 @@ const mobileOpen = ref(false)
 // Close the mobile drawer on navigation.
 watch(() => route.fullPath, () => { mobileOpen.value = false })
 
+const normalise = (path: string) => path.replace(/\/+$/, '') || '/'
+
+/**
+ * A nav item is active for its own route and any child route
+ * (`/services` stays active on `/services/offset-printing`), but must not
+ * match a sibling that merely shares a prefix.
+ */
 const isActive = (to: string) => {
-  const target = localePath(to)
-  return to === '/' ? route.path === target : route.path.startsWith(target)
+  const target = normalise(localePath(to))
+  const current = normalise(route.path)
+  if (target === '/') return current === '/'
+  return current === target || current.startsWith(`${target}/`)
 }
 </script>
 
@@ -96,10 +106,21 @@ const isActive = (to: string) => {
         </nav>
 
         <div class="mt-5 flex items-center justify-between gap-3">
-          <UButton :to="localePath('/quote')" color="primary" size="md" class="flex-1 justify-center">
+          <UButton :to="localePath('/quote')" color="primary" size="lg" class="flex-1 justify-center">
             {{ $t('nav.quote') }}
           </UButton>
           <AppLanguageSwitcher />
+        </div>
+
+        <div class="mt-4 border-t border-[var(--color-border)] pt-4 text-xs text-[var(--color-muted)]">
+          <a
+            v-if="primaryPhone"
+            :href="`tel:${primaryPhone}`"
+            class="inline-flex items-center gap-2 font-semibold text-[var(--color-primary)]"
+          >
+            <UIcon name="i-lucide-phone" class="size-4" aria-hidden="true" />
+            <span class="tabular">{{ primaryPhone }}</span>
+          </a>
         </div>
       </UiPageContainer>
     </div>

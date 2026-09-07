@@ -1,6 +1,7 @@
-import { getSiteSettings, getThemeSettings } from '../../repositories/content.repository'
+import { adminGetSiteSettingsRow } from '../../repositories/admin.repository'
+import { getThemeSettings } from '../../repositories/content.repository'
 
 export default defineEventHandler(async () => {
-  const [site, theme] = await Promise.all([getSiteSettings(), getThemeSettings()])
+  const [site, theme] = await Promise.all([adminGetSiteSettingsRow(), getThemeSettings()])
   return { site, theme }
 })

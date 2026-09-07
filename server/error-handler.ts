@@ -46,10 +46,16 @@ const handler: NitroErrorHandler = async function apiErrorHandler(error, event) 
       : (error.statusMessage || error.message || 'Request failed'),
   }
 
-  // Field-level validation issues are safe and useful to the client.
-  const data = error.data as { issues?: unknown } | undefined
-  if (!isServerError && data?.issues) {
-    body.data = { issues: data.issues }
+  // A small allow-list of 4xx payload fields is forwarded: field-level
+  // validation issues, and the conflict details the admin UI needs to offer a
+  // way out (e.g. how many projects block a category deletion). Everything
+  // else on `error.data` stays server-side.
+  const data = error.data as { issues?: unknown, itemCount?: unknown } | undefined
+  if (!isServerError && data) {
+    const safe: Record<string, unknown> = {}
+    if (data.issues) safe.issues = data.issues
+    if (typeof data.itemCount === 'number') safe.itemCount = data.itemCount
+    if (Object.keys(safe).length) body.data = safe
   }
 
   return send(event, JSON.stringify(body))

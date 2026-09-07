@@ -45,14 +45,31 @@ a CMS, a page builder, analytics, chat.
 
 See [`database.md`](./database.md) and [`admin.md`](./admin.md).
 
-## Phase 4 — Content management
+## Phase 4 — Content management (delivered)
 
-- Admin CRUD with side-by-side Persian/English editing for `Localized` fields
-- Image upload and management for portfolio and equipment
-- Site settings editor writing to the `site_settings` table
-- Theme editor for primary/secondary/accent, logo and favicon
-  (`useThemeStore().applyOverrides` already supports this)
-- Quote request status workflow (NEW → REVIEWING → CONTACTED → COMPLETED)
+- Full CRUD for services, pricing rows, equipment, portfolio projects and their
+  categories, and FAQs — create, edit, delete, activate, feature and reorder
+- Side-by-side Persian/English editing for every `Localized` field, with each
+  input carrying its own text direction
+- Bilingual admin UI: Persian by default, RTL/LTR following the locale, chosen
+  in place and remembered in the `mb_admin_locale` cookie
+- One shared UX pattern across every screen — header, filters, table, modal
+  form, confirmation dialog, toasts, pagination, and loading / empty / error
+  states — rather than a bespoke design per section
+- Server-side search, filtering and pagination on the lists that can grow
+- Client *and* server validation, including slug uniqueness that is safe on
+  edit, foreign-key checks and enum validation
+- Delete confirmations that explain the consequences, and a category deletion
+  that offers to move its projects instead of violating the RESTRICT constraint
+- Quote request triage: search, status filter, detail view, inline status
+  changes, internal notes and a file download that never exposes storage paths
+- Site settings editor writing to `site_settings` and reflected on public pages
+- Dashboard counts plus a recent-requests list
+
+Still open from the original phase 4 sketch: a theme editor for
+primary/secondary/accent colours (`useThemeStore().applyOverrides` already
+supports it) and true file *upload* — images are currently path-based, which is
+a deliberate simplification rather than a media library.
 
 ## Phase 5 — Production readiness
 
@@ -72,8 +89,8 @@ A rebrand touches:
 2. `app/assets/css/main.css` + `tokens.css` — mirrored literal values
 3. `shared/data/site.ts` — company profile
 4. `public/brand/` and `public/favicon.svg` — logo and favicon
-5. `shared/data/*.ts` — content, once the admin panel exists this becomes
-   client-editable rather than a code change
+5. `shared/data/*.ts` — seed content only; from phase 4 onwards the live
+   content is edited by the client in the admin panel, not in code
 
 Multi-tenancy remains explicitly out of scope: each client gets their own
 deployment and database.

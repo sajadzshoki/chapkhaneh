@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, inArray, sql } from 'drizzle-orm'
+import { and, asc, eq, inArray } from 'drizzle-orm'
 import { useDatabase } from '../database/client'
 import {
   equipment,
@@ -10,7 +10,6 @@ import {
   portfolioItems,
   portfolioServices,
   pricingRows,
-  quoteRequests,
   serviceFeatures,
   services,
   serviceSpecifications,
@@ -257,55 +256,4 @@ export async function getThemeSettings() {
   const db = useDatabase()
   const [row] = await db.select().from(themeSettings).limit(1)
   return row ? toThemeSettingsDto(row) : null
-}
-
-/* ------------------------------ Dashboard stats -------------------------- */
-
-export async function getDashboardStats() {
-  const db = useDatabase()
-
-  const [[serviceCount], [portfolioCount], [equipmentCount], [newQuotes], [totalQuotes]] =
-    await Promise.all([
-      db.select({ value: sql<number>`count(*)::int` }).from(services),
-      db.select({ value: sql<number>`count(*)::int` }).from(portfolioItems),
-      db.select({ value: sql<number>`count(*)::int` }).from(equipment),
-      db.select({ value: sql<number>`count(*)::int` }).from(quoteRequests)
-        .where(eq(quoteRequests.status, 'NEW')),
-      db.select({ value: sql<number>`count(*)::int` }).from(quoteRequests),
-    ])
-
-  return {
-    services: serviceCount?.value ?? 0,
-    portfolioItems: portfolioCount?.value ?? 0,
-    equipment: equipmentCount?.value ?? 0,
-    newQuoteRequests: newQuotes?.value ?? 0,
-    totalQuoteRequests: totalQuotes?.value ?? 0,
-  }
-}
-
-/* ------------------------------- Quote requests -------------------------- */
-
-export async function listQuoteRequests(options: { limit?: number } = {}) {
-  const db = useDatabase()
-  const rows = await db
-    .select({ quote: quoteRequests, serviceTitleFa: services.titleFa, serviceTitleEn: services.titleEn })
-    .from(quoteRequests)
-    .leftJoin(services, eq(quoteRequests.serviceId, services.id))
-    .orderBy(desc(quoteRequests.createdAt))
-    .limit(options.limit ?? 100)
-
-  return rows.map(({ quote, serviceTitleFa, serviceTitleEn }) => ({
-    id: quote.id,
-    fullName: quote.fullName,
-    company: quote.company ?? undefined,
-    phone: quote.phone,
-    email: quote.email ?? undefined,
-    serviceTitle: serviceTitleFa && serviceTitleEn
-      ? { fa: serviceTitleFa, en: serviceTitleEn }
-      : undefined,
-    quantity: quote.quantity ?? undefined,
-    description: quote.description,
-    status: quote.status,
-    createdAt: quote.createdAt.toISOString(),
-  }))
 }

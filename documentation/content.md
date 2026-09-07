@@ -5,8 +5,10 @@
 > public pages — they are the **seed input** (`server/database/seed.ts`) and,
 > for `site.ts` only, a typed first-paint fallback in `useSite()`.
 >
-> To change site content now, edit the database (or the seed and re-run it),
-> not these files. See [`database.md`](./database.md).
+> To change site content now, use the admin panel at `/admin` — from phase 4 it
+> is a full CMS covering services, pricing, equipment, portfolio, FAQs and site
+> settings. Editing the seed and re-running it remains the way to reset a fresh
+> environment. See [`database.md`](./database.md) and [`admin.md`](./admin.md).
 
 ## Company information
 

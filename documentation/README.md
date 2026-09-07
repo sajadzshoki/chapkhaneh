@@ -13,7 +13,7 @@ Persian-first and RTL by default, with full English (LTR) support.
 | [`theming.md`](./theming.md) | Design tokens and how to rebrand |
 | [`content.md`](./content.md) | Where site content and mock data live |
 | [`database.md`](./database.md) | Schema, relationships, migrations and seeding |
-| [`admin.md`](./admin.md) | Admin authentication, API structure and panel |
+| [`admin.md`](./admin.md) | Admin authentication, CRUD API, validation and the CMS |
 | [`i18n.md`](./i18n.md) | Translations, locales and RTL/LTR |
 | [`roadmap.md`](./roadmap.md) | What phase 1 delivered and what comes next |
 

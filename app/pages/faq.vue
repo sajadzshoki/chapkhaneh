@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { faqs } from '~~/shared/data/faq'
 import type { FaqCategory } from '~~/shared/types'
 
 const { t } = useI18n()
 const { L } = useLocalizedContent()
 const localePath = useLocalePath()
 const { site } = useSite()
+
+const { data: faqs } = await useFaqs()
 
 const activeCategory = ref<FaqCategory | 'all'>('all')
 
@@ -17,7 +18,7 @@ const options = computed(() =>
 )
 
 const filtered = computed(() =>
-  faqs
+  faqs.value
     .filter(f => activeCategory.value === 'all' || f.category === activeCategory.value)
     .sort((a, b) => a.order - b.order),
 )

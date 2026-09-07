@@ -10,7 +10,11 @@
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
     "db:generate": "drizzle-kit generate",
-    "db:push": "drizzle-kit push"
+    "db:push": "drizzle-kit push",
+    "db:migrate": "tsx --env-file-if-exists=.env server/database/migrate.ts",
+    "db:seed": "tsx --env-file-if-exists=.env server/database/seed.ts",
+    "db:reset": "tsx --env-file-if-exists=.env server/database/reset.ts",
+    "db:studio": "drizzle-kit studio"
   },
   "dependencies": {
     "@nuxt/ui": "^3.3.0",
@@ -30,6 +34,7 @@
     "@iconify-json/lucide": "^1.2.129",
     "@types/node": "^26.4.1",
     "drizzle-kit": "^0.31.0",
+    "tsx": "^4.23.13",
     "typescript": "^5.8.0",
     "vue-tsc": "^3.0.0"
   }

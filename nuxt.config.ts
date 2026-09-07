@@ -44,6 +44,7 @@ export default defineNuxtConfig({
           'lucide:briefcase',
           'lucide:calendar-check',
           'lucide:check',
+          'lucide:chevron-left',
           'lucide:chevron-right',
           'lucide:circle-check',
           'lucide:clock',
@@ -58,9 +59,11 @@ export default defineNuxtConfig({
           'lucide:image-off',
           'lucide:inbox',
           'lucide:instagram',
+          'lucide:layout-dashboard',
           'lucide:link',
           'lucide:linkedin',
           'lucide:loader-circle',
+          'lucide:log-out',
           'lucide:mail',
           'lucide:map-pin',
           'lucide:menu',
@@ -74,6 +77,7 @@ export default defineNuxtConfig({
           'lucide:printer',
           'lucide:scissors',
           'lucide:send',
+          'lucide:settings',
           'lucide:shield-check',
           'lucide:tag',
           'lucide:target',
@@ -114,6 +118,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     databaseUrl: process.env.DATABASE_URL || '',
+    /** HMAC key for the admin session cookie. Server-only — never exposed. */
+    sessionPassword: process.env.NUXT_SESSION_PASSWORD || '',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://mobinbartar.example',
     },
@@ -125,5 +131,7 @@ export default defineNuxtConfig({
 
   nitro: {
     compressPublicAssets: true,
+    // Guarantees identical, sanitised API error bodies in dev and production.
+    errorHandler: '~~/server/error-handler',
   },
 })

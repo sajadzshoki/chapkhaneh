@@ -1,4 +1,12 @@
-# Content & data
+# Content
+
+> **Phase 3 update.** PostgreSQL is now the source of truth for all site
+> content. The files in `shared/data/*` are no longer read at runtime by the
+> public pages — they are the **seed input** (`server/database/seed.ts`) and,
+> for `site.ts` only, a typed first-paint fallback in `useSite()`.
+>
+> To change site content now, edit the database (or the seed and re-run it),
+> not these files. See [`database.md`](./database.md).
 
 ## Company information
 

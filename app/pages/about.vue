@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { featuredEquipment } from '~~/shared/data/equipment'
 
 const { t } = useI18n()
 const { stats, site, localized } = useSite()
@@ -26,7 +25,10 @@ const standards = [
   { id: 'food-grade', label: 'Food-grade inks', note: { fa: 'مرکب مجاز برای بسته‌بندی مواد غذایی', en: 'Approved for food packaging' } },
 ]
 
-const equipmentList = featuredEquipment(3)
+const { data: equipment } = await useEquipment()
+const equipmentList = computed(() =>
+  equipment.value.slice().sort((a, b) => a.order - b.order).slice(0, 3),
+)
 
 useHead({ title: () => t('about.title') })
 useSeoMeta({

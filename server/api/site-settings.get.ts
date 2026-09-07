@@ -1,13 +1,20 @@
-import { siteSettings } from '~~/shared/data/site'
-import { brandTheme } from '~~/shared/theme/brand'
+import { getSiteSettings, getThemeSettings } from '../repositories/content.repository'
 
-export default defineEventHandler(() => ({
-  site: siteSettings,
-  theme: {
-    primary: brandTheme.colors.primary,
-    secondary: brandTheme.colors.secondary,
-    accent: brandTheme.colors.accent,
-    logo: siteSettings.brand.logo,
-    favicon: siteSettings.brand.favicon,
-  },
-}))
+/**
+ * Public site profile + theme tokens.
+ * Returns only presentational fields — no admin or internal data.
+ */
+export default defineEventHandler(async () => {
+  const [site, theme] = await Promise.all([getSiteSettings(), getThemeSettings()])
+
+  if (!site) {
+    throw createError({ statusCode: 404, statusMessage: 'Site settings not found' })
+  }
+
+  return {
+    site,
+    theme: theme
+      ? { ...theme, logo: site.brand.logo, favicon: site.brand.favicon }
+      : null,
+  }
+})

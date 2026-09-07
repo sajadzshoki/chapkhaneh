@@ -12,6 +12,8 @@ Persian-first and RTL by default, with full English (LTR) support.
 | [`architecture.md`](./architecture.md) | Folder layout and where each kind of code belongs |
 | [`theming.md`](./theming.md) | Design tokens and how to rebrand |
 | [`content.md`](./content.md) | Where site content and mock data live |
+| [`database.md`](./database.md) | Schema, relationships, migrations and seeding |
+| [`admin.md`](./admin.md) | Admin authentication, API structure and panel |
 | [`i18n.md`](./i18n.md) | Translations, locales and RTL/LTR |
 | [`roadmap.md`](./roadmap.md) | What phase 1 delivered and what comes next |
 
@@ -24,18 +26,37 @@ Nitro server routes · Drizzle ORM · PostgreSQL
 
 ```bash
 npm install
-cp .env.example .env     # optional in phase 1 — the site runs without a database
+cp .env.example .env     # then set DATABASE_URL and the secrets
+npm run db:migrate       # create the tables
+npm run db:seed          # load the demo content and the admin account
 npm run dev              # http://localhost:3000
 ```
+
+The database is required from phase 3 onwards: all site content is served from
+PostgreSQL. See [`database.md`](./database.md) for the full workflow.
 
 Useful scripts:
 
 ```bash
 npm run build        # production build
 npm run typecheck    # vue-tsc — must stay clean
-npm run db:generate  # generate Drizzle migrations (phase 2+)
-npm run db:push      # apply the schema to PostgreSQL (phase 2+)
+npm run db:generate  # generate a migration after editing schema.ts
+npm run db:migrate   # apply pending migrations
+npm run db:seed      # (re)load the demo dataset
+npm run db:reset     # drop everything — development only
 ```
+
+### Environment variables
+
+| Variable | Purpose |
+| --- | --- |
+| `DATABASE_URL` | PostgreSQL connection string |
+| `NUXT_PUBLIC_SITE_URL` | Public base URL for canonical/OG tags |
+| `NUXT_SESSION_PASSWORD` | Signs the admin session cookie — min 32 chars |
+| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Used once, by the seed, to create the admin |
+
+`.env` is gitignored and must never be committed. `.env.example` documents the
+shape with placeholder values only.
 
 ### Fonts
 

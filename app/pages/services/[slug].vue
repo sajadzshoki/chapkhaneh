@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { getServiceBySlug, getRelatedServices } from '~~/shared/data/services'
-import { getPricingGroupsForService } from '~~/shared/data/pricing'
-import { portfolioItems } from '~~/shared/data/portfolio'
-
 const route = useRoute()
 const { t } = useI18n()
 const localePath = useLocalePath()
@@ -10,7 +6,12 @@ const { L } = useLocalizedContent()
 const quoteStore = useQuoteStore()
 
 const slug = computed(() => String(route.params.slug))
-const service = computed(() => getServiceBySlug(slug.value))
+
+const { data: services } = await useServices()
+const { data: pricingGroups } = await usePricing()
+const { data: portfolio } = await usePortfolio()
+
+const service = computed(() => services.value.find(s => s.slug === slug.value))
 
 /**
  * An unknown slug renders an in-page "not found" state rather than throwing.
@@ -21,14 +22,27 @@ if (import.meta.server && !service.value) {
   setResponseStatus(useRequestEvent()!, 404)
 }
 
-const pricing = computed(() => (service.value ? getPricingGroupsForService(service.value.slug) : []))
-const related = computed(() => (service.value ? getRelatedServices(service.value.slug, 3) : []))
+const pricing = computed(() =>
+  pricingGroups.value.filter(group => group.serviceSlug === slug.value),
+)
+
+/** Other services in the same category, falling back to any other service. */
+const related = computed(() => {
+  const current = service.value
+  if (!current) return []
+  const sameCategory = services.value.filter(
+    s => s.slug !== current.slug && s.category === current.category,
+  )
+  const others = services.value.filter(
+    s => s.slug !== current.slug && s.category !== current.category,
+  )
+  return [...sameCategory, ...others].slice(0, 3)
+})
 
 /** Projects produced with this service. */
-const relatedProjects = computed(() => {
-  if (!service.value) return []
-  return portfolioItems.filter(p => p.serviceSlugs?.includes(service.value!.slug)).slice(0, 3)
-})
+const relatedProjects = computed(() =>
+  portfolio.value.items.filter(p => p.serviceSlugs?.includes(slug.value)).slice(0, 3),
+)
 
 async function requestQuote(): Promise<void> {
   if (!service.value) return

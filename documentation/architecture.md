@@ -21,7 +21,7 @@ app/                    Nuxt application (srcDir)
 
 shared/                 Code shared by app AND server (Nuxt 4 `shared/` layer)
   types/                Domain models — the contract for everything
-  data/                 Realistic mock content
+  data/                 Seed content (not read at runtime)
   theme/brand.ts        Single source of truth for brand colours
 
 server/
@@ -72,23 +72,44 @@ Rules the codebase follows:
 - A component is only created when it is reused or it meaningfully simplifies a
   page. One-off markup stays in the page.
 
-## Data flow today vs. later
+## Data flow
 
 ```
-shared/data/*.ts  ──►  pages/components        (phase 1: typed mock data)
-                  ──►  server/api/*.get.ts     (same data, served over HTTP)
-
-PostgreSQL ──► Drizzle ──► server/services ──► server/api ──► pages  (phase 2+)
+PostgreSQL
+   └─ Drizzle (server/database/schema.ts)
+        └─ server/repositories/content.repository.ts   queries
+             └─ server/database/mappers.ts             rows -> Localized DTOs
+                  └─ server/api/*.get.ts               public/admin endpoints
+                       └─ app/composables/useContent.ts  useAsyncData wrappers
+                            └─ pages / components
 ```
 
-The public UI already consumes typed domain objects, so swapping the source
-from mock data to the database does not change component code.
+`shared/data/*.ts` is seed input only — the public pages no longer import it.
+Because the UI consumed typed domain objects from the start, switching the
+source to PostgreSQL required no redesign.
+
+The mappers are also the **field allow-list**: anything not returned there
+(password hashes, internal notes) can never reach a response.
+
+### Fetching rules
+
+`useContent.ts` wraps each dataset in `useAsyncData` with a stable key, so
+concurrent callers on one page share a single query.
+
+Page components **must await** these helpers
+(`const { data } = await useServices()`); otherwise during SSR the data is still
+empty when the component renders and a slug lookup produces a false
+"not found". Child components rendered inside a layout (`Footer`,
+`PortfolioCard`) instead read the shared handle *without* awaiting, so they do
+not suspend the whole layout — the parent page has already resolved it.
 
 ## Server layer
 
-`server/api/` handlers stay thin: parse, validate, delegate, respond.
-Business logic lives in `server/services/`.
+`server/api/` handlers stay thin: validate, call a repository function, respond.
+Query logic lives in `server/repositories/`, business logic in
+`server/services/`. No route hand-rolls its own SQL.
 
-`server/database/client.ts` returns `null` when `DATABASE_URL` is unset. The
-quote service handles that by logging the submission instead of persisting it,
-so phase 1 runs and builds with no database attached.
+`server/database/client.ts` throws when `DATABASE_URL` is missing rather than
+degrading to mock data — from phase 3 a missing database is a real
+misconfiguration and should be loud. `tryDatabase()` is available where a
+`null` is genuinely acceptable.

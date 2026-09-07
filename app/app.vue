@@ -9,18 +9,18 @@ useHead(() => ({
     dir: head.value.htmlAttrs?.dir,
   },
   link: [
-    { rel: 'icon', type: 'image/svg+xml', href: site.brand.favicon },
+    { rel: 'icon', type: 'image/svg+xml', href: site.value.brand.favicon },
     ...(head.value.link ?? []),
   ],
   meta: head.value.meta ?? [],
   // `meta.titleTemplate` holds e.g. "%s | Mobin Bartar" per locale.
   titleTemplate: (chunk?: string) =>
-    chunk ? t('meta.titleTemplate').replace('%s', chunk) : localized(site.legalName),
+    chunk ? t('meta.titleTemplate').replace('%s', chunk) : localized(site.value.legalName),
 }))
 
 useSeoMeta({
   description: () => t('meta.defaultDescription'),
-  ogSiteName: () => localized(site.companyName),
+  ogSiteName: () => localized(site.value.companyName),
   ogLocale: () => (locale.value === 'fa' ? 'fa_IR' : 'en_US'),
   ogType: 'website',
 })

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import { pricingGroups } from '~~/shared/data/pricing'
-
 const { t } = useI18n()
 const { L } = useLocalizedContent()
 const localePath = useLocalePath()
 
 /** Anchor targets for the in-page "jump to" navigation. */
+const { data: pricingGroups } = await usePricing()
+
 const groups = computed(() =>
-  pricingGroups.map(group => ({ group, anchor: `pricing-${group.id}` })),
+  pricingGroups.value.map(group => ({ group, anchor: `pricing-${group.serviceSlug}` })),
 )
 
 useHead({ title: () => t('pricing.title') })
@@ -48,7 +48,7 @@ useSeoMeta({
       <div v-if="groups.length" class="mt-10 space-y-10">
         <UiPricingTable
           v-for="entry in groups"
-          :key="entry.group.id"
+          :key="entry.group.serviceSlug"
           :group="entry.group"
           :anchor="entry.anchor"
         />

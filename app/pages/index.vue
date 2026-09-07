@@ -1,8 +1,4 @@
 <script setup lang="ts">
-import { services, featuredServices } from '~~/shared/data/services'
-import { featuredEquipment } from '~~/shared/data/equipment'
-import { featuredPortfolio } from '~~/shared/data/portfolio'
-
 const { t } = useI18n()
 const localePath = useLocalePath()
 
@@ -10,16 +6,26 @@ const localePath = useLocalePath()
  * The homepage shows the featured services first, topped up from the ordered
  * list so the grid always fills 6 cards even if the data changes.
  */
+const { data: services } = await useServices()
+const { data: equipment } = await useEquipment()
+const { data: portfolio } = await usePortfolio()
+
 const servicesList = computed(() => {
-  const featured = featuredServices()
-  const rest = services
-    .filter(s => !featured.some(f => f.id === s.id))
-    .sort((a, b) => a.order - b.order)
+  const ordered = services.value.slice().sort((a, b) => a.order - b.order)
+  const featured = ordered.filter(s => s.featured)
+  const rest = ordered.filter(s => !s.featured)
   return [...featured, ...rest].slice(0, 6)
 })
 
-const equipmentList = featuredEquipment(3)
-const portfolioList = computed(() => featuredPortfolio().slice(0, 3))
+const equipmentList = computed(() =>
+  equipment.value.slice().sort((a, b) => a.order - b.order).slice(0, 3),
+)
+
+const portfolioList = computed(() => {
+  const items = portfolio.value.items
+  const featured = items.filter(p => p.featured)
+  return (featured.length ? featured : items).slice(0, 3)
+})
 
 useHead({ title: () => t('nav.home') })
 useSeoMeta({

@@ -1,12 +1,13 @@
 <script setup lang="ts">
-import { services } from '~~/shared/data/services'
-
 const { site, localized, companyName } = useSite()
 const { L } = useLocalizedContent()
 const { mainNav } = useNavigation()
 const localePath = useLocalePath()
 
-const footerServices = computed(() => services.slice(0, 6))
+// Footer renders inside the layout on every page; use the shared handle
+// rather than a top-level await so it never suspends the layout.
+const { data: services } = useServices()
+const footerServices = computed(() => (services.value ?? []).slice(0, 6))
 const year = new Date().getFullYear()
 
 const socialIcons: Record<string, string> = {

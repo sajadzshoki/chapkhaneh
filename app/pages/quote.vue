@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { services } from '~~/shared/data/services'
 import type { QuoteRequestInput, LocaleCode } from '~~/shared/types'
 import { isValidEmail, isValidPhone } from '~/utils/validation'
 import { toAsciiDigits } from '~/utils/format'
@@ -21,8 +20,10 @@ const form = reactive({
 
 const errors = reactive<Record<string, string>>({})
 
+const { data: services } = await useServices()
+
 const serviceOptions = computed(() =>
-  services
+  services.value
     .slice()
     .sort((a, b) => a.order - b.order)
     .map(s => ({ value: s.slug, label: L(s.title) ?? s.slug })),

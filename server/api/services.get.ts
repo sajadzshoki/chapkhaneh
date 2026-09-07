@@ -1,8 +1,4 @@
-import { services } from '~~/shared/data/services'
+import { listServices } from '../repositories/content.repository'
 
-/**
- * Content is currently served from typed mock data. Exposing it through a
- * server route now means the switch to a database-backed source in a later
- * phase requires no change on the client side.
- */
-export default defineEventHandler(() => services)
+/** Public service list — active services only, public fields only. */
+export default defineEventHandler(async () => await listServices({ activeOnly: true }))

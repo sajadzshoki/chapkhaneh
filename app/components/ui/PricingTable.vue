@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { PricingGroup } from '~~/shared/types'
+import type { PricingGroupDto } from '~/composables/useContent'
 import { formatNumber } from '~/utils/format'
 
 withDefaults(defineProps<{
-  group: PricingGroup
+  group: PricingGroupDto
   /** Anchor id so the pricing page can link directly to a group. */
   anchor?: string
 }>(), {})
@@ -21,9 +21,6 @@ const { L, locale } = useLocalizedContent()
       <h3 class="text-lg font-bold text-[var(--color-foreground)]">
         {{ L(group.title) }}
       </h3>
-      <p v-if="group.description" class="mt-1 text-sm leading-7 text-[var(--color-muted)]">
-        {{ L(group.description) }}
-      </p>
     </header>
 
     <!-- Horizontal scroll keeps wide tables usable without breaking the layout -->
@@ -67,7 +64,7 @@ const { L, locale } = useLocalizedContent()
               </span>
             </th>
             <td class="whitespace-nowrap px-6 py-4 text-[var(--color-foreground-soft)] tabular">
-              {{ L(row.quantity) }}
+              {{ L(row.quantityLabel) }}
             </td>
             <td class="px-6 py-4 text-[var(--color-muted)]">
               {{ L(row.specification) }}

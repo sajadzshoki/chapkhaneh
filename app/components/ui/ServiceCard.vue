@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Service } from '~~/shared/types'
+import type { ServiceDto } from '~/composables/useContent'
 
 /**
  * Service card. Two variants share one component so the design system stays
@@ -8,7 +8,7 @@ import type { Service } from '~~/shared/types'
  *  - `feature` — adds the service photograph (homepage / services listing top row)
  */
 withDefaults(defineProps<{
-  service: Service
+  service: ServiceDto
   variant?: 'default' | 'feature'
 }>(), { variant: 'default' })
 

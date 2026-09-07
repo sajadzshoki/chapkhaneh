@@ -1,14 +1,17 @@
 <script setup lang="ts">
-import type { PortfolioItem } from '~~/shared/types'
-import { getCategoryBySlug } from '~~/shared/data/portfolio'
+import type { PortfolioItemDto } from '~/composables/useContent'
 
-defineProps<{ item: PortfolioItem }>()
+defineProps<{ item: PortfolioItemDto }>()
 
 const { L } = useLocalizedContent()
 const localePath = useLocalePath()
+// The parent page has already awaited this data; reading the shared handle
+// here avoids a top-level await inside a child component (which would force
+// the whole card into a Suspense boundary).
+const { data: portfolio } = usePortfolio()
 
 const categoryTitle = (slug: string) => {
-  const category = getCategoryBySlug(slug)
+  const category = portfolio.value?.categories.find(c => c.slug === slug)
   return category ? L(category.title) : undefined
 }
 </script>

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { equipment } from '~~/shared/data/equipment'
 import type { EquipmentType } from '~~/shared/types'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+
+const { data: equipment } = await useEquipment()
 
 const activeType = ref<EquipmentType | 'all'>('all')
 
@@ -15,7 +16,7 @@ const options = computed(() =>
 )
 
 const filtered = computed(() =>
-  equipment
+  equipment.value
     .filter(e => activeType.value === 'all' || e.type === activeType.value)
     .sort((a, b) => a.order - b.order),
 )

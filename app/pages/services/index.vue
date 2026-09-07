@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { services } from '~~/shared/data/services'
 import type { ServiceCategory } from '~~/shared/types'
 
 const { t } = useI18n()
 const localePath = useLocalePath()
+
+const { data: services } = await useServices()
 
 const activeCategory = ref<ServiceCategory | 'all'>('all')
 
@@ -14,7 +15,7 @@ const options = computed(() =>
   })),
 )
 
-const ordered = computed(() => services.slice().sort((a, b) => a.order - b.order))
+const ordered = computed(() => services.value.slice().sort((a, b) => a.order - b.order))
 
 const filtered = computed(() =>
   ordered.value.filter(s => activeCategory.value === 'all' || s.category === activeCategory.value),

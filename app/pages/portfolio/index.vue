@@ -1,15 +1,21 @@
 <script setup lang="ts">
-import { portfolioCategories, portfolioItems, countByCategory } from '~~/shared/data/portfolio'
-
 const { t } = useI18n()
 const { L } = useLocalizedContent()
 const localePath = useLocalePath()
 
+const { data: portfolio } = await usePortfolio()
+
+const portfolioItems = computed(() => portfolio.value.items)
+const portfolioCategories = computed(() => portfolio.value.categories)
+
+const countByCategory = (categorySlug: string) =>
+  portfolioItems.value.filter(p => p.categorySlug === categorySlug).length
+
 const activeCategory = ref('all')
 
 const options = computed(() => [
-  { value: 'all', label: `${t('portfolio.allCategories')} (${portfolioItems.length})` },
-  ...portfolioCategories
+  { value: 'all', label: `${t('portfolio.allCategories')} (${portfolioItems.value.length})` },
+  ...portfolioCategories.value
     .slice()
     .sort((a, b) => a.order - b.order)
     .map(c => ({
@@ -19,7 +25,7 @@ const options = computed(() => [
 ])
 
 const filtered = computed(() =>
-  portfolioItems.filter(
+  portfolioItems.value.filter(
     p => activeCategory.value === 'all' || p.categorySlug === activeCategory.value,
   ),
 )
@@ -27,7 +33,7 @@ const filtered = computed(() =>
 /** Description of the currently selected category, shown under the filters. */
 const activeDescription = computed(() => {
   if (activeCategory.value === 'all') return undefined
-  const category = portfolioCategories.find(c => c.slug === activeCategory.value)
+  const category = portfolioCategories.value.find(c => c.slug === activeCategory.value)
   return category?.description ? L(category.description) : undefined
 })
 

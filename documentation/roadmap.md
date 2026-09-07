@@ -29,16 +29,32 @@ a CMS, a page builder, analytics, chat.
 - Quote request inbox: list, filter by status, update status, internal notes
 - Email notification on new quote requests
 
-## Phase 3 — Content management
+## Phase 3 — Database and admin foundation (delivered)
 
-- Move services, pricing, equipment, portfolio and FAQ into PostgreSQL
+- PostgreSQL + Drizzle schema for all 16 tables, with foreign keys, delete
+  behaviour, check constraints and targeted indexes
+- Initial migration committed; `db:migrate` / `db:seed` / `db:reset` workflow
+- Deterministic seed derived from the phase 2 content
+- Admin authentication: scrypt hashing, httpOnly signed session cookie,
+  login / logout / session check
+- Admin API and page routes protected by server and route middleware
+- Admin layout, dashboard with database-backed statistics, and read-only
+  screens for every content type
+- Public pages migrated off mock data onto database-backed APIs
+- Sanitised API errors and shared server-side validation
+
+See [`database.md`](./database.md) and [`admin.md`](./admin.md).
+
+## Phase 4 — Content management
+
 - Admin CRUD with side-by-side Persian/English editing for `Localized` fields
 - Image upload and management for portfolio and equipment
 - Site settings editor writing to the `site_settings` table
 - Theme editor for primary/secondary/accent, logo and favicon
   (`useThemeStore().applyOverrides` already supports this)
+- Quote request status workflow (NEW → REVIEWING → CONTACTED → COMPLETED)
 
-## Phase 4 — Production readiness
+## Phase 5 — Production readiness
 
 - Self-hosted Vazirmatn woff2 files (see `public/fonts/README.md`)
 - Real photography replacing the placeholder plates

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Equipment } from '~~/shared/types'
+import type { EquipmentDto } from '~/composables/useContent'
 
 /**
  * Equipment card.
@@ -7,7 +7,7 @@ import type { Equipment } from '~~/shared/types'
  *  - `compact` — manufacturer, model and description only (homepage / about)
  */
 withDefaults(defineProps<{
-  item: Equipment
+  item: EquipmentDto
   variant?: 'default' | 'compact'
   /** Optional destination; when set the whole card becomes clickable. */
   to?: string

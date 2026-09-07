@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { getPortfolioBySlug, getRelatedPortfolio, getCategoryBySlug } from '~~/shared/data/portfolio'
-import { getServiceBySlug } from '~~/shared/data/services'
-import type { ImageAsset, Service } from '~~/shared/types'
+import type { ImageAsset } from '~~/shared/types'
+import type { ServiceDto } from '~/composables/useContent'
 
 const route = useRoute()
 const { t } = useI18n()
@@ -9,7 +8,11 @@ const { L } = useLocalizedContent()
 const localePath = useLocalePath()
 
 const slug = computed(() => String(route.params.slug))
-const item = computed(() => getPortfolioBySlug(slug.value))
+
+const { data: portfolio } = await usePortfolio()
+const { data: services } = await useServices()
+
+const item = computed(() => portfolio.value.items.find(p => p.slug === slug.value))
 
 // Unknown slug renders an in-page state, but still reports 404 to crawlers.
 if (import.meta.server && !item.value) {
@@ -17,7 +20,7 @@ if (import.meta.server && !item.value) {
 }
 
 const category = computed(() =>
-  item.value ? getCategoryBySlug(item.value.categorySlug) : undefined,
+  portfolio.value.categories.find(c => c.slug === item.value?.categorySlug),
 )
 
 /** Cover image first, then any additional gallery frames. */
@@ -25,14 +28,25 @@ const images = computed<ImageAsset[]>(() =>
   item.value ? [item.value.image, ...(item.value.gallery ?? [])] : [],
 )
 
-const usedServices = computed<Service[]>(() => {
-  if (!item.value?.serviceSlugs) return []
-  return item.value.serviceSlugs
-    .map(getServiceBySlug)
-    .filter((s): s is Service => Boolean(s))
+const usedServices = computed<ServiceDto[]>(() => {
+  const slugs = item.value?.serviceSlugs ?? []
+  return slugs
+    .map(s => services.value.find(service => service.slug === s))
+    .filter((s): s is ServiceDto => Boolean(s))
 })
 
-const related = computed(() => (item.value ? getRelatedPortfolio(item.value.slug, 3) : []))
+/** Same category first, then any other project. */
+const related = computed(() => {
+  const current = item.value
+  if (!current) return []
+  const sameCategory = portfolio.value.items.filter(
+    p => p.slug !== current.slug && p.categorySlug === current.categorySlug,
+  )
+  const others = portfolio.value.items.filter(
+    p => p.slug !== current.slug && p.categorySlug !== current.categorySlug,
+  )
+  return [...sameCategory, ...others].slice(0, 3)
+})
 
 useHead({
   title: () => (item.value ? L(item.value.title) ?? '' : t('portfolio.notFoundTitle')),

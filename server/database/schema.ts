@@ -301,8 +301,15 @@ export const quoteRequests = pgTable('quote_requests', {
   quantity: integer('quantity'),
   description: text('description').notNull(),
   neededBy: text('needed_by'),
+  /**
+   * Generated storage name (never the customer's filename, never a path).
+   * Resolved against the configured upload directory by the download route.
+   */
   fileUrl: text('file_url'),
+  /** The customer's original filename, kept for display in the admin panel. */
   fileName: text('file_name'),
+  fileSize: integer('file_size'),
+  fileMimeType: text('file_mime_type'),
   locale: text('locale').notNull().default('fa'),
   status: text('status').notNull().default('NEW'),
   internalNote: text('internal_note'),
@@ -310,6 +317,8 @@ export const quoteRequests = pgTable('quote_requests', {
 }, table => [
   index('quote_requests_status_idx').on(table.status, table.createdAt),
   index('quote_requests_created_idx').on(table.createdAt),
+  // Supports the dashboard's per-service aggregation and the SET NULL cascade.
+  index('quote_requests_service_idx').on(table.serviceId),
   check('quote_requests_status_valid', sql`${table.status} IN ('NEW', 'REVIEWING', 'CONTACTED', 'COMPLETED')`),
   check('quote_requests_locale_valid', sql`${table.locale} IN ('fa', 'en')`),
 ])

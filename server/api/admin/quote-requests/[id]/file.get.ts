@@ -1,18 +1,25 @@
-import { createReadStream, existsSync } from 'node:fs'
-import { basename, resolve } from 'node:path'
+import { createReadStream } from 'node:fs'
+import { stat } from 'node:fs/promises'
 import { adminGetQuoteFile } from '../../../../repositories/admin.repository'
+import { resolveStoredPath } from '../../../../utils/uploads'
 import { uuidSchema, validateParam } from '../../../../utils/validation'
 
 /**
- * Streams a customer's uploaded file to the admin.
+ * Streams a customer's attachment to an authenticated admin.
  *
- * The stored path never reaches the browser: the client only ever links to
- * this route by request id. The resolved path is also confined to the upload
- * directory, so a tampered database value cannot be used to read arbitrary
- * files off the server.
+ * Security model:
+ *  - Authentication is enforced centrally by `server/middleware/admin-guard.ts`
+ *    for every `/api/admin/*` route, so this handler cannot be reached
+ *    anonymously and does not repeat the check.
+ *  - The client addresses the file by **request id only**. The storage name is
+ *    never sent to the browser and cannot be supplied by the caller, so there
+ *    is no attacker-controlled path component at all.
+ *  - The name read from the database is still resolved through
+ *    `resolveStoredPath`, which confirms the result sits directly inside the
+ *    upload directory. That guards against a tampered or legacy row and is a
+ *    containment check, not string cleaning.
+ *  - Attachments live outside `public/`, so they are never statically served.
  */
-const UPLOAD_ROOT = resolve(process.cwd(), 'storage/uploads')
-
 export default defineEventHandler(async (event) => {
   const id = validateParam(getRouterParam(event, 'id'), uuidSchema, 'id')
   const record = await adminGetQuoteFile(id)
@@ -21,19 +28,29 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 404, statusMessage: 'No file attached' })
   }
 
-  const absolute = resolve(UPLOAD_ROOT, basename(record.fileUrl))
+  const absolute = resolveStoredPath(record.fileUrl)
+  if (!absolute) {
+    // The stored value is not a plain name inside the upload root.
+    throw createError({ statusCode: 400, statusMessage: 'Invalid file reference' })
+  }
 
-  if (!absolute.startsWith(UPLOAD_ROOT + '/') || !existsSync(absolute)) {
+  const info = await stat(absolute).catch(() => null)
+  if (!info?.isFile()) {
     throw createError({ statusCode: 404, statusMessage: 'File not available' })
   }
 
-  const downloadName = record.fileName || basename(absolute)
-  setHeader(event, 'Content-Type', 'application/octet-stream')
-  setHeader(
-    event,
-    'Content-Disposition',
-    `attachment; filename*=UTF-8''${encodeURIComponent(downloadName)}`,
-  )
+  const downloadName = record.fileName || 'attachment'
+
+  // `attachment` plus nosniff: the browser saves the file rather than
+  // rendering it, so an uploaded SVG or HTML payload cannot execute in our
+  // origin. The filename is RFC 5987 encoded to survive Persian characters.
+  setResponseHeaders(event, {
+    'content-type': record.fileMimeType || 'application/octet-stream',
+    'content-length': info.size,
+    'content-disposition': `attachment; filename*=UTF-8''${encodeURIComponent(downloadName)}`,
+    'x-content-type-options': 'nosniff',
+    'cache-control': 'private, no-store',
+  })
 
   return sendStream(event, createReadStream(absolute))
 })

@@ -7,7 +7,7 @@ defineI18nRoute(false)
  * triaged and eventually deleted, so this screen offers status management
  * rather than full CRUD. Nothing here can create or rewrite a request.
  */
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const pick = useAdminLocalized()
 const { formatNumber, formatDate } = useAdminFormat()
 useHead({ title: () => `${t('admin.quotes.title')} — ${t('admin.brand')}` })
@@ -34,6 +34,8 @@ interface QuoteRow {
   createdAt: string
   serviceTitleFa: string | null
   serviceTitleEn: string | null
+  /** Present only when the request carries an attachment. */
+  fileName: string | null
 }
 
 interface QuoteDetail {
@@ -46,6 +48,8 @@ interface QuoteDetail {
   description: string | null
   neededBy: string | null
   fileName: string | null
+  fileSize: number | null
+  fileMimeType: string | null
   hasFile: boolean
   status: Status
   internalNote: string | null
@@ -93,6 +97,20 @@ async function openDetail(id: string) {
     detailLoading.value = false
   }
 }
+
+/** "1.4 MB · PDF" — size plus a human label rather than the raw MIME string. */
+const attachmentMeta = computed(() => {
+  const record = detail.value
+  if (!record?.hasFile) return ''
+
+  const parts: string[] = []
+  if (record.fileSize) parts.push(formatFileSize(record.fileSize, locale.value))
+
+  const extension = record.fileName?.split('.').pop()
+  if (extension) parts.push(extension.toUpperCase())
+
+  return parts.join(' · ')
+})
 
 async function saveStatus() {
   if (!detail.value) return
@@ -177,6 +195,7 @@ const statusFilterOptions = computed(() => [
       @retry="() => { resource.refresh() }"
     >
       <template #cell-customer="{ row }">
+        <div class="flex min-w-0 items-center gap-2">
         <div class="min-w-0">
           <p class="truncate font-medium text-[var(--color-foreground)]">
             {{ row.fullName }}
@@ -184,6 +203,16 @@ const statusFilterOptions = computed(() => [
           <p v-if="row.company" class="truncate text-xs text-[var(--color-muted)]">
             {{ row.company }}
           </p>
+        </div>
+        <!-- Attachment indicator: an icon rather than a column, so the table
+             stays readable on narrow screens. -->
+        <UIcon
+          v-if="row.fileName"
+          name="i-lucide-paperclip"
+          class="size-4 shrink-0 text-[var(--color-muted)]"
+          :aria-label="t('admin.quotes.hasAttachment')"
+          :title="t('admin.quotes.hasAttachment')"
+        />
         </div>
       </template>
 
@@ -326,6 +355,12 @@ const statusFilterOptions = computed(() => [
                 {{ formatNumber(detail.quantity) }}
               </dd>
             </div>
+            <div v-if="detail.neededBy">
+              <dt class="text-xs text-[var(--color-muted)]">
+                {{ t('admin.quotes.neededBy') }}
+              </dt>
+              <dd>{{ formatDate(detail.neededBy) }}</dd>
+            </div>
             <div>
               <dt class="text-xs text-[var(--color-muted)]">
                 {{ t('admin.quotes.submitted') }}
@@ -351,6 +386,9 @@ const statusFilterOptions = computed(() => [
                 >
                   {{ detail.fileName || t('admin.actions.download') }}
                 </UButton>
+                <p v-if="detail.hasFile" class="mt-1 text-xs text-[var(--color-muted)]">
+                  {{ attachmentMeta }}
+                </p>
                 <span v-else class="text-[var(--color-muted)]">
                   {{ t('admin.quotes.noAttachment') }}
                 </span>

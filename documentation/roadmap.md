@@ -68,17 +68,41 @@ See [`database.md`](./database.md) and [`admin.md`](./admin.md).
 
 Still open from the original phase 4 sketch: a theme editor for
 primary/secondary/accent colours (`useThemeStore().applyOverrides` already
-supports it) and true file *upload* — images are currently path-based, which is
-a deliberate simplification rather than a media library.
+supports it). Content *images* remain path-based, which is a deliberate
+simplification rather than a media library.
 
-## Phase 5 — Production readiness
+## Phase 5 — The quote request workflow (delivered)
+
+Full detail in [`quote-requests.md`](./quote-requests.md).
+
+- Single-page form grouped into Contact / Project / Attachments / Submit, with
+  labels, required markers, character limits and errors tied to their fields
+- Service list drawn from active database services, with preselection from a
+  service detail page and graceful handling when that service is gone
+- Matching client and server validation; the server is the authority and also
+  verifies the service is active
+- File upload accepting PDF, JPG, PNG, WebP, TIFF and ZIP, validated by
+  extension *and* magic bytes, with one central size constant
+- Local storage outside `public/` under generated UUID filenames; the database
+  keeps metadata only, never binary contents
+- Download route hardened with resolve-and-contain path checking, admin auth
+  and safe download headers
+- Real success state with next steps and return links; failure keeps every
+  entered value and allows retry without duplicating the request
+- Duplicate suppression, per-IP rate limiting, and orphaned-file cleanup
+- Notification extension point with a logging no-op implementation
+- Admin list with an attachment indicator, and a detail view showing the
+  original filename, type and size behind an authenticated download
+
+## Phase 6 — Production readiness
 
 - Self-hosted Vazirmatn woff2 files (see `public/fonts/README.md`)
 - Real photography replacing the placeholder plates
 - `sitemap.xml`, `robots.txt`, JSON-LD `Organization` and `Product` schema
 - Image optimisation via `@nuxt/image`
-- Lighthouse pass, rate limiting on the quote endpoint, spam protection
+- Lighthouse pass and further spam protection
 - Error tracking and deployment pipeline
+- A real notification transport behind the existing hook
 
 ## Reselling the product
 

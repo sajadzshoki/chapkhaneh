@@ -65,7 +65,7 @@ the UI is unaffected by the storage choice.
 | `portfolio_details` | Production detail rows. |
 | `portfolio_services` | Join: project ↔ services used. |
 | `faqs` | Category constrained to 4 values. |
-| `quote_requests` | Inbound leads. Status constrained to the 4 allowed values. |
+| `quote_requests` | Inbound leads. Status constrained to the 4 allowed values. Attachment *metadata* only (`file_url`, `file_name`, `file_size`, `file_mime_type`) — the bytes live on disk outside `public/`, see [`quote-requests.md`](./quote-requests.md). |
 | `site_settings` | Single row (`id = 'default'`). |
 | `theme_settings` | Single row (`id = 'default'`). |
 
@@ -98,7 +98,7 @@ Unique: service slug, portfolio slug, portfolio category slug, equipment slug,
 admin email. Check constraints validate quote status, locale, equipment type,
 FAQ category, currency, and non-negative prices/quantities. Indexes cover the
 lookups the site actually performs — slug resolution, `(is_active, sort_order)`
-listing, and quote status/date — rather than every column.
+listing, and quote status/date/service — rather than every column.
 
 ## Seed
 

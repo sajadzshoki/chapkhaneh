@@ -14,6 +14,7 @@ Persian-first and RTL by default, with full English (LTR) support.
 | [`content.md`](./content.md) | Where site content and mock data live |
 | [`database.md`](./database.md) | Schema, relationships, migrations and seeding |
 | [`admin.md`](./admin.md) | Admin authentication, CRUD API, validation and the CMS |
+| [`quote-requests.md`](./quote-requests.md) | Quote workflow, uploads, storage and download security |
 | [`i18n.md`](./i18n.md) | Translations, locales and RTL/LTR |
 | [`roadmap.md`](./roadmap.md) | What phase 1 delivered and what comes next |
 

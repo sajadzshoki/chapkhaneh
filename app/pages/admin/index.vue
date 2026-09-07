@@ -22,6 +22,8 @@ interface Dashboard {
     equipment: number
     newQuoteRequests: number
     reviewingQuoteRequests: number
+    contactedQuoteRequests: number
+    completedQuoteRequests: number
     totalQuoteRequests: number
   }
   recentQuoteRequests: {
@@ -50,6 +52,8 @@ const cards = computed(() => {
     { key: 'equipment', icon: 'i-lucide-factory', value: stats?.equipment, to: '/admin/equipment' },
     { key: 'newRequests', icon: 'i-lucide-inbox', value: stats?.newQuoteRequests, to: '/admin/quote-requests' },
     { key: 'reviewingRequests', icon: 'i-lucide-clock', value: stats?.reviewingQuoteRequests, to: '/admin/quote-requests' },
+    { key: 'contactedRequests', icon: 'i-lucide-phone-call', value: stats?.contactedQuoteRequests, to: '/admin/quote-requests' },
+    { key: 'completedRequests', icon: 'i-lucide-circle-check', value: stats?.completedQuoteRequests, to: '/admin/quote-requests' },
   ]
 })
 

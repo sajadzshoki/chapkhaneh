@@ -1,6 +1,7 @@
 import { and, asc, count, desc, eq, ilike, inArray, ne, or } from 'drizzle-orm'
 import type { PgColumn } from 'drizzle-orm/pg-core'
 import { useDatabase } from '../database/client'
+import { removeUpload } from '../utils/uploads'
 import {
   equipment,
   equipmentSpecs,
@@ -772,6 +773,7 @@ export async function adminListQuoteRequests(query: ListQuery) {
       quantity: quoteRequests.quantity,
       status: quoteRequests.status,
       createdAt: quoteRequests.createdAt,
+      fileName: quoteRequests.fileName,
       serviceTitleFa: services.titleFa,
       serviceTitleEn: services.titleEn,
     })
@@ -811,8 +813,11 @@ export async function adminGetQuoteRequest(id: string) {
     quantity: quote.quantity,
     description: quote.description,
     neededBy: quote.neededBy,
-    // Only the file name is exposed; the storage path stays server-side.
+    // Only display metadata is exposed; the storage name stays server-side and
+    // the file is reached by request id through the protected download route.
     fileName: quote.fileName,
+    fileSize: quote.fileSize,
+    fileMimeType: quote.fileMimeType,
     hasFile: Boolean(quote.fileUrl),
     locale: quote.locale,
     status: quote.status,
@@ -844,8 +849,21 @@ export async function adminUpdateQuoteStatus(
 
 export async function adminDeleteQuoteRequest(id: string) {
   const db = useDatabase()
-  await adminGetQuoteRequest(id)
+  const existing = await adminGetQuoteRequest(id)
+
+  // Read the storage name before the row disappears, otherwise the attachment
+  // is stranded on disk with nothing left pointing at it.
+  const [stored] = existing.hasFile
+    ? await db.select({ fileUrl: quoteRequests.fileUrl })
+      .from(quoteRequests).where(eq(quoteRequests.id, id)).limit(1)
+    : []
+
   await db.delete(quoteRequests).where(eq(quoteRequests.id, id))
+
+  // Best effort: the request is already gone, so a failed unlink must not turn
+  // a successful delete into an error. Worst case a stray file is left behind.
+  if (stored?.fileUrl) await removeUpload(stored.fileUrl)
+
   return { id }
 }
 
@@ -855,6 +873,7 @@ export async function adminGetQuoteFile(id: string) {
   const [row] = await db.select({
     fileUrl: quoteRequests.fileUrl,
     fileName: quoteRequests.fileName,
+    fileMimeType: quoteRequests.fileMimeType,
   }).from(quoteRequests).where(eq(quoteRequests.id, id)).limit(1)
 
   if (!row) notFound('Quote request')
@@ -900,8 +919,8 @@ export async function adminDashboard() {
   const db = useDatabase()
 
   const [
-    [totalServices], [activeServices], [portfolioCount],
-    [equipmentCount], [newQuotes], [reviewingQuotes], [totalQuotes],
+    [totalServices], [activeServices], [portfolioCount], [equipmentCount],
+    [newQuotes], [reviewingQuotes], [contactedQuotes], [completedQuotes], [totalQuotes],
   ] = await Promise.all([
     db.select({ value: count() }).from(services),
     db.select({ value: count() }).from(services).where(eq(services.isActive, true)),
@@ -909,6 +928,8 @@ export async function adminDashboard() {
     db.select({ value: count() }).from(equipment),
     db.select({ value: count() }).from(quoteRequests).where(eq(quoteRequests.status, 'NEW')),
     db.select({ value: count() }).from(quoteRequests).where(eq(quoteRequests.status, 'REVIEWING')),
+    db.select({ value: count() }).from(quoteRequests).where(eq(quoteRequests.status, 'CONTACTED')),
+    db.select({ value: count() }).from(quoteRequests).where(eq(quoteRequests.status, 'COMPLETED')),
     db.select({ value: count() }).from(quoteRequests),
   ])
 
@@ -934,6 +955,8 @@ export async function adminDashboard() {
       equipment: equipmentCount?.value ?? 0,
       newQuoteRequests: newQuotes?.value ?? 0,
       reviewingQuoteRequests: reviewingQuotes?.value ?? 0,
+      contactedQuoteRequests: contactedQuotes?.value ?? 0,
+      completedQuoteRequests: completedQuotes?.value ?? 0,
       totalQuoteRequests: totalQuotes?.value ?? 0,
     },
     recentQuoteRequests: recent,

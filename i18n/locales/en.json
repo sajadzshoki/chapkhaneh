@@ -359,7 +359,7 @@
   },
   "quote": {
     "title": "Request a quote",
-    "description": "Tell us about your job and our team will send a quotation within one working day.",
+    "description": "Tell us about your job and our team will prepare a quotation for you.",
     "form": {
       "fullName": "Full name",
       "fullNamePlaceholder": "e.g. Ali Rezaei",
@@ -377,7 +377,11 @@
       "description": "Job description",
       "descriptionPlaceholder": "Describe format, stock, page count, colours and any finishing you need.",
       "submit": "Send request",
-      "submitting": "Sending…"
+      "submitting": "Sending…",
+      "privacyNote": "Your details are used only to prepare and follow up this quotation.",
+      "fileCta": "Choose a file or drag it here",
+      "fileHint": "Accepted formats: {formats}. Maximum size {size}.",
+      "fileRemove": "Remove attached file"
     },
     "validation": {
       "fullNameRequired": "Full name is required.",
@@ -387,15 +391,40 @@
       "serviceRequired": "Please select a service.",
       "quantityInvalid": "Quantity must be a number greater than zero.",
       "descriptionRequired": "A job description is required.",
-      "descriptionTooShort": "Please provide at least 20 characters."
+      "descriptionTooShort": "Please provide at least 20 characters.",
+      "descriptionTooLong": "The description is too long.",
+      "serviceUnavailable": "This service is not available. Please choose another.",
+      "fileTooLarge": "The file is larger than the allowed size.",
+      "fileType": "This file format is not accepted.",
+      "fileContent": "The file contents do not match its format.",
+      "fileEmpty": "The selected file is empty.",
+      "fileStorage": "The file could not be saved. Please try again."
     },
     "success": {
       "title": "Your request has been received",
-      "description": "A sales engineer will contact you within one working day."
+      "description": "We have received your details and our team will review them and get back to you.",
+      "nextStepsTitle": "What happens next",
+      "step1": "A sales engineer reviews your specifications and any files you sent.",
+      "step2": "We contact you on the phone number you provided if anything needs clarifying.",
+      "step3": "You receive a written quotation covering price and lead time.",
+      "backHome": "Back to home",
+      "browseServices": "Browse services",
+      "another": "Send another request"
     },
     "error": {
       "title": "Could not send your request",
-      "description": "Please try again, or contact us directly by phone."
+      "description": "Please try again, or contact us directly by phone.",
+      "validation": "Some details need correcting. Please review the highlighted fields.",
+      "rateLimited": "Too many requests have been sent from this device. Please wait a few minutes and try again.",
+      "duplicate": "This request has already been received."
+    },
+    "sections": {
+      "contact": "Contact details",
+      "contactHint": "So we can send the quotation and reach you with any questions.",
+      "project": "Project details",
+      "projectHint": "The more specific you are, the more accurate the quotation.",
+      "attachment": "Attachments",
+      "attachmentHint": "Optional. Attach artwork, a sample or a specification sheet."
     }
   },
   "footer": {
@@ -573,7 +602,9 @@
       "reviewingRequests": "Under review",
       "recentRequests": "Latest quote requests",
       "recentEmpty": "No quote requests yet.",
-      "viewAll": "View all requests"
+      "viewAll": "View all requests",
+      "contactedRequests": "Contacted",
+      "completedRequests": "Completed"
     },
     "services": {
       "title": "Services",
@@ -702,7 +733,8 @@
         "REVIEWING": "Under review",
         "CONTACTED": "Contacted",
         "COMPLETED": "Completed"
-      }
+      },
+      "hasAttachment": "Has an attached file"
     },
     "settings": {
       "title": "Site settings",

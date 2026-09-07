@@ -8,3 +8,6 @@ dist
 .DS_Store
 .env.*
 !.env.example
+
+# Uploaded quote-request attachments (local storage, never served statically).
+storage/

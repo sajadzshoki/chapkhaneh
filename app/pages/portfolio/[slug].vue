@@ -48,15 +48,20 @@ const related = computed(() => {
   return [...sameCategory, ...others].slice(0, 3)
 })
 
-useHead({
-  title: () => (item.value ? L(item.value.title) ?? '' : t('portfolio.notFoundTitle')),
+usePageSeo({
+  title: () => (item.value ? L(item.value.title) : t('portfolio.notFoundTitle')),
+  description: () => (item.value ? L(item.value.description) : t('portfolio.notFoundDescription')),
+  image: () => item.value?.image.src,
+  // A case study is editorial content, not a landing page.
+  type: 'article',
+  noindex: !item.value,
 })
-useSeoMeta({
-  description: () => (item.value ? L(item.value.description) ?? '' : ''),
-  ogTitle: () => (item.value ? L(item.value.title) ?? '' : ''),
-  ogDescription: () => (item.value ? L(item.value.description) ?? '' : ''),
-  ogImage: () => item.value?.image.src,
-})
+
+useBreadcrumbSchema(() => [
+  { name: t('nav.home'), path: localePath('/') },
+  { name: t('portfolio.title'), path: localePath('/portfolio') },
+  ...(item.value ? [{ name: L(item.value.title) ?? '', path: localePath(`/portfolio/${item.value.slug}`) }] : []),
+])
 </script>
 
 <template>

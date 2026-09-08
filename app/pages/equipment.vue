@@ -21,12 +21,9 @@ const filtered = computed(() =>
     .sort((a, b) => a.order - b.order),
 )
 
-useHead({ title: () => t('equipment.title') })
-useSeoMeta({
+usePageSeo({
   title: () => t('equipment.title'),
   description: () => t('equipment.intro'),
-  ogTitle: () => t('equipment.title'),
-  ogDescription: () => t('equipment.intro'),
 })
 </script>
 

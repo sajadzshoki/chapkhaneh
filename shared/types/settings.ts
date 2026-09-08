@@ -49,15 +49,29 @@ export interface SiteSettings {
   workingHours: WorkingHours[]
   social: SocialLink[]
   brand: BrandAssets
+  /** Per-deployment default metadata. Page-level values take precedence. */
+  seo?: {
+    title?: Localized
+    description?: Localized
+  }
 }
 
-/** Overridable subset of the theme — the admin panel will write this in phase 3. */
+/**
+ * The brand palette an administrator can edit.
+ *
+ * These eight colours are expanded into the full CSS variable set by
+ * `shared/theme/tokens.ts` — see that file for why hover states and the
+ * numbered scales are derived rather than stored.
+ */
 export interface ThemeSettings {
   primary: string
   secondary: string
   accent: string
-  logo?: string
-  favicon?: string
+  background: string
+  surface: string
+  foreground: string
+  muted: string
+  border: string
 }
 
 export type AdminRole = 'owner' | 'editor'

@@ -10,24 +10,30 @@ app/                    Nuxt application (srcDir)
     home/               Homepage-only sections (Hero, WhySection, ProcessSection)
     quote/              Quote form parts (Field, Sidebar)
     ui/                 Reusable presentational components used across pages
-  composables/          useSite, useLocalizedContent, useNavigation
-  layouts/default.vue   Public layout (skip link + header + main + footer)
-  pages/                File-based routes
-  plugins/theme.client  Writes theme tokens to <html> as CSS variables
-  stores/               Pinia: theme, quote
+  composables/          useSite, useSiteSettings, usePageSeo, useStructuredData, …
+  layouts/              default.vue (public), admin.vue (admin shell)
+  middleware/           admin-auth
+  pages/                File-based routes ([...slug].vue = branded 404)
+  plugins/              site-identity (injects the company name into i18n)
+  stores/               Pinia: theme (admin preview only), quote
   utils/                format.ts, validation.ts
-  app.vue               Root: <html lang/dir>, SEO defaults, favicon
-  error.vue             404 / 500 page
+  app.vue               Root: <html lang/dir>, /theme.css, SEO defaults, favicon
+  error.vue             Error page for thrown errors
 
 shared/                 Code shared by app AND server (Nuxt 4 `shared/` layer)
   types/                Domain models — the contract for everything
   data/                 Seed content (not read at runtime)
-  theme/brand.ts        Single source of truth for brand colours
+  theme/brand.ts        Default palette (compile-time seed)
+  theme/tokens.ts       8 editable colours -> semantic tokens + scales
 
 server/
-  api/                  Nitro route handlers
+  api/                  Nitro route handlers (public + /api/admin/**)
+  routes/               theme.css, sitemap.xml, robots.txt
+  middleware/           admin-guard (single auth boundary for /api/admin/**)
+  repositories/         content (public reads) and admin (all admin CRUD)
   services/             Business logic (validation + persistence)
-  database/             Drizzle schema and lazy client
+  database/             Drizzle schema, migrations, seed
+  error-handler.ts      Sanitised JSON errors for /api/**
 
 i18n/locales/           fa.json, en.json
 public/                 brand/, portfolio/, photos/, fonts/, favicon.svg
@@ -42,8 +48,9 @@ documentation/          This folder
 | `~~/` | project root | `~~/shared/types`, `~~/shared/data/...` |
 
 Server code cannot import from `app/`. Anything both sides need — domain types,
-mock content, brand colours — lives in `shared/`. This is why `brand.ts` sits in
-`shared/theme/` rather than `app/`.
+seed content, theme derivation — lives in `shared/`. This is why `brand.ts` and
+`tokens.ts` sit in `shared/theme/` rather than `app/`: the theme stylesheet is
+generated on the server, and the admin preview uses the identical function.
 
 ## Where does new code go?
 
@@ -53,7 +60,8 @@ mock content, brand colours — lives in `shared/`. This is why `brand.ts` sits 
 | A component used on 2+ pages | `app/components/ui/` |
 | A component used by exactly one page | `app/components/<page>/` |
 | A new domain entity | `shared/types/` first, then data |
-| Content for the site | `shared/data/` |
+| Seed content for a fresh install | `shared/data/` |
+| Company-specific content | The database, via the admin — not code |
 | An API endpoint | `server/api/`, logic in `server/services/` |
 | A database table | `server/database/schema.ts` |
 

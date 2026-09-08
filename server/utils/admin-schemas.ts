@@ -204,10 +204,38 @@ export const siteSettingsInputSchema = z.object({
   mark: optionalText(400),
   favicon: optionalText(400),
   ogImage: optionalText(400),
+  seoTitleFa: optionalText(200),
+  seoTitleEn: optionalText(200),
+  seoDescriptionFa: optionalText(400),
+  seoDescriptionEn: optionalText(400),
   instagramUrl: optionalUrl,
   linkedinUrl: optionalUrl,
   telegramUrl: optionalUrl,
   whatsappUrl: optionalUrl,
+})
+
+/* --------------------------------- Theme --------------------------------- */
+
+/**
+ * A single brand colour.
+ *
+ * Only `#rrggbb` is accepted. This is the boundary that prevents CSS
+ * injection: theme values end up inside a `<style>` block, so anything that
+ * is not a literal hex colour is rejected outright rather than escaped.
+ */
+const hexColor = z.string().trim()
+  .regex(/^#[0-9a-fA-F]{6}$/, 'Use a 6-digit hex colour, e.g. #0f4c81')
+  .transform(v => v.toLowerCase())
+
+export const themeSettingsInputSchema = z.object({
+  primary: hexColor,
+  secondary: hexColor,
+  accent: hexColor,
+  background: hexColor,
+  surface: hexColor,
+  foreground: hexColor,
+  muted: hexColor,
+  border: hexColor,
 })
 
 /* -------------------------------- Reorder -------------------------------- */
@@ -238,4 +266,5 @@ export type PortfolioCategoryInput = z.infer<typeof portfolioCategoryInputSchema
 export type PortfolioItemInput = z.infer<typeof portfolioItemInputSchema>
 export type FaqInput = z.infer<typeof faqInputSchema>
 export type SiteSettingsInput = z.infer<typeof siteSettingsInputSchema>
+export type ThemeSettingsInput = z.infer<typeof themeSettingsInputSchema>
 export type ListQuery = z.infer<typeof listQuerySchema>

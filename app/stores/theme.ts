@@ -1,38 +1,62 @@
 import { defineStore } from 'pinia'
-import { brandTheme } from '~~/shared/theme/brand'
-import type { SemanticTokens } from '~~/shared/theme/brand'
-import type { ThemeSettings } from '~~/shared/types'
+import {
+  buildCssVariables,
+  defaultEditableTheme,
+  sanitizeTheme,
+  type EditableTheme,
+} from '~~/shared/theme/tokens'
 
 /**
- * Theme store.
+ * Theme store — used by the **admin preview only**.
  *
- * State management is genuinely useful here: the theme is global, mutable at
- * runtime (the future admin panel will change brand colours) and read by the
- * plugin that writes CSS variables.
+ * The public site does not need this: its palette arrives as a render-blocking
+ * stylesheet from `/theme.css`, so there is no flash and no JavaScript
+ * involved. What the store adds is the ability to preview unsaved colours
+ * while an administrator is editing them.
+ *
+ * `preview` is deliberately scoped: it is applied to a container element in
+ * the theme editor, never to `document.documentElement`, so editing a colour
+ * cannot alter the live site for anyone — including the admin's own panel —
+ * until Save is pressed.
  */
 export const useThemeStore = defineStore('theme', () => {
-  /** Admin-provided overrides on top of the compile-time brand defaults. */
-  const overrides = ref<Partial<ThemeSettings>>({})
+  /** The palette currently persisted in PostgreSQL. */
+  const saved = ref<EditableTheme>({ ...defaultEditableTheme })
+  /** Unsaved edits shown in the preview. */
+  const draft = ref<EditableTheme>({ ...defaultEditableTheme })
 
-  const tokens = computed<SemanticTokens>(() => ({
-    ...brandTheme.colors,
-    ...(overrides.value.primary ? { primary: overrides.value.primary } : {}),
-    ...(overrides.value.secondary ? { secondary: overrides.value.secondary } : {}),
-    ...(overrides.value.accent ? { accent: overrides.value.accent } : {}),
-  }))
+  const dirty = computed(() =>
+    (Object.keys(draft.value) as (keyof EditableTheme)[])
+      .some(key => draft.value[key] !== saved.value[key]))
 
-  /** `--color-*` variable map applied to the document root. */
-  const cssVariables = computed<Record<string, string>>(() =>
-    Object.fromEntries(Object.entries(tokens.value).map(([k, v]) => [`--color-${k}`, v])),
-  )
+  /** CSS variables for the draft, for scoped preview styling. */
+  const previewVariables = computed(() => buildCssVariables(sanitizeTheme(draft.value)))
 
-  function applyOverrides(next: Partial<ThemeSettings>) {
-    overrides.value = { ...overrides.value, ...next }
+  /** Loads the persisted palette and resets any in-progress edits. */
+  function load(theme: Partial<EditableTheme> | null | undefined) {
+    saved.value = sanitizeTheme(theme)
+    draft.value = { ...saved.value }
   }
 
-  function reset() {
-    overrides.value = {}
+  function set(key: keyof EditableTheme, value: string) {
+    draft.value = { ...draft.value, [key]: value }
   }
 
-  return { overrides, tokens, cssVariables, applyOverrides, reset }
+  /** Applies a preset to the draft. The admin still has to save it. */
+  function apply(theme: Partial<EditableTheme>) {
+    draft.value = { ...draft.value, ...theme }
+  }
+
+  /** Marks the draft as persisted, after a successful save. */
+  function commit(theme: EditableTheme) {
+    saved.value = sanitizeTheme(theme)
+    draft.value = { ...saved.value }
+  }
+
+  /** Cancel — discards edits and restores the last saved palette. */
+  function revert() {
+    draft.value = { ...saved.value }
+  }
+
+  return { saved, draft, dirty, previewVariables, load, set, apply, commit, revert }
 })

@@ -10,12 +10,9 @@ const groups = computed(() =>
   pricingGroups.value.map(group => ({ group, anchor: `pricing-${group.serviceSlug}` })),
 )
 
-useHead({ title: () => t('pricing.title') })
-useSeoMeta({
+usePageSeo({
   title: () => t('pricing.title'),
   description: () => t('pricing.intro'),
-  ogTitle: () => t('pricing.title'),
-  ogDescription: () => t('pricing.intro'),
 })
 </script>
 

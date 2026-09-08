@@ -12,12 +12,9 @@ const socialIcons: Record<string, string> = {
   aparat: 'i-lucide-play',
 }
 
-useHead({ title: () => t('contact.title') })
-useSeoMeta({
+usePageSeo({
   title: () => t('contact.title'),
   description: () => t('contact.intro'),
-  ogTitle: () => t('contact.title'),
-  ogDescription: () => t('contact.intro'),
 })
 </script>
 

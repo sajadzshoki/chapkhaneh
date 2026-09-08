@@ -11,7 +11,9 @@ definePageMeta({
 // public i18n routing so no /en/admin duplicates are generated.
 defineI18nRoute(false)
 
-useHead({ title: 'Admin sign in — Mobin Bartar' })
+const { t } = useI18n()
+
+useHead({ title: () => `${t('admin.login.title')} — ${t('admin.brand')}` })
 
 const { login } = useAdminAuth()
 const route = useRoute()
@@ -50,7 +52,7 @@ async function onSubmit() {
     <div class="w-full max-w-sm">
       <div class="mb-8 flex items-center justify-center gap-2.5">
         <img src="/brand/mark.svg" alt="" aria-hidden="true" width="36" height="36" class="size-9">
-        <span class="text-lg font-bold text-[var(--color-foreground)]">Mobin Bartar</span>
+        <span class="text-lg font-bold text-[var(--color-foreground)]">{{ t('admin.brand') }}</span>
       </div>
 
       <div class="border border-[var(--color-border)] bg-[var(--color-surface)] p-7">

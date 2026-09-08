@@ -323,6 +323,12 @@ export function toSiteSettingsDto(row: SiteSettingsRow) {
       favicon: row.favicon ?? '/favicon.svg',
       ogImage: row.ogImage ?? undefined,
     },
+    // Optional defaults. Pages that set their own metadata still win; these
+    // only replace the generic i18n fallback for a given deployment.
+    seo: {
+      title: locOptional(row.seoTitleFa, row.seoTitleEn),
+      description: locOptional(row.seoDescriptionFa, row.seoDescriptionEn),
+    },
   }
 }
 

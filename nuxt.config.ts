@@ -52,6 +52,7 @@ export default defineNuxtConfig({
           'lucide:chevron-right',
           'lucide:chevron-up',
           'lucide:circle-check',
+          'lucide:palette',
           'lucide:paperclip',
           'lucide:upload',
           'lucide:phone-call',

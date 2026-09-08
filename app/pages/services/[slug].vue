@@ -50,15 +50,27 @@ async function requestQuote(): Promise<void> {
   await navigateTo(localePath('/quote'))
 }
 
-useHead({
-  title: () => (service.value ? L(service.value.title) ?? '' : t('services.notFoundTitle')),
+// Falls back to the not-found title so an unknown slug still gets a sensible
+// tag rather than an empty or `undefined` one.
+usePageSeo({
+  title: () => (service.value ? L(service.value.title) : t('services.notFoundTitle')),
+  description: () => (service.value ? L(service.value.summary) : t('services.notFoundDescription')),
+  image: () => service.value?.image?.src,
+  // An unknown slug must not be indexed as a real page.
+  noindex: !service.value,
 })
-useSeoMeta({
-  description: () => (service.value ? L(service.value.summary) ?? '' : ''),
-  ogTitle: () => (service.value ? L(service.value.title) ?? '' : ''),
-  ogDescription: () => (service.value ? L(service.value.summary) ?? '' : ''),
-  ogImage: () => service.value?.image?.src,
+
+useServiceSchema({
+  name: () => (service.value ? L(service.value.title) : undefined),
+  description: () => (service.value ? L(service.value.summary) : undefined),
+  image: () => service.value?.image?.src,
 })
+
+useBreadcrumbSchema(() => [
+  { name: t('nav.home'), path: localePath('/') },
+  { name: t('services.title'), path: localePath('/services') },
+  ...(service.value ? [{ name: L(service.value.title) ?? '', path: localePath(`/services/${service.value.slug}`) }] : []),
+])
 </script>
 
 <template>

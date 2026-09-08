@@ -66,10 +66,9 @@ See [`database.md`](./database.md) and [`admin.md`](./admin.md).
 - Site settings editor writing to `site_settings` and reflected on public pages
 - Dashboard counts plus a recent-requests list
 
-Still open from the original phase 4 sketch: a theme editor for
-primary/secondary/accent colours (`useThemeStore().applyOverrides` already
-supports it). Content *images* remain path-based, which is a deliberate
-simplification rather than a media library.
+Content *images* remain path-based, which is a deliberate simplification
+rather than a media library. The theme editor left open here was delivered in
+phase 6.
 
 ## Phase 5 — The quote request workflow (delivered)
 
@@ -94,27 +93,48 @@ Full detail in [`quote-requests.md`](./quote-requests.md).
 - Admin list with an attachment indicator, and a detail view showing the
   original filename, type and size behind an authenticated download
 
-## Phase 6 — Production readiness
+## Phase 6 — White-label & production readiness (delivered)
+
+See [`white-label.md`](./white-label.md), [`theming.md`](./theming.md),
+[`seo.md`](./seo.md) and [`deployment.md`](./deployment.md).
+
+- Company identity fully database-driven: no component hardcodes a name, logo,
+  contact detail or colour. The company name reaches translated strings through
+  the linked message `@:brand.company`
+- Theme editor at `/admin/settings/theme`: eight colours via picker or hex,
+  five presets, validation, an isolated live preview, and save/cancel. Changes
+  apply without a rebuild, delivered as a render-blocking `/theme.css` so there
+  is no flash of the wrong theme
+- Theme values sanitised on write *and* read against a strict hex pattern —
+  no path exists for CSS injection
+- Palette duplication resolved by codegen (`npm run theme:generate`) rather
+  than a CSS pipeline, because Tailwind v4 needs literal values at build time
+- SEO foundation: localised titles, descriptions, canonicals, hreflang and OG
+  tags on every public route, driven by one `NUXT_PUBLIC_SITE_URL`
+- `sitemap.xml`, `robots.txt` and Organization / Service / Breadcrumb / FAQ
+  JSON-LD. No fabricated reviews or ratings
+- Branded, localised 404s for unknown public *and* admin paths
+- Four optional SEO default fields on `site_settings`; page content still wins
+- Documentation rewritten to match the code, including a "for the next AI or
+  developer" section
+
+Deferred, and still genuinely open:
 
 - Self-hosted Vazirmatn woff2 files (see `public/fonts/README.md`)
 - Real photography replacing the placeholder plates
-- `sitemap.xml`, `robots.txt`, JSON-LD `Organization` and `Product` schema
 - Image optimisation via `@nuxt/image`
-- Lighthouse pass and further spam protection
-- Error tracking and deployment pipeline
+- Error tracking and a deployment pipeline
 - A real notification transport behind the existing hook
 
 ## Reselling the product
 
 The architecture assumes this codebase is resold to other printing companies.
-A rebrand touches:
+As of phase 6 a rebrand requires **no code changes** — company details, brand
+assets, colours and content are all edited in the admin. See
+[`white-label.md`](./white-label.md).
 
-1. `shared/theme/brand.ts` — colour scales
-2. `app/assets/css/main.css` + `tokens.css` — mirrored literal values
-3. `shared/data/site.ts` — company profile
-4. `public/brand/` and `public/favicon.svg` — logo and favicon
-5. `shared/data/*.ts` — seed content only; from phase 4 onwards the live
-   content is edited by the client in the admin panel, not in code
+Code-level defaults (`shared/theme/brand.ts`, `shared/data/*.ts`) only decide
+what a *fresh* install looks like before an owner customises it.
 
 Multi-tenancy remains explicitly out of scope: each client gets their own
 deployment and database.

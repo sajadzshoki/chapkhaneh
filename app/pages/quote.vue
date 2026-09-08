@@ -179,8 +179,10 @@ const errorMessage = computed(() => {
 
 onBeforeUnmount(() => quoteStore.reset())
 
-useHead({ title: () => t('quote.title') })
-useSeoMeta({ description: () => t('quote.description') })
+usePageSeo({
+  title: () => t('quote.title'),
+  description: () => t('quote.description'),
+})
 </script>
 
 <template>

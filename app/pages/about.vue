@@ -30,12 +30,9 @@ const equipmentList = computed(() =>
   equipment.value.slice().sort((a, b) => a.order - b.order).slice(0, 3),
 )
 
-useHead({ title: () => t('about.title') })
-useSeoMeta({
+usePageSeo({
   title: () => t('about.title'),
   description: () => t('about.intro'),
-  ogTitle: () => t('about.title'),
-  ogDescription: () => t('about.intro'),
 })
 </script>
 

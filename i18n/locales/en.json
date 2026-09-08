@@ -1,7 +1,7 @@
 {
   "meta": {
-    "titleTemplate": "%s | Mobin Bartar",
-    "defaultDescription": "Mobin Bartar industrial printing: offset, digital, book production, packaging and post-press services."
+    "titleTemplate": "{page} {'|'} @:brand.company",
+    "defaultDescription": "@:brand.company industrial printing: offset, digital, book production, packaging and post-press services."
   },
   "nav": {
     "home": "Home",
@@ -69,11 +69,11 @@
       "description": "From sheet-fed offset and book production to packaging and post-press finishing — every stage happens under one roof, so quality and lead time stay under control.",
       "primaryCta": "Request a quote",
       "secondaryCta": "Explore services",
-      "imageAlt": "Offset printing line on the Mobin Bartar production floor",
+      "imageAlt": "Offset printing line on the @:brand.company production floor",
       "credibility": "25+ years in print · 8 active production lines · 400+ publisher clients"
     },
     "stats": {
-      "title": "Mobin Bartar at a glance"
+      "title": "@:brand.company at a glance"
     },
     "services": {
       "eyebrow": "Services",
@@ -81,7 +81,7 @@
       "description": "Ten groups of printing and packaging services, all under one roof and one quality-control team."
     },
     "why": {
-      "eyebrow": "Why Mobin Bartar",
+      "eyebrow": "Why @:brand.company",
       "title": "Why corporate clients choose us",
       "description": "The difference between an industrial printer and a print shop is repeatability.",
       "items": {
@@ -116,7 +116,7 @@
     "process": {
       "eyebrow": "How we work",
       "title": "From enquiry to delivery",
-      "description": "The path an order takes through Mobin Bartar is transparent and trackable.",
+      "description": "The path an order takes through @:brand.company is transparent and trackable.",
       "steps": {
         "inquiry": {
           "title": "Enquiry and consultation",
@@ -149,7 +149,7 @@
     "about": {
       "eyebrow": "About the company",
       "title": "An industrial printer, not a print shop",
-      "description": "Mobin Bartar has been printing since 2000. What separates us from a print shop is capacity and repeatability: a job you print this year will come back next year in the same colour, to the same standard.",
+      "description": "@:brand.company has been printing since 2000. What separates us from a print shop is capacity and repeatability: a job you print this year will come back next year in the same colour, to the same standard.",
       "points": {
         "experience": "Over two decades of continuous production for publishers, industry and institutions",
         "quality": "Colour managed to ISO 12647-2, with every job’s parameters recorded",
@@ -158,7 +158,7 @@
         "team": "140 staff, including long-serving press operators"
       },
       "cta": "More about us",
-      "imageAlt": "Exterior view of the Mobin Bartar plant"
+      "imageAlt": "Exterior view of the @:brand.company plant"
     }
   },
   "services": {
@@ -208,7 +208,7 @@
   },
   "equipment": {
     "title": "Equipment & machinery",
-    "description": "The Mobin Bartar production line covers offset, digital, pre-press and post-press machinery.",
+    "description": "The @:brand.company production line covers offset, digital, pre-press and post-press machinery.",
     "types": {
       "all": "All",
       "offset": "Offset",
@@ -219,7 +219,7 @@
     "specifications": "Technical specifications",
     "manufacturer": "Manufacturer",
     "installedYear": "Installed",
-    "intro": "The Mobin Bartar production line is built on industrial machinery. Print quality is a direct result of these presses and how well they are maintained.",
+    "intro": "The @:brand.company production line is built on industrial machinery. Print quality is a direct result of these presses and how well they are maintained.",
     "capabilities": "Key capabilities",
     "model": "Model",
     "printingType": "Printing type"
@@ -245,11 +245,11 @@
     "projectCount": "{count} projects"
   },
   "about": {
-    "title": "About Mobin Bartar",
+    "title": "About @:brand.company",
     "description": "More than two decades of industrial print production for publishers, industry and institutions.",
     "story": {
       "title": "Our story",
-      "description": "Mobin Bartar started in 2000 with a single two-colour offset press. Today, with eight active production lines and 140 staff, it is a well-established name in Iranian industrial printing. That growth came from steady investment in machinery and technical training — not from rapid, unplanned expansion."
+      "description": "@:brand.company started in 2000 with a single two-colour offset press. Today, with eight active production lines and 140 staff, it is a well-established name in Iranian industrial printing. That growth came from steady investment in machinery and technical training — not from rapid, unplanned expansion."
     },
     "values": {
       "title": "How we work",
@@ -280,7 +280,7 @@
       "title": "The facility",
       "description": "Our 6,500 square-metre plant operates in Tehran's Print & Publishing Industrial Park."
     },
-    "intro": "Mobin Bartar is an industrial printing company in Tehran, producing for publishers, industry and public organisations since 2000.",
+    "intro": "@:brand.company is an industrial printing company in Tehran, producing for publishers, industry and public organisations since 2000.",
     "capabilities": {
       "title": "Production capability",
       "description": "Capacity determines which jobs can be accepted without subcontracting and without a drop in quality."
@@ -428,7 +428,7 @@
     }
   },
   "footer": {
-    "aboutTitle": "About Mobin Bartar",
+    "aboutTitle": "About @:brand.company",
     "quickLinks": "Quick links",
     "servicesTitle": "Services",
     "contactTitle": "Contact",
@@ -439,7 +439,7 @@
   },
   "admin": {
     "title": "Admin panel",
-    "brand": "Mobin Bartar",
+    "brand": "@:brand.company",
     "viewSite": "View website",
     "logout": "Sign out",
     "login": "Sign in",
@@ -453,7 +453,8 @@
       "portfolio": "Portfolio",
       "faqs": "FAQs",
       "quoteRequests": "Quote requests",
-      "settings": "Settings"
+      "settings": "Settings",
+      "theme": "Brand colours"
     },
     "actions": {
       "create": "Create",
@@ -570,7 +571,8 @@
       "activated": "Now visible on the website.",
       "deactivated": "Hidden from the website.",
       "statusUpdated": "Status updated.",
-      "settingsSaved": "Site settings saved."
+      "settingsSaved": "Site settings saved.",
+      "themeSaved": "Brand colours saved"
     },
     "pagination": {
       "showing": "Showing {from}–{to} of {total}",
@@ -775,7 +777,16 @@
       "instagramUrl": "Instagram",
       "linkedinUrl": "LinkedIn",
       "telegramUrl": "Telegram",
-      "whatsappUrl": "WhatsApp"
+      "whatsappUrl": "WhatsApp",
+      "sectionSeo": "Search engine defaults",
+      "seoHint": "Used when a page does not define its own title or description. Leave blank to use the company name and description.",
+      "seoTitleFa": "Default title (Persian)",
+      "seoTitleEn": "Default title (English)",
+      "seoDescriptionFa": "Default description (Persian)",
+      "seoDescriptionEn": "Default description (English)",
+      "themeLinkTitle": "Brand colours",
+      "themeLinkHint": "Change the colours used across the public website.",
+      "themeLinkAction": "Edit colours"
     },
     "validation": {
       "required": "This field is required.",
@@ -788,6 +799,57 @@
       "nonNegative": "The value cannot be negative.",
       "maxLength": "This text is too long.",
       "selectOption": "Please choose an option."
+    },
+    "theme": {
+      "title": "Brand colours",
+      "description": "Set the colours used across the public website.",
+      "backToSettings": "Back to settings",
+      "presets": "Presets",
+      "presetsHint": "A starting point. Adjust the colours below, then save.",
+      "presetNames": {
+        "default": "Default",
+        "blue": "Blue",
+        "red": "Red",
+        "green": "Green",
+        "orange": "Orange"
+      },
+      "invalidColor": "Enter a 6-digit hex colour, for example #0f4c81.",
+      "unsaved": "You have unsaved changes. The website still shows the saved colours.",
+      "savedHint": "The website will use the new colours on the next page load.",
+      "preview": "Preview",
+      "previewHint": "A sample of the public website. Nothing changes for visitors until you save.",
+      "colors": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "accent": "Accent",
+        "background": "Page background",
+        "surface": "Card background",
+        "foreground": "Text",
+        "muted": "Secondary text",
+        "border": "Borders"
+      },
+      "hints": {
+        "primary": "Buttons, links and the main brand colour.",
+        "secondary": "Dark headings and the footer.",
+        "accent": "Highlights, used sparingly.",
+        "background": "The colour behind every page.",
+        "surface": "Cards, panels and the header.",
+        "foreground": "Main body and heading text.",
+        "muted": "Captions and less important text.",
+        "border": "Lines between sections and around cards."
+      },
+      "sampleBrand": "Your company",
+      "sampleNav": "Services · Portfolio · Contact",
+      "sampleHeading": "Industrial printing, delivered on schedule",
+      "sampleBody": "A sample of how headings, body text and buttons will look with the colours you have chosen.",
+      "samplePrimaryButton": "Request a quote",
+      "sampleSecondaryButton": "View services",
+      "sampleCardTitle": "Offset printing",
+      "sampleCardBody": "High-volume sheet-fed production with consistent colour.",
+      "sampleLink": "Learn more"
     }
+  },
+  "brand": {
+    "company": "Mobin Bartar"
   }
 }

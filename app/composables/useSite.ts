@@ -14,11 +14,9 @@ export function useSite() {
   const { locale } = useI18n()
   const currentLocale = computed(() => locale.value as LocaleCode)
 
-  const { data } = useAsyncData(
-    'site-settings',
-    () => $fetch<{ site: SiteSettings, theme: Record<string, string> | null }>('/api/site-settings'),
-    { default: () => ({ site: fallbackSettings, theme: null }) },
-  )
+  // Declared once in `useSiteSettingsData` so every consumer shares a single
+  // request instead of racing on differing useAsyncData options.
+  const { data } = useSiteSettingsData()
 
   const site = computed<SiteSettings>(() => data.value?.site ?? fallbackSettings)
 

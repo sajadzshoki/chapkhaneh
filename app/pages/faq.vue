@@ -23,13 +23,17 @@ const filtered = computed(() =>
     .sort((a, b) => a.order - b.order),
 )
 
-useHead({ title: () => t('faq.title') })
-useSeoMeta({
+usePageSeo({
   title: () => t('faq.title'),
   description: () => t('faq.intro'),
-  ogTitle: () => t('faq.title'),
-  ogDescription: () => t('faq.intro'),
 })
+
+// Built from the published questions themselves, so the markup can never
+// describe content that is not on the page.
+useFaqSchema(() => faqs.value.map(faq => ({
+  question: L(faq.question) ?? '',
+  answer: L(faq.answer) ?? '',
+})))
 </script>
 
 <template>

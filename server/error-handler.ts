@@ -10,14 +10,16 @@ import type { NitroErrorHandler } from 'nitropack'
  *   - 5xx  -> generic message, nothing about the cause, full server-side log
  *   - 4xx  -> the explicit statusMessage plus any validation `data.issues`
  *
- * Non-API routes fall through to Nitro's default handler, which renders the
- * normal HTML error page for the public site.
+ * Non-API routes fall through to Nuxt's page rendering, which shows the
+ * branded HTML error page (`app/error.vue`) for the public site.
  */
 const handler: NitroErrorHandler = async function apiErrorHandler(error, event) {
   const path = event.path ?? ''
 
   if (!path.startsWith('/api/')) {
-    // Let Nuxt render its own error page for page routes.
+    // Page routes fall through. Unmatched paths are caught by the
+    // `[...slug].vue` catch-all page, which throws a 404 so Nuxt renders the
+    // branded, localised `app/error.vue` instead of a JSON body.
     return
   }
 

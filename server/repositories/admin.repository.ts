@@ -2,6 +2,7 @@ import { and, asc, count, desc, eq, ilike, inArray, ne, or } from 'drizzle-orm'
 import type { PgColumn } from 'drizzle-orm/pg-core'
 import { useDatabase } from '../database/client'
 import { removeUpload } from '../utils/uploads'
+import { sanitizeTheme, type EditableTheme } from '../../shared/theme/tokens'
 import {
   equipment,
   equipmentSpecs,
@@ -17,6 +18,7 @@ import {
   services,
   serviceSpecifications,
   siteSettings,
+  themeSettings,
 } from '../database/schema'
 import type {
   EquipmentInput,
@@ -909,6 +911,37 @@ export async function adminUpdateSiteSettings(input: SiteSettingsInput) {
     .values({ ...input, id: 'default' })
     .returning({ id: siteSettings.id })
   return { id: row!.id }
+}
+
+/* ---------------------------------- Theme --------------------------------- */
+
+/**
+ * Reads the stored theme. Returns the sanitised palette, so a hand-edited or
+ * corrupted row can never propagate an invalid colour into the CSS.
+ */
+export async function adminGetTheme(): Promise<EditableTheme> {
+  const db = useDatabase()
+  const [row] = await db.select().from(themeSettings).limit(1)
+  return sanitizeTheme(row)
+}
+
+/** Upsert on the fixed `default` key, mirroring the site-settings behaviour. */
+export async function adminUpdateTheme(input: EditableTheme) {
+  const db = useDatabase()
+  // Sanitised again here: this function is the last gate before the database,
+  // and it must hold regardless of which route calls it.
+  const clean = sanitizeTheme(input)
+  const [existing] = await db.select({ id: themeSettings.id }).from(themeSettings).limit(1)
+
+  if (existing) {
+    await db.update(themeSettings)
+      .set({ ...clean, updatedAt: new Date() })
+      .where(eq(themeSettings.id, existing.id))
+    return clean
+  }
+
+  await db.insert(themeSettings).values({ ...clean, id: 'default' })
+  return clean
 }
 
 /* -------------------------------------------------------------------------- */

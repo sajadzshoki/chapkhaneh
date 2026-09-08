@@ -45,6 +45,10 @@ interface SiteSettings {
   linkedinUrl: string | null
   telegramUrl: string | null
   whatsappUrl: string | null
+  seoTitleFa: string | null
+  seoTitleEn: string | null
+  seoDescriptionFa: string | null
+  seoDescriptionEn: string | null
 }
 
 /** Fields that are stored nullable but edited as plain strings. */
@@ -54,6 +58,7 @@ const NULLABLE_TEXT = [
   'mapUrl', 'workingHoursDaysFa', 'workingHoursDaysEn',
   'logo', 'mark', 'favicon', 'ogImage',
   'instagramUrl', 'linkedinUrl', 'telegramUrl', 'whatsappUrl',
+  'seoTitleFa', 'seoTitleEn', 'seoDescriptionFa', 'seoDescriptionEn',
 ] as const
 
 const { data, pending, error, refresh } = await useAsyncData('admin-settings', () =>
@@ -305,6 +310,42 @@ async function onSubmit() {
             <UInput v-model="form.ogImage" class="flex-1" />
             <AdminThumb :src="form.ogImage" />
           </div>
+        </AdminField>
+
+        <!-- Colours live on their own screen: they need a live preview, and
+             mixing them into this long form would bury them. -->
+        <div
+          class="flex flex-wrap items-center justify-between gap-3 border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-4 sm:col-span-2"
+        >
+          <div>
+            <p class="text-sm font-semibold text-[var(--color-foreground)]">
+              {{ t('admin.settings.themeLinkTitle') }}
+            </p>
+            <p class="mt-0.5 text-xs text-[var(--color-muted)]">
+              {{ t('admin.settings.themeLinkHint') }}
+            </p>
+          </div>
+          <UButton to="/admin/settings/theme" color="neutral" variant="outline" size="sm" icon="i-lucide-palette">
+            {{ t('admin.settings.themeLinkAction') }}
+          </UButton>
+        </div>
+      </AdminFormSection>
+
+      <AdminFormSection :title="t('admin.settings.sectionSeo')">
+        <p class="text-xs text-[var(--color-muted)] sm:col-span-2">
+          {{ t('admin.settings.seoHint') }}
+        </p>
+        <AdminField :label="t('admin.settings.seoTitleFa')" dir="rtl">
+          <UInput v-model="form.seoTitleFa" class="w-full" />
+        </AdminField>
+        <AdminField :label="t('admin.settings.seoTitleEn')" dir="ltr">
+          <UInput v-model="form.seoTitleEn" class="w-full" />
+        </AdminField>
+        <AdminField :label="t('admin.settings.seoDescriptionFa')" dir="rtl">
+          <UTextarea v-model="form.seoDescriptionFa" :rows="2" class="w-full" />
+        </AdminField>
+        <AdminField :label="t('admin.settings.seoDescriptionEn')" dir="ltr">
+          <UTextarea v-model="form.seoDescriptionEn" :rows="2" class="w-full" />
         </AdminField>
       </AdminFormSection>
 

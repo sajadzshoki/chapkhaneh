@@ -14,7 +14,8 @@
     "db:migrate": "tsx --env-file-if-exists=.env server/database/migrate.ts",
     "db:seed": "tsx --env-file-if-exists=.env server/database/seed.ts",
     "db:reset": "tsx --env-file-if-exists=.env server/database/reset.ts",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "theme:generate": "node scripts/generate-theme-css.mjs"
   },
   "dependencies": {
     "@nuxt/ui": "^3.3.0",

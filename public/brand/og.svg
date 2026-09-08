@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Mobin Bartar — Printing &amp; Packaging">
+  <!--
+    Default Open Graph card for the demo brand.
+
+    Deliberately a static asset rather than a generated image: an OG card is
+    replaced per deployment (Admin → Settings → Brand → OG image), so building
+    a rendering pipeline for it would be effort spent on something every real
+    customer overwrites. Colours mirror the seeded palette.
+  -->
+  <rect width="1200" height="630" fill="#ffffff"/>
+  <rect width="1200" height="12" fill="#0f4c81"/>
+
+  <g transform="translate(96 150)">
+    <rect width="96" height="96" rx="6" fill="#0f4c81"/>
+    <path d="M20 68V28h10.8l9.2 19.2L49.2 28H60v40h-9.2V44.8L42.8 62h-5.6l-8-17.2V68H20z" fill="#ffffff"/>
+    <rect x="64" y="28" width="12" height="12" fill="#a35b18"/>
+    <rect x="64" y="44" width="12" height="24" fill="#ffffff" opacity="0.85"/>
+  </g>
+
+  <text x="96" y="330" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="72" font-weight="700" fill="#14181d">MOBIN BARTAR</text>
+  <text x="96" y="392" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" font-weight="500" fill="#697787" letter-spacing="4">PRINTING &amp; PACKAGING</text>
+
+  <rect x="96" y="440" width="120" height="4" fill="#a35b18"/>
+
+  <text x="96" y="506" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="26" fill="#3d4753">Offset · Digital · Book production · Packaging · Post-press</text>
+
+  <rect x="96" y="556" width="1008" height="1" fill="#e2e6ea"/>
+</svg>

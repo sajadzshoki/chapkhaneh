@@ -1,8 +1,14 @@
 # Theming & design tokens
 
-## The one rule
+## The two sources of truth
 
-**Brand colours are defined in exactly one place: `shared/theme/brand.ts`.**
+Colour lives in exactly two places, and which one applies depends on whether
+the site is running:
+
+| Source | Role |
+| --- | --- |
+| `shared/theme/brand.ts` | The **default** palette. Compile-time seed for Tailwind and the pre-paint stylesheet. |
+| `theme_settings` (PostgreSQL) | The **live** palette. What an owner edits in the admin. Overrides the default at runtime. |
 
 No component contains a hex value. Everything reads semantic CSS variables such
 as `var(--color-primary)` or `var(--color-border)`.
@@ -10,88 +16,87 @@ as `var(--color-primary)` or `var(--color-border)`.
 ## How a colour reaches the screen
 
 ```
-shared/theme/brand.ts
+theme_settings row (PostgreSQL)
+   │  sanitizeTheme()  — rejects anything that is not #rrggbb
+   ▼
+shared/theme/tokens.ts  — 8 editable colours ─► 19 semantic tokens + 3×11 numbered scales
    │
-   ├─► app/plugins/theme.client.ts ─► --color-* variables on <html>
-   │        (via the Pinia theme store, so admin overrides apply at runtime)
+   ├─► server/routes/theme.css.ts ─► GET /theme.css
+   │        └─► <link rel="stylesheet"> in app/app.vue  (render-blocking, so no flash)
    │
-   ├─► uno.config.ts   ─► UnoCSS shortcuts (.card-flat, .title-lg, …)
-   │
-   └─► app/assets/css/main.css ─► @theme static block
-            └─► Nuxt UI components (`color="primary"`)
+   └─► app/pages/admin/settings/theme.vue ─► inline styles on the preview container only
+            (same function, so the preview matches production exactly)
 ```
 
-`app/assets/css/tokens.css` holds the same values as static CSS so the first
-paint is correct before JavaScript runs (no flash of unstyled colour).
+`shared/theme/brand.ts` feeds two **generated** files via
+`npm run theme:generate`:
 
-## Semantic tokens
+- `app/assets/css/tokens.css` — the default palette as static CSS.
+- the `@theme static` block in `app/assets/css/main.css` — Tailwind v4 needs
+  literal values at build time; it cannot read a database.
 
-| Token | Purpose |
-| --- | --- |
-| `primary`, `primary-hover`, `primary-contrast` | Primary actions, links, active nav |
-| `secondary`, `secondary-hover` | Dark industrial surfaces — footer, solid CTA |
-| `accent`, `accent-hover` | Sparing highlights: eyebrows, stat rules |
-| `background`, `surface`, `surface-muted` | Page and card backgrounds |
-| `foreground`, `foreground-soft`, `muted` | Text hierarchy |
-| `border`, `border-strong` | Hairlines and dividers |
-| `success`, `warning`, `danger` | Status feedback |
+`/theme.css` is served *after* those, so the saved palette wins the cascade.
 
-Also available: `--radius-sm/md/lg`, `--shadow-sm/md`, `--font-fa`, `--font-en`.
+### Why the palette is duplicated
 
-## Changing the brand colour
+Tailwind v4 resolves utility classes at build time and Nuxt UI resolves
+`color="primary"` against numbered scales such as `--color-primary-600`. Neither
+can wait for a database query. The build therefore needs literal CSS, while the
+runtime needs database values.
 
-Edit the scale in `shared/theme/brand.ts`:
+Rather than maintain both by hand, `scripts/generate-theme-css.mjs` derives the
+build-time CSS from `brand.ts`, and `shared/theme/tokens.ts` derives the runtime
+CSS from the same rules. **Edit `brand.ts`, then run `npm run theme:generate`.**
+Never edit `tokens.css` or the `@theme` block directly.
 
-```ts
-const primaryScale: ColorScale = {
-  50: '#eef5fb',
-  …
-  600: '#0f4c81',   // ← the main brand colour
-  …
-}
-```
+This is deliberately the simplest thing that works: one small script, no CSS
+pipeline, no PostCSS plugins.
 
-Then mirror the same scale in the `@theme static` block of
-`app/assets/css/main.css` (Tailwind v4 requires literal values there — it cannot
-read a TypeScript file) and in `app/assets/css/tokens.css` for the first-paint
-defaults.
+## Changing colours does not require a rebuild
 
-The three files are deliberately explicit rather than clever: a future developer
-can see the whole palette without tracing a build step.
+Saving in `/admin/settings/theme` writes to PostgreSQL. The next request to
+`/theme.css` reflects it. Only the *defaults* in `brand.ts` need
+`npm run theme:generate` plus a rebuild.
 
-## Current palette — Mobin Bartar
+## The 8 editable colours
 
-| Role | Value | Why |
-| --- | --- | --- |
-| Primary | `#0f4c81` deep industrial blue | Trust, engineering, print heritage |
-| Secondary | `#2f3740` graphite | Machinery, ink, steel — used for the footer |
-| Accent | `#a35b18` copper | Press-amber highlight, used sparingly |
+`primary`, `secondary`, `accent`, `background`, `surface`, `foreground`,
+`muted`, `border`.
 
-Light theme only. `colorMode` is pinned to `light` in `nuxt.config.ts`.
+Everything else is derived: hover states, `surface-muted`, `foreground-soft`,
+`border-strong`, and `primary-contrast` (chosen for WCAG contrast against the
+primary colour). `success`, `warning` and `danger` are fixed, because their
+meaning is conventional rather than brand-specific.
 
-## Runtime overrides (admin panel, phase 3)
+### Curated vs derived
 
-`app/stores/theme.ts` already merges a `Partial<ThemeSettings>` over the
-compile-time defaults:
+When an editable colour still equals its default, the hand-tuned value from
+`brand.ts` is used verbatim instead of the computed one. This keeps the seeded
+Mobin Bartar demo pixel-identical while still letting any custom colour produce
+a sensible full scale.
 
-```ts
-const theme = useThemeStore()
-theme.applyOverrides({ primary: '#8a1c1c' })   // whole site re-themes instantly
-```
+## Validation and safety
 
-The admin panel will load the persisted `ThemeSettings` row (see
-`server/database/schema.ts` → `site_settings.theme`) and call this. No component
-changes are needed — the plugin rewrites the CSS variables reactively.
+Theme strings are user input that ends up inside a stylesheet, so:
 
-## Design direction
+- Zod enforces `/^#[0-9a-fA-F]{6}$/` on write.
+- `sanitizeTheme()` runs again on read, so a value written directly to the
+  database by other means still cannot break out.
+- Anything invalid falls back to the default for that key.
 
-The visual language is deliberately corporate/industrial, not "modern SaaS":
+Shorthand (`#fff`), named colours, `rgb()`, and anything containing `;`, `}` or
+`<` are all rejected. There is no path by which a stored value can inject CSS.
 
-- Square-ish corners (2–6px), never pill-shaped cards
-- Hairline borders instead of drop shadows
-- Flat surfaces — no gradients, glassmorphism or blobs
-- Strong typographic hierarchy and generous whitespace
-- Real photography rather than decorative illustration
-- Transitions limited to colour changes on hover/focus
+## Admin preview isolation
 
-`prefers-reduced-motion` is respected globally in `main.css`.
+The preview in `/admin/settings/theme` applies the draft palette as **inline
+styles on a single container**. It never touches `document.documentElement`, so
+the surrounding admin UI keeps the saved theme and an abandoned edit cannot
+leave the admin looking broken. Cancel restores the last saved values; no reload
+is needed to change a colour.
+
+## Presets
+
+Default, Blue, Red, Green and Orange set only `primary`, `secondary` and
+`accent` — they are a starting point, not a lock. All eight colours remain
+editable afterwards.

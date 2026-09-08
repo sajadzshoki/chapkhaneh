@@ -21,12 +21,9 @@ const filtered = computed(() =>
   ordered.value.filter(s => activeCategory.value === 'all' || s.category === activeCategory.value),
 )
 
-useHead({ title: () => t('services.title') })
-useSeoMeta({
+usePageSeo({
   title: () => t('services.title'),
   description: () => t('services.intro'),
-  ogTitle: () => t('services.title'),
-  ogDescription: () => t('services.intro'),
 })
 </script>
 

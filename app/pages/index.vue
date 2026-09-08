@@ -27,12 +27,9 @@ const portfolioList = computed(() => {
   return (featured.length ? featured : items).slice(0, 3)
 })
 
-useHead({ title: () => t('nav.home') })
-useSeoMeta({
+usePageSeo({
   title: () => t('nav.home'),
   description: () => t('home.hero.description'),
-  ogTitle: () => t('home.hero.title'),
-  ogDescription: () => t('home.hero.description'),
 })
 </script>
 

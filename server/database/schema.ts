@@ -365,6 +365,12 @@ export const siteSettings = pgTable('site_settings', {
   linkedinUrl: text('linkedin_url'),
   telegramUrl: text('telegram_url'),
   whatsappUrl: text('whatsapp_url'),
+  // Default SEO copy. Page-level metadata still wins; these only fill the gap
+  // so a new deployment is not stuck with another company's description.
+  seoTitleFa: text('seo_title_fa'),
+  seoTitleEn: text('seo_title_en'),
+  seoDescriptionFa: text('seo_description_fa'),
+  seoDescriptionEn: text('seo_description_en'),
   updatedAt: timestamp('updated_at', { withTimezone: true }).notNull().defaultNow(),
 })
 

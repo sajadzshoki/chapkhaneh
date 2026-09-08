@@ -37,12 +37,9 @@ const activeDescription = computed(() => {
   return category?.description ? L(category.description) : undefined
 })
 
-useHead({ title: () => t('portfolio.title') })
-useSeoMeta({
+usePageSeo({
   title: () => t('portfolio.title'),
   description: () => t('portfolio.intro'),
-  ogTitle: () => t('portfolio.title'),
-  ogDescription: () => t('portfolio.intro'),
 })
 </script>
 

@@ -1,0 +1,74 @@
+<script setup lang="ts">
+import type { ServiceDto } from '~/composables/useContent'
+
+/**
+ * Service card. Two variants share one component so the design system stays
+ * consistent and the markup is not duplicated:
+ *  - `default` — icon, title, summary (compact grids)
+ *  - `feature` — adds the service photograph (homepage / services listing top row)
+ */
+withDefaults(defineProps<{
+  service: ServiceDto
+  variant?: 'default' | 'feature'
+}>(), { variant: 'default' })
+
+const { L } = useLocalizedContent()
+const localePath = useLocalePath()
+</script>
+
+<template>
+  <article
+    class="group relative flex h-full flex-col overflow-hidden border border-[var(--color-border)] bg-[var(--color-surface)] transition-colors duration-200 hover:border-[var(--color-primary)]"
+  >
+    <div
+      v-if="variant === 'feature' && service.image"
+      class="aspect-[16/9] overflow-hidden bg-[var(--color-surface-muted)]"
+    >
+      <img
+        :src="service.image.src"
+        :alt="L(service.image.alt) ?? ''"
+        loading="lazy"
+        width="1408"
+        height="768"
+        class="size-full object-cover"
+      >
+    </div>
+
+    <div class="flex flex-1 flex-col p-6 lg:p-7">
+      <span
+        v-if="variant === 'default'"
+        class="mb-5 inline-flex size-11 items-center justify-center border border-[var(--color-border)] bg-[var(--color-surface-muted)] text-[var(--color-primary)] transition-colors group-hover:border-[var(--color-primary)]"
+        aria-hidden="true"
+      >
+        <UIcon :name="service.icon" class="size-5" />
+      </span>
+
+      <h3 class="text-lg font-bold text-[var(--color-foreground)]">
+        <NuxtLink
+          :to="localePath(`/services/${service.slug}`)"
+          class="after:absolute after:inset-0 after:content-['']"
+        >
+          {{ L(service.title) }}
+        </NuxtLink>
+      </h3>
+
+      <p class="mt-3 flex-1 text-sm leading-7 text-[var(--color-muted)]">
+        {{ L(service.summary) }}
+      </p>
+
+      <div class="mt-5 flex items-center justify-between gap-4 border-t border-[var(--color-border)] pt-4 text-xs text-[var(--color-muted)]">
+        <span v-if="service.turnaround" class="flex items-center gap-2">
+          <UIcon name="i-lucide-clock" class="size-4 shrink-0" aria-hidden="true" />
+          <span>{{ L(service.turnaround) }}</span>
+        </span>
+        <span
+          class="flex items-center gap-1 font-semibold text-[var(--color-primary)]"
+          aria-hidden="true"
+        >
+          {{ $t('common.viewDetails') }}
+          <UIcon name="i-lucide-chevron-right" class="size-4 flip-x" />
+        </span>
+      </div>
+    </div>
+  </article>
+</template>

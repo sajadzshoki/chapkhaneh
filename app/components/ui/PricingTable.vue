@@ -1,0 +1,88 @@
+<script setup lang="ts">
+import type { PricingGroupDto } from '~/composables/useContent'
+import { formatNumber } from '~/utils/format'
+
+withDefaults(defineProps<{
+  group: PricingGroupDto
+  /** Anchor id so the pricing page can link directly to a group. */
+  anchor?: string
+}>(), {})
+
+const { L, locale } = useLocalizedContent()
+</script>
+
+<template>
+  <section
+    :id="anchor"
+    class="border border-[var(--color-border)] bg-[var(--color-surface)]"
+    :class="anchor ? 'scroll-mt-32' : ''"
+  >
+    <header class="border-b border-[var(--color-border)] bg-[var(--color-surface-muted)] px-6 py-5">
+      <h3 class="text-lg font-bold text-[var(--color-foreground)]">
+        {{ L(group.title) }}
+      </h3>
+    </header>
+
+    <!-- Horizontal scroll keeps wide tables usable without breaking the layout -->
+    <div
+      class="overflow-x-auto"
+      tabindex="0"
+      role="region"
+      :aria-label="L(group.title)"
+    >
+      <table class="w-full min-w-[760px] border-collapse text-sm">
+        <caption class="sr-only">{{ L(group.title) }}</caption>
+        <thead>
+          <tr class="border-b border-[var(--color-border)]">
+            <th scope="col" class="px-6 py-3 text-start font-semibold text-[var(--color-foreground-soft)]">
+              {{ $t('pricing.table.item') }}
+            </th>
+            <th scope="col" class="px-6 py-3 text-start font-semibold text-[var(--color-foreground-soft)]">
+              {{ $t('pricing.table.quantity') }}
+            </th>
+            <th scope="col" class="px-6 py-3 text-start font-semibold text-[var(--color-foreground-soft)]">
+              {{ $t('pricing.table.specification') }}
+            </th>
+            <th scope="col" class="px-6 py-3 text-start font-semibold text-[var(--color-foreground-soft)]">
+              {{ $t('pricing.table.turnaround') }}
+            </th>
+            <th scope="col" class="px-6 py-3 text-end font-semibold text-[var(--color-foreground-soft)]">
+              {{ $t('pricing.table.price') }}
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="row in group.rows"
+            :key="row.id"
+            class="border-b border-[var(--color-border)] last:border-0 hover:bg-[var(--color-surface-muted)]"
+          >
+            <th scope="row" class="px-6 py-4 text-start font-semibold text-[var(--color-foreground)]">
+              {{ L(row.title) }}
+              <span v-if="row.note" class="mt-1 block text-xs font-normal text-[var(--color-muted)]">
+                {{ L(row.note) }}
+              </span>
+            </th>
+            <td class="whitespace-nowrap px-6 py-4 text-[var(--color-foreground-soft)] tabular">
+              {{ L(row.quantityLabel) }}
+            </td>
+            <td class="px-6 py-4 text-[var(--color-muted)]">
+              {{ L(row.specification) }}
+            </td>
+            <td class="whitespace-nowrap px-6 py-4 text-[var(--color-muted)] tabular">
+              {{ row.turnaround ? L(row.turnaround) : '—' }}
+            </td>
+            <td class="whitespace-nowrap px-6 py-4 text-end font-bold text-[var(--color-foreground)] tabular">
+              {{ formatNumber(row.price, locale) }}
+              <span class="text-xs font-normal text-[var(--color-muted)]">{{ $t('common.toman') }}</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="border-t border-[var(--color-border)] px-6 py-3 text-xs text-[var(--color-muted)] lg:hidden">
+      {{ $t('pricing.scrollHint') }}
+    </p>
+  </section>
+</template>

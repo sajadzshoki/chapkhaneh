@@ -1,0 +1,44 @@
+/* ---------------------------------------------------------------------------
+   Typography
+   ---------------------------------------------------------------------------
+   Vazirmatn is the de-facto standard open-source Persian UI face and carries
+   the whole Persian interface; Inter handles English.
+
+   For production, self-host the woff2 files under `public/fonts/` and point the
+   @font-face `src` at them — self-hosting avoids a third-party request on every
+   page load and keeps the site working on restricted networks. The declarations
+   below already expect that layout, and gracefully fall back to Tahoma / system
+   sans when the files are absent.
+   --------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/fonts/Vazirmatn-ExtraBold.woff2") format("woff2");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}

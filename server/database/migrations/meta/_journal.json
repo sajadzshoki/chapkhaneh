@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1788779399834,
+      "tag": "0000_concerned_blindfold",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788784973908,
+      "tag": "0001_neat_jubilee",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788788537126,
+      "tag": "0002_tan_hiroim",
+      "breakpoints": true
+    }
+  ]
+}

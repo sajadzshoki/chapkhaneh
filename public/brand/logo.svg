@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 48" width="220" height="48" role="img" aria-label="Mobin Bartar">
+  <rect width="48" height="48" rx="3" fill="#0f4c81"/>
+  <path d="M10 34V14h5.4l4.6 9.6L24.6 14H30v20h-4.6V22.4L21.4 31h-2.8l-4-8.6V34H10z" fill="#fff"/>
+  <rect x="32" y="14" width="6" height="6" fill="#a35b18"/>
+  <rect x="32" y="22" width="6" height="12" fill="#ffffff" opacity="0.85"/>
+  <text x="60" y="24" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="17" font-weight="700" fill="#14181d">MOBIN BARTAR</text>
+  <text x="60" y="39" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="10" font-weight="500" fill="#697787" letter-spacing="1.6">PRINTING &amp; PACKAGING</text>
+</svg>

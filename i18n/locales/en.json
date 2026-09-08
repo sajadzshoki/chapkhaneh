@@ -1,0 +1,855 @@
+{
+  "meta": {
+    "titleTemplate": "{page} {'|'} @:brand.company",
+    "defaultDescription": "@:brand.company industrial printing: offset, digital, book production, packaging and post-press services."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "pricing": "Pricing",
+    "equipment": "Equipment",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "quote": "Request a Quote",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mainNavigation": "Main navigation",
+    "footerNavigation": "Footer navigation",
+    "breadcrumb": "Breadcrumb",
+    "skipToContent": "Skip to main content"
+  },
+  "common": {
+    "readMore": "Read more",
+    "viewDetails": "View details",
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "getQuote": "Request a quote",
+    "contactUs": "Contact us",
+    "callUs": "Call us",
+    "send": "Send",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "search": "Search",
+    "filter": "Filter",
+    "all": "All",
+    "loading": "Loading…",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "optional": "optional",
+    "required": "required",
+    "language": "Language",
+    "changeLanguage": "Change language",
+    "toman": "Toman",
+    "from": "from",
+    "perUnit": "per unit"
+  },
+  "states": {
+    "emptyTitle": "Nothing found",
+    "emptyDescription": "No results match the selected filters. Try adjusting them.",
+    "loadingTitle": "Loading content",
+    "errorTitle": "Could not load content",
+    "errorDescription": "Something went wrong. Please try again.",
+    "retry": "Try again",
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The address you entered does not exist or has moved.",
+    "backHome": "Back to home"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Industrial printing since 2000",
+      "title": "Precision printing at every scale",
+      "description": "From sheet-fed offset and book production to packaging and post-press finishing — every stage happens under one roof, so quality and lead time stay under control.",
+      "primaryCta": "Request a quote",
+      "secondaryCta": "Explore services",
+      "imageAlt": "Offset printing line on the @:brand.company production floor",
+      "credibility": "25+ years in print · 8 active production lines · 400+ publisher clients"
+    },
+    "stats": {
+      "title": "@:brand.company at a glance"
+    },
+    "services": {
+      "eyebrow": "Services",
+      "title": "What we produce",
+      "description": "Ten groups of printing and packaging services, all under one roof and one quality-control team."
+    },
+    "why": {
+      "eyebrow": "Why @:brand.company",
+      "title": "Why corporate clients choose us",
+      "description": "The difference between an industrial printer and a print shop is repeatability.",
+      "items": {
+        "quality": {
+          "title": "Documented quality control",
+          "description": "Colour managed to ISO 12647-2, with every job's parameters recorded so reprints match the original."
+        },
+        "capacity": {
+          "title": "High production capacity",
+          "description": "Over 200,000 square metres printed monthly — large runs are produced in-house, never subcontracted."
+        },
+        "integrated": {
+          "title": "Integrated production",
+          "description": "Pre-press, press and post-press in one facility, so work never shuttles between workshops."
+        },
+        "onTime": {
+          "title": "Delivery you can plan around",
+          "description": "Fixed production calendars for periodicals and a firm delivery date stated on every quotation."
+        }
+      }
+    },
+    "equipment": {
+      "eyebrow": "Equipment",
+      "title": "Our production machinery",
+      "description": "Print quality is a direct result of the presses and how well they are maintained."
+    },
+    "portfolio": {
+      "eyebrow": "Portfolio",
+      "title": "Recent projects",
+      "description": "A selection of the work we have produced and delivered over the past two years."
+    },
+    "process": {
+      "eyebrow": "How we work",
+      "title": "From enquiry to delivery",
+      "description": "The path an order takes through @:brand.company is transparent and trackable.",
+      "steps": {
+        "inquiry": {
+          "title": "Enquiry and consultation",
+          "description": "You submit the job specification and a sales engineer reviews the technical and commercial options."
+        },
+        "quote": {
+          "title": "Quotation",
+          "description": "A firm price, stock specification and delivery date are issued in writing."
+        },
+        "prepress": {
+          "title": "Pre-press",
+          "description": "Files are checked, technically corrected and, where needed, a contract proof is produced."
+        },
+        "production": {
+          "title": "Print and finishing",
+          "description": "Printing, post-press finishing and packing run to the agreed schedule."
+        },
+        "delivery": {
+          "title": "Delivery",
+          "description": "The order is counted, packed and delivered to your chosen location."
+        }
+      }
+    },
+    "cta": {
+      "title": "Have a printing project?",
+      "description": "Send us your requirements and you will have a quotation within one working day.",
+      "primary": "Request a quote",
+      "secondary": "Talk to a specialist"
+    },
+    "about": {
+      "eyebrow": "About the company",
+      "title": "An industrial printer, not a print shop",
+      "description": "@:brand.company has been printing since 2000. What separates us from a print shop is capacity and repeatability: a job you print this year will come back next year in the same colour, to the same standard.",
+      "points": {
+        "experience": "Over two decades of continuous production for publishers, industry and institutions",
+        "quality": "Colour managed to ISO 12647-2, with every job’s parameters recorded",
+        "equipment": "Eight production lines spanning offset, digital, pre-press and post-press",
+        "capacity": "Over 200,000 square metres printed monthly, with no subcontracting",
+        "team": "140 staff, including long-serving press operators"
+      },
+      "cta": "More about us",
+      "imageAlt": "Exterior view of the @:brand.company plant"
+    }
+  },
+  "services": {
+    "title": "Printing & packaging services",
+    "description": "Ten specialist service groups, from sheet-fed offset to packaging production and post-press finishing.",
+    "categories": {
+      "all": "All",
+      "printing": "Printing",
+      "packaging": "Packaging",
+      "finishing": "Post-press"
+    },
+    "features": "What's included",
+    "minimumOrder": "Minimum order",
+    "turnaround": "Turnaround",
+    "relatedPricing": "Indicative pricing",
+    "notFound": "The requested service could not be found.",
+    "intro": "Ten specialist service groups, from high-volume sheet-fed offset to packaging production and post-press finishing — all handled in-house.",
+    "specifications": "Available specifications",
+    "relatedProjects": "Related projects",
+    "relatedServices": "Related services",
+    "overview": "Overview",
+    "atAGlance": "At a glance",
+    "notFoundTitle": "Service not found",
+    "notFoundDescription": "No service exists at this address. Browse the full list of services instead.",
+    "backToServices": "Back to services",
+    "viewPricing": "View pricing",
+    "noPricing": "No standard tariff is published for this service — pricing is quoted once we review your specification."
+  },
+  "pricing": {
+    "title": "Service pricing",
+    "description": "The figures below assume standard specifications and are indicative. The binding price is issued on your quotation.",
+    "table": {
+      "item": "Item",
+      "quantity": "Quantity",
+      "specification": "Specification",
+      "price": "Price (Toman)",
+      "turnaround": "Turnaround",
+      "note": "Note"
+    },
+    "disclaimer": "Prices exclude VAT and freight. Because paper prices fluctuate, quotations are valid for seven days.",
+    "cta": "Get a quote for your own specification",
+    "intro": "The tariffs below assume standard specifications and our most common job types. They are intended for initial budgeting.",
+    "variationNote": "Final pricing may vary depending on specifications, materials, finishing and quantity.",
+    "jumpTo": "Jump to",
+    "unit": "Unit",
+    "scrollHint": "Scroll the table sideways to see all columns"
+  },
+  "equipment": {
+    "title": "Equipment & machinery",
+    "description": "The @:brand.company production line covers offset, digital, pre-press and post-press machinery.",
+    "types": {
+      "all": "All",
+      "offset": "Offset",
+      "digital": "Digital",
+      "prepress": "Pre-press",
+      "finishing": "Post-press"
+    },
+    "specifications": "Technical specifications",
+    "manufacturer": "Manufacturer",
+    "installedYear": "Installed",
+    "intro": "The @:brand.company production line is built on industrial machinery. Print quality is a direct result of these presses and how well they are maintained.",
+    "capabilities": "Key capabilities",
+    "model": "Model",
+    "printingType": "Printing type"
+  },
+  "portfolio": {
+    "title": "Portfolio",
+    "description": "Projects produced for publishers, industrial brands and public organisations.",
+    "client": "Client",
+    "year": "Year",
+    "projectDetails": "Project details",
+    "allCategories": "All categories",
+    "relatedProjects": "Related projects",
+    "intro": "A selection of the work we have produced and delivered for publishers, industrial brands and public organisations.",
+    "category": "Category",
+    "gallery": "Project gallery",
+    "viewImage": "View image",
+    "imageCounter": "Image {current} of {total}",
+    "servicesUsed": "Services used",
+    "notFoundTitle": "Project not found",
+    "notFoundDescription": "No project exists at this address. Browse the rest of our work instead.",
+    "backToPortfolio": "Back to portfolio",
+    "emptyCategory": "No projects have been published in this category yet.",
+    "projectCount": "{count} projects"
+  },
+  "about": {
+    "title": "About @:brand.company",
+    "description": "More than two decades of industrial print production for publishers, industry and institutions.",
+    "story": {
+      "title": "Our story",
+      "description": "@:brand.company started in 2000 with a single two-colour offset press. Today, with eight active production lines and 140 staff, it is a well-established name in Iranian industrial printing. That growth came from steady investment in machinery and technical training — not from rapid, unplanned expansion."
+    },
+    "values": {
+      "title": "How we work",
+      "items": {
+        "precision": {
+          "title": "Precision",
+          "description": "Every job is produced against documented parameters so the next run matches the last one."
+        },
+        "reliability": {
+          "title": "Reliability",
+          "description": "The delivery date we state is the date we hold ourselves to."
+        },
+        "transparency": {
+          "title": "Transparency",
+          "description": "Specifications, stock and costs are agreed in writing before production starts."
+        },
+        "investment": {
+          "title": "Technical investment",
+          "description": "Press renewal and operator training are a permanent part of our annual plan."
+        }
+      }
+    },
+    "certifications": {
+      "title": "Standards & certifications",
+      "description": "Our quality control follows recognised printing-industry standards."
+    },
+    "facility": {
+      "title": "The facility",
+      "description": "Our 6,500 square-metre plant operates in Tehran's Print & Publishing Industrial Park."
+    },
+    "intro": "@:brand.company is an industrial printing company in Tehran, producing for publishers, industry and public organisations since 2000.",
+    "capabilities": {
+      "title": "Production capability",
+      "description": "Capacity determines which jobs can be accepted without subcontracting and without a drop in quality."
+    },
+    "quality": {
+      "title": "Quality control",
+      "description": "Every job is produced against documented parameters. Colour profile, stock, press settings and spectrophotometer readings are archived, so a reprint matches the original."
+    },
+    "equipmentSection": {
+      "title": "Machinery",
+      "description": "Eight active production lines, from plate-making to binding and final packing.",
+      "cta": "View all equipment"
+    },
+    "timeline": {
+      "title": "How we grew",
+      "items": {
+        "founded": {
+          "year": "2000",
+          "title": "The beginning",
+          "description": "The company started with a single two-colour offset press and five staff in south Tehran."
+        },
+        "expansion": {
+          "year": "2008",
+          "title": "Move to the industrial park",
+          "description": "Moving to the Print & Publishing Industrial Park tripled capacity and brought binding in-house."
+        },
+        "packaging": {
+          "title": "Packaging division",
+          "year": "2016",
+          "description": "Adding die-cutting and folder-gluing opened carton production for the food and pharmaceutical sectors."
+        },
+        "today": {
+          "year": "Today",
+          "title": "Eight production lines",
+          "description": "With 140 staff and monthly capacity above 200,000 square metres, we handle high-volume corporate and publishing work."
+        }
+      }
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "description": "Answers to the questions customers most often ask before placing an order.",
+    "categories": {
+      "all": "All",
+      "orders": "Orders",
+      "technical": "Technical",
+      "delivery": "Delivery",
+      "pricing": "Pricing"
+    },
+    "stillHaveQuestions": {
+      "title": "Didn't find your answer?",
+      "description": "Our sales engineers are available during working hours."
+    },
+    "intro": "Answers to the questions customers most often ask before ordering. If yours is not here, contact our sales team."
+  },
+  "contact": {
+    "title": "Contact us",
+    "description": "Get in touch for a quotation, technical advice or to arrange a visit to the plant.",
+    "phone": "Phone",
+    "fax": "Fax",
+    "email": "Email",
+    "salesEmail": "Sales email",
+    "address": "Address",
+    "postalCode": "Postal code",
+    "workingHours": "Working hours",
+    "social": "Social media",
+    "viewOnMap": "View on map",
+    "departments": "Departments",
+    "intro": "Get in touch for a quotation, technical advice, or to arrange a visit to the plant.",
+    "location": "Plant location",
+    "locationNote": "Our plant is located in the Print & Publishing Industrial Park on KM 9 of the Makhsous Karaj Road, Tehran. Visits can be arranged with prior notice.",
+    "quoteCta": {
+      "title": "Looking for a price?",
+      "description": "The quote request form is the fastest way to receive a quotation."
+    }
+  },
+  "quote": {
+    "title": "Request a quote",
+    "description": "Tell us about your job and our team will prepare a quotation for you.",
+    "form": {
+      "fullName": "Full name",
+      "fullNamePlaceholder": "e.g. Ali Rezaei",
+      "company": "Company",
+      "companyPlaceholder": "Your organisation",
+      "phone": "Phone number",
+      "phonePlaceholder": "09120000000",
+      "email": "Email",
+      "emailPlaceholder": "name{'@'}company.com",
+      "service": "Service",
+      "servicePlaceholder": "Select a service",
+      "quantity": "Quantity",
+      "quantityPlaceholder": "e.g. 5000",
+      "neededBy": "Required delivery date",
+      "description": "Job description",
+      "descriptionPlaceholder": "Describe format, stock, page count, colours and any finishing you need.",
+      "submit": "Send request",
+      "submitting": "Sending…",
+      "privacyNote": "Your details are used only to prepare and follow up this quotation.",
+      "fileCta": "Choose a file or drag it here",
+      "fileHint": "Accepted formats: {formats}. Maximum size {size}.",
+      "fileRemove": "Remove attached file"
+    },
+    "validation": {
+      "fullNameRequired": "Full name is required.",
+      "phoneRequired": "Phone number is required.",
+      "phoneInvalid": "Please enter a valid phone number.",
+      "emailInvalid": "Please enter a valid email address.",
+      "serviceRequired": "Please select a service.",
+      "quantityInvalid": "Quantity must be a number greater than zero.",
+      "descriptionRequired": "A job description is required.",
+      "descriptionTooShort": "Please provide at least 20 characters.",
+      "descriptionTooLong": "The description is too long.",
+      "serviceUnavailable": "This service is not available. Please choose another.",
+      "fileTooLarge": "The file is larger than the allowed size.",
+      "fileType": "This file format is not accepted.",
+      "fileContent": "The file contents do not match its format.",
+      "fileEmpty": "The selected file is empty.",
+      "fileStorage": "The file could not be saved. Please try again."
+    },
+    "success": {
+      "title": "Your request has been received",
+      "description": "We have received your details and our team will review them and get back to you.",
+      "nextStepsTitle": "What happens next",
+      "step1": "A sales engineer reviews your specifications and any files you sent.",
+      "step2": "We contact you on the phone number you provided if anything needs clarifying.",
+      "step3": "You receive a written quotation covering price and lead time.",
+      "backHome": "Back to home",
+      "browseServices": "Browse services",
+      "another": "Send another request"
+    },
+    "error": {
+      "title": "Could not send your request",
+      "description": "Please try again, or contact us directly by phone.",
+      "validation": "Some details need correcting. Please review the highlighted fields.",
+      "rateLimited": "Too many requests have been sent from this device. Please wait a few minutes and try again.",
+      "duplicate": "This request has already been received."
+    },
+    "sections": {
+      "contact": "Contact details",
+      "contactHint": "So we can send the quotation and reach you with any questions.",
+      "project": "Project details",
+      "projectHint": "The more specific you are, the more accurate the quotation.",
+      "attachment": "Attachments",
+      "attachmentHint": "Optional. Attach artwork, a sample or a specification sheet."
+    }
+  },
+  "footer": {
+    "aboutTitle": "About @:brand.company",
+    "quickLinks": "Quick links",
+    "servicesTitle": "Services",
+    "contactTitle": "Contact",
+    "workingHoursTitle": "Working hours",
+    "followUs": "Follow us",
+    "rights": "All rights reserved.",
+    "madeBy": "Design & development"
+  },
+  "admin": {
+    "title": "Admin panel",
+    "brand": "@:brand.company",
+    "viewSite": "View website",
+    "logout": "Sign out",
+    "login": "Sign in",
+    "language": "Language",
+    "sections": "Admin sections",
+    "nav": {
+      "dashboard": "Dashboard",
+      "services": "Services",
+      "pricing": "Pricing",
+      "equipment": "Equipment",
+      "portfolio": "Portfolio",
+      "faqs": "FAQs",
+      "quoteRequests": "Quote requests",
+      "settings": "Settings",
+      "theme": "Brand colours"
+    },
+    "actions": {
+      "create": "Create",
+      "edit": "Edit",
+      "delete": "Delete",
+      "save": "Save",
+      "saving": "Saving…",
+      "cancel": "Cancel",
+      "close": "Close",
+      "retry": "Try again",
+      "search": "Search",
+      "searchPlaceholder": "Search…",
+      "clearFilters": "Clear filters",
+      "activate": "Activate",
+      "deactivate": "Deactivate",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "add": "Add",
+      "remove": "Remove",
+      "view": "View details",
+      "download": "Download file",
+      "backToList": "Back to list",
+      "feature": "Mark as featured",
+      "unfeature": "Remove from featured",
+      "confirmDelete": "Yes, delete"
+    },
+    "fields": {
+      "titleFa": "Title (Persian)",
+      "titleEn": "Title (English)",
+      "nameFa": "Name (Persian)",
+      "nameEn": "Name (English)",
+      "questionFa": "Question (Persian)",
+      "questionEn": "Question (English)",
+      "answerFa": "Answer (Persian)",
+      "answerEn": "Answer (English)",
+      "shortDescriptionFa": "Short description (Persian)",
+      "shortDescriptionEn": "Short description (English)",
+      "descriptionFa": "Description (Persian)",
+      "descriptionEn": "Description (English)",
+      "slug": "Slug",
+      "slugHint": "Lowercase English letters, numbers and dashes. Used in the page address.",
+      "image": "Image address",
+      "imageHint": "Path or URL, for example /images/services/offset.svg",
+      "coverImage": "Cover image",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Hidden",
+      "sortOrder": "Display order",
+      "sortOrderHint": "Smaller numbers appear first.",
+      "category": "Category",
+      "type": "Type",
+      "manufacturerFa": "Manufacturer (Persian)",
+      "manufacturerEn": "Manufacturer (English)",
+      "model": "Model",
+      "installedYear": "Installation year",
+      "year": "Year",
+      "clientFa": "Client (Persian)",
+      "clientEn": "Client (English)",
+      "featured": "Featured",
+      "quantity": "Quantity",
+      "specificationFa": "Specification (Persian)",
+      "specificationEn": "Specification (English)",
+      "unitFa": "Unit (Persian)",
+      "unitEn": "Unit (English)",
+      "price": "Price",
+      "currency": "Currency",
+      "turnaroundFa": "Turnaround (Persian)",
+      "turnaroundEn": "Turnaround (English)",
+      "noteFa": "Note (Persian)",
+      "noteEn": "Note (English)",
+      "minimumOrderFa": "Minimum order (Persian)",
+      "minimumOrderEn": "Minimum order (English)",
+      "service": "Service",
+      "features": "Key features",
+      "specifications": "Specifications",
+      "specValuesHint": "One value per line.",
+      "labelFa": "Label (Persian)",
+      "labelEn": "Label (English)",
+      "valueFa": "Value (Persian)",
+      "valueEn": "Value (English)",
+      "altFa": "Alt text (Persian)",
+      "altEn": "Alt text (English)",
+      "gallery": "Gallery images",
+      "details": "Project details",
+      "relatedServices": "Related services"
+    },
+    "filters": {
+      "all": "All",
+      "activeOnly": "Active only",
+      "inactiveOnly": "Hidden only",
+      "allTypes": "All types",
+      "allCategories": "All categories",
+      "allStatuses": "All statuses",
+      "featuredOnly": "Featured only",
+      "notFeatured": "Not featured"
+    },
+    "states": {
+      "loading": "Loading…",
+      "errorTitle": "Something went wrong",
+      "errorDescription": "The data could not be loaded. Please check your connection and try again.",
+      "unauthorized": "Your session has expired. Please sign in again.",
+      "notFound": "This record no longer exists. It may have been deleted.",
+      "networkError": "Could not reach the server. Please check your connection.",
+      "validationFailed": "Please correct the highlighted fields.",
+      "genericError": "The operation failed. Please try again.",
+      "noResults": "No results match your filters.",
+      "noResultsDescription": "Try a different search term or clear the filters."
+    },
+    "toast": {
+      "created": "Created successfully.",
+      "updated": "Changes saved.",
+      "deleted": "Deleted successfully.",
+      "reordered": "Order updated.",
+      "activated": "Now visible on the website.",
+      "deactivated": "Hidden from the website.",
+      "statusUpdated": "Status updated.",
+      "settingsSaved": "Site settings saved.",
+      "themeSaved": "Brand colours saved"
+    },
+    "pagination": {
+      "showing": "Showing {from}–{to} of {total}",
+      "page": "Page {page} of {pages}",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "delete": {
+      "title": "Confirm deletion",
+      "irreversible": "This action cannot be undone.",
+      "service": "Delete the service \"{name}\"?",
+      "servicePricing": "Its {count} pricing rows will also be deleted.",
+      "serviceQuotes": "{count} quote requests will keep their history but lose the service link.",
+      "pricing": "Delete the pricing row \"{name}\"?",
+      "equipment": "Delete the machine \"{name}\"?",
+      "portfolio": "Delete the project \"{name}\"? Its gallery images will also be removed.",
+      "category": "Delete the category \"{name}\"?",
+      "faq": "Delete this question?",
+      "quote": "Delete the request from {name}? The customer's message and file reference will be lost."
+    },
+    "dashboard": {
+      "title": "Dashboard",
+      "description": "An overview of your website content and incoming requests.",
+      "services": "Services",
+      "activeServices": "Active services",
+      "portfolioItems": "Portfolio projects",
+      "equipment": "Machines",
+      "newRequests": "New requests",
+      "reviewingRequests": "Under review",
+      "recentRequests": "Latest quote requests",
+      "recentEmpty": "No quote requests yet.",
+      "viewAll": "View all requests",
+      "contactedRequests": "Contacted",
+      "completedRequests": "Completed"
+    },
+    "services": {
+      "title": "Services",
+      "description": "The printing services shown on the website. Order controls how they appear.",
+      "create": "New service",
+      "createTitle": "New service",
+      "editTitle": "Edit service",
+      "emptyTitle": "No services yet",
+      "emptyDescription": "Create your first printing service to show it on the website.",
+      "pricingCount": "Pricing rows",
+      "managePricing": "Manage pricing",
+      "count": "{count} services",
+      "sectionMain": "Main information",
+      "sectionContent": "Description and content",
+      "sectionDisplay": "Display settings",
+      "featuresHint": "Short selling points shown on the service page.",
+      "addFeature": "Add feature",
+      "addSpecification": "Add specification"
+    },
+    "pricing": {
+      "title": "Pricing",
+      "description": "Price rows per service. Prices are stored as plain numbers and formatted automatically.",
+      "create": "New price row",
+      "createTitle": "New price row",
+      "editTitle": "Edit price row",
+      "emptyTitle": "No price rows yet",
+      "emptyDescription": "Choose a service and add your first price row.",
+      "selectService": "Select a service",
+      "allServices": "All services",
+      "priceHint": "Enter digits only, for example 12500000.",
+      "disclaimer": "Final prices may vary depending on the chosen specifications, paper and finishing.",
+      "count": "{count} price rows"
+    },
+    "equipment": {
+      "title": "Equipment",
+      "description": "The machines listed on the equipment page.",
+      "create": "New machine",
+      "createTitle": "New machine",
+      "editTitle": "Edit machine",
+      "emptyTitle": "No machines yet",
+      "emptyDescription": "Add your first printing machine to show it on the website.",
+      "count": "{count} machines",
+      "sectionMain": "Machine information",
+      "sectionSpecs": "Technical specifications",
+      "addSpec": "Add specification",
+      "types": {
+        "offset": "Offset",
+        "digital": "Digital",
+        "prepress": "Prepress",
+        "finishing": "Finishing"
+      }
+    },
+    "portfolio": {
+      "title": "Portfolio",
+      "description": "Completed projects shown in the portfolio gallery.",
+      "create": "New project",
+      "createTitle": "New project",
+      "editTitle": "Edit project",
+      "emptyTitle": "No projects yet",
+      "emptyDescription": "Add your first completed project to showcase your work.",
+      "count": "{count} projects",
+      "images": "Images",
+      "sectionMain": "Project information",
+      "sectionGallery": "Gallery",
+      "galleryHint": "The first image appears first on the project page.",
+      "addImage": "Add image",
+      "addDetail": "Add detail",
+      "tabProjects": "Projects",
+      "tabCategories": "Categories"
+    },
+    "categories": {
+      "title": "Portfolio categories",
+      "description": "Groups used to filter the portfolio gallery.",
+      "create": "New category",
+      "createTitle": "New category",
+      "editTitle": "Edit category",
+      "emptyTitle": "No categories yet",
+      "emptyDescription": "Create a category before adding portfolio projects.",
+      "projects": "Projects",
+      "inUseTitle": "This category is still in use",
+      "inUseDescription": "{count} projects belong to \"{name}\". Choose another category to move them to, then delete.",
+      "moveTo": "Move projects to",
+      "moveAndDelete": "Move projects and delete",
+      "moved": "{count} projects were moved."
+    },
+    "faqs": {
+      "title": "Frequently asked questions",
+      "description": "Questions shown on the FAQ page, in the order set here.",
+      "create": "New question",
+      "createTitle": "New question",
+      "editTitle": "Edit question",
+      "emptyTitle": "No questions yet",
+      "emptyDescription": "Add the questions your customers ask most often.",
+      "count": "{count} questions",
+      "categories": {
+        "orders": "Orders",
+        "technical": "Technical",
+        "delivery": "Delivery",
+        "pricing": "Pricing"
+      }
+    },
+    "quotes": {
+      "title": "Quote requests",
+      "description": "Requests submitted through the website quote form.",
+      "emptyTitle": "No quote requests yet",
+      "emptyDescription": "Requests submitted from the website will appear here.",
+      "count": "{count} requests",
+      "customer": "Customer",
+      "phone": "Phone",
+      "email": "Email",
+      "company": "Company",
+      "service": "Service",
+      "noService": "Not specified",
+      "submitted": "Submitted",
+      "quantity": "Quantity",
+      "neededBy": "Needed by",
+      "message": "Customer message",
+      "attachment": "Attached file",
+      "noAttachment": "No file attached",
+      "internalNote": "Internal note",
+      "internalNoteHint": "Only visible in the admin panel.",
+      "detailTitle": "Request details",
+      "changeStatus": "Change status",
+      "statuses": {
+        "NEW": "New",
+        "REVIEWING": "Under review",
+        "CONTACTED": "Contacted",
+        "COMPLETED": "Completed"
+      },
+      "hasAttachment": "Has an attached file"
+    },
+    "settings": {
+      "title": "Site settings",
+      "description": "Company details used across the public website.",
+      "sectionCompany": "Company information",
+      "sectionContact": "Contact details",
+      "sectionAddress": "Address and hours",
+      "sectionBrand": "Brand assets",
+      "sectionSocial": "Social networks",
+      "companyNameFa": "Company name (Persian)",
+      "companyNameEn": "Company name (English)",
+      "legalNameFa": "Legal name (Persian)",
+      "legalNameEn": "Legal name (English)",
+      "taglineFa": "Tagline (Persian)",
+      "taglineEn": "Tagline (English)",
+      "descriptionFa": "About the company (Persian)",
+      "descriptionEn": "About the company (English)",
+      "foundedYear": "Founded year",
+      "phone": "Main phone",
+      "phoneSecondary": "Second phone",
+      "fax": "Fax",
+      "email": "Main email",
+      "salesEmail": "Sales email",
+      "addressFa": "Address (Persian)",
+      "addressEn": "Address (English)",
+      "cityFa": "City (Persian)",
+      "cityEn": "City (English)",
+      "postalCode": "Postal code",
+      "mapUrl": "Map link",
+      "workingHoursFa": "Working hours (Persian)",
+      "workingHoursEn": "Working hours (English)",
+      "workingHoursDaysFa": "Working days (Persian)",
+      "workingHoursDaysEn": "Working days (English)",
+      "logo": "Logo",
+      "mark": "Icon mark",
+      "favicon": "Favicon",
+      "ogImage": "Social share image",
+      "instagramUrl": "Instagram",
+      "linkedinUrl": "LinkedIn",
+      "telegramUrl": "Telegram",
+      "whatsappUrl": "WhatsApp",
+      "sectionSeo": "Search engine defaults",
+      "seoHint": "Used when a page does not define its own title or description. Leave blank to use the company name and description.",
+      "seoTitleFa": "Default title (Persian)",
+      "seoTitleEn": "Default title (English)",
+      "seoDescriptionFa": "Default description (Persian)",
+      "seoDescriptionEn": "Default description (English)",
+      "themeLinkTitle": "Brand colours",
+      "themeLinkHint": "Change the colours used across the public website.",
+      "themeLinkAction": "Edit colours"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "slug": "Use lowercase English letters, numbers and dashes only.",
+      "slugTaken": "This slug is already in use.",
+      "email": "Enter a valid email address.",
+      "url": "The address must start with http:// or https://",
+      "number": "Enter a valid number.",
+      "positive": "Enter a number greater than zero.",
+      "nonNegative": "The value cannot be negative.",
+      "maxLength": "This text is too long.",
+      "selectOption": "Please choose an option."
+    },
+    "theme": {
+      "title": "Brand colours",
+      "description": "Set the colours used across the public website.",
+      "backToSettings": "Back to settings",
+      "presets": "Presets",
+      "presetsHint": "A starting point. Adjust the colours below, then save.",
+      "presetNames": {
+        "default": "Default",
+        "blue": "Blue",
+        "red": "Red",
+        "green": "Green",
+        "orange": "Orange"
+      },
+      "invalidColor": "Enter a 6-digit hex colour, for example #0f4c81.",
+      "unsaved": "You have unsaved changes. The website still shows the saved colours.",
+      "savedHint": "The website will use the new colours on the next page load.",
+      "preview": "Preview",
+      "previewHint": "A sample of the public website. Nothing changes for visitors until you save.",
+      "colors": {
+        "primary": "Primary",
+        "secondary": "Secondary",
+        "accent": "Accent",
+        "background": "Page background",
+        "surface": "Card background",
+        "foreground": "Text",
+        "muted": "Secondary text",
+        "border": "Borders"
+      },
+      "hints": {
+        "primary": "Buttons, links and the main brand colour.",
+        "secondary": "Dark headings and the footer.",
+        "accent": "Highlights, used sparingly.",
+        "background": "The colour behind every page.",
+        "surface": "Cards, panels and the header.",
+        "foreground": "Main body and heading text.",
+        "muted": "Captions and less important text.",
+        "border": "Lines between sections and around cards."
+      },
+      "sampleBrand": "Your company",
+      "sampleNav": "Services · Portfolio · Contact",
+      "sampleHeading": "Industrial printing, delivered on schedule",
+      "sampleBody": "A sample of how headings, body text and buttons will look with the colours you have chosen.",
+      "samplePrimaryButton": "Request a quote",
+      "sampleSecondaryButton": "View services",
+      "sampleCardTitle": "Offset printing",
+      "sampleCardBody": "High-volume sheet-fed production with consistent colour.",
+      "sampleLink": "Learn more"
+    }
+  },
+  "brand": {
+    "company": "Mobin Bartar"
+  }
+}

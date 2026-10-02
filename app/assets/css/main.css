@@ -47,7 +47,13 @@
   --color-accent-950: #33180a;
 }
 
+@theme static {
+  --font-sans: "Dana", Tahoma, sans-serif;
+}
+
 :root {
+  --font-fa: "Dana", Tahoma, sans-serif;
+  --font-en: "Dana", Arial, sans-serif;
   --ui-primary: var(--color-primary);
   --ui-radius: var(--radius-md);
   --ui-bg: var(--color-background);
@@ -56,16 +62,18 @@
   --ui-border: var(--color-border);
 }
 
-html {
-  font-family: var(--font-fa);
+html,
+body {
+  font-family: "Dana", Tahoma, sans-serif;
   background-color: var(--color-background);
   color: var(--color-foreground);
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
 }
 
-html[lang="en"] {
-  font-family: var(--font-en);
+html[lang="en"],
+html[lang="en"] body {
+  font-family: "Dana", Arial, sans-serif;
 }
 
 body {

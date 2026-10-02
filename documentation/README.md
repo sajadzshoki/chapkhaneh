@@ -66,10 +66,9 @@ shape with placeholder values only.
 
 ### Fonts
 
-Persian text uses **Vazirmatn**. The woff2 files are not committed — see
-[`public/fonts/README.md`](../public/fonts/README.md) for the four filenames to
-drop in. Until then the site falls back to Tahoma, which renders Persian
-correctly with slightly different metrics.
+Persian and English text use **Dana**. The woff2 files live in
+[`public/fonts/`](../public/fonts/README.md). If they are missing, the site
+falls back to Tahoma, which still renders Persian correctly.
 
 ## Rebranding for another printing company
 

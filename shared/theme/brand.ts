@@ -138,8 +138,8 @@ export const brandTheme = {
   },
 
   fonts: {
-    fa: '"Vazirmatn", "IRANSans", Tahoma, sans-serif',
-    en: '"Inter", "Segoe UI", Arial, sans-serif',
+    fa: '"Dana", Tahoma, sans-serif',
+    en: '"Dana", Arial, sans-serif',
   },
 } as const
 

@@ -14,8 +14,9 @@ import { adminUsers } from '../database/schema'
  * no requirement for remote revocation — rotating `NUXT_SESSION_PASSWORD`
  * invalidates every existing session, which is sufficient here.
  *
- * The cookie is httpOnly + sameSite=lax + secure in production, so it is never
- * readable from JavaScript and never lands in localStorage.
+ * The cookie is httpOnly + sameSite=lax. `Secure` is set only when this request
+ * is actually HTTPS (or the proxy says so via X-Forwarded-Proto). A production
+ * build served over plain HTTP would otherwise drop the cookie in the browser.
  */
 
 const COOKIE_NAME = 'mb_admin_session'
@@ -95,18 +96,32 @@ export function readSessionToken(token: string | undefined): SessionPayload | nu
   }
 }
 
+/** True only for a real HTTPS request, including TLS terminated at the proxy. */
+function cookieSecure(event: H3Event): boolean {
+  const forwarded = getRequestHeader(event, 'x-forwarded-proto')
+  if (forwarded) {
+    return forwarded.split(',')[0]?.trim().toLowerCase() === 'https'
+  }
+  return getRequestURL(event).protocol === 'https:'
+}
+
 export function setSessionCookie(event: H3Event, token: string): void {
   setCookie(event, COOKIE_NAME, token, {
     httpOnly: true,
     sameSite: 'lax',
-    secure: !import.meta.dev,
+    secure: cookieSecure(event),
     path: '/',
     maxAge: MAX_AGE_SECONDS,
   })
 }
 
 export function clearSessionCookie(event: H3Event): void {
-  deleteCookie(event, COOKIE_NAME, { path: '/' })
+  deleteCookie(event, COOKIE_NAME, {
+    httpOnly: true,
+    sameSite: 'lax',
+    secure: cookieSecure(event),
+    path: '/',
+  })
 }
 
 export function getAdminSession(event: H3Event): SessionPayload | null {

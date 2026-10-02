@@ -1,17 +1,12 @@
 # Fonts
 
-Place the self-hosted webfont files here. The stylesheet
-`app/assets/css/fonts.css` expects these exact filenames:
+Self-hosted Dana (فونت ایران) webfonts used by `app/assets/css/fonts.css`:
 
-- `Vazirmatn-Regular.woff2`  (weight 400)
-- `Vazirmatn-Medium.woff2`   (weight 500)
-- `Vazirmatn-Bold.woff2`     (weight 700)
-- `Vazirmatn-ExtraBold.woff2` (weight 800)
+- `Dana-Regular.woff2` (weight 400)
+- `Dana-Medium.woff2` (weight 500)
+- `Dana-DemiBold.woff2` (weight 600)
+- `Dana-Bold.woff2` (weight 700)
+- `Dana-ExtraBold.woff2` (weight 800)
 
-Download them from the official release:
-<https://github.com/rastikerdar/vazirmatn/releases> — take the `woff2` files
-from the `fonts/webfonts/` directory of the release archive.
-
-They are intentionally not committed to the repository. Until they are added,
-the site falls back to Tahoma / the system sans-serif, which renders Persian
-correctly but with slightly different metrics.
+These files come from the project's licensed Dana package. Persian digits on
+`.tabular` use the `ss02` feature.
